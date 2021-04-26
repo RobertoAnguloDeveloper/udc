@@ -17,7 +17,7 @@ public class ValidaEntrada {
         char key = evt.getKeyChar();
         int k = Integer.valueOf(key);
         
-        if((k < 48 && k != 8 && k == 44)  || k > 57 || k == 44){
+        if((k < 48 && k != 8 && k == 44)  || k > 57 || (k > 31 && k < 46 && k != 47)){
             Toolkit.getDefaultToolkit().beep();
             evt.consume();
         }else if((k == 8))
