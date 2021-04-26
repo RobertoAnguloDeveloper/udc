@@ -5,6 +5,9 @@
  */
 package Ejercicios;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author TECNOLOGIA GC
@@ -35,6 +38,7 @@ public class E1 extends javax.swing.JDialog {
         ladoTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultadoTextArea = new javax.swing.JTextArea();
+        enunciado1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -56,36 +60,56 @@ public class E1 extends javax.swing.JDialog {
 
         resultadoTextArea.setEditable(false);
         resultadoTextArea.setColumns(20);
+        resultadoTextArea.setLineWrap(true);
         resultadoTextArea.setRows(5);
+        resultadoTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(resultadoTextArea);
+
+        enunciado1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enunciado1.setText("Ver enunciado");
+        enunciado1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        enunciado1.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        enunciado1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enunciado1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(calcularBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(calcularBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
                                     .addComponent(ladoTextField))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap())
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(60, 60, 60))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(enunciado1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(98, 98, 98))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enunciado1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -93,8 +117,8 @@ public class E1 extends javax.swing.JDialog {
                         .addComponent(ladoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(calcularBtn)
-                        .addGap(0, 66, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -114,6 +138,14 @@ public class E1 extends javax.swing.JDialog {
             +"\nÁrea = "+area+"\nAltura = "+altura);
         //JOptionPane.showMessageDialog(null, "Area = "+area, "Area", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_calcularBtnActionPerformed
+
+    private void enunciado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado1ActionPerformed
+        JOptionPane.showMessageDialog(null, new JLabel("<html>Dado el valor del "
+                + "lado en un triángulo equilátero,<br> "
+                + "realice un programa que permita obtener e imprimir el perímetro,<br>"
+                + " el valor de la altura y el área del triángulo.<html>"),
+                "Ejercicio 1", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_enunciado1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +192,7 @@ public class E1 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularBtn;
+    private javax.swing.JButton enunciado1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

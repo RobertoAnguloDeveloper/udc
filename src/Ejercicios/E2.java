@@ -5,6 +5,10 @@
  */
 package Ejercicios;
 
+import Control.ValidaEntrada;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author TECNOLOGIA GC
@@ -17,6 +21,7 @@ public class E2 extends javax.swing.JDialog {
     public E2(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -29,31 +34,121 @@ public class E2 extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        enunciado2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        numeroTextField = new javax.swing.JTextField();
+        calcularBtn = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        resultadoTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Ejercicio propuesto 2");
 
+        enunciado2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enunciado2.setText("Ver enunciado");
+        enunciado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                enunciado2ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel2.setText("Ingrese un número para calcular su cuadrado y cubo");
+
+        numeroTextField.setToolTipText("");
+        numeroTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                numeroTextFieldKeyTyped(evt);
+            }
+        });
+
+        calcularBtn.setFont(new java.awt.Font("Tahoma", 3, 11)); // NOI18N
+        calcularBtn.setText("Calcular");
+        calcularBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                calcularBtnActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        resultadoTextArea.setEditable(false);
+        resultadoTextArea.setColumns(20);
+        resultadoTextArea.setLineWrap(true);
+        resultadoTextArea.setRows(5);
+        resultadoTextArea.setWrapStyleWord(true);
+        jScrollPane1.setViewportView(resultadoTextArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(38, 38, 38)
+                                .addComponent(enunciado2)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(calcularBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(enunciado2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(calcularBtn))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void enunciado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado2ActionPerformed
+        JOptionPane.showMessageDialog(null, new JLabel("<html>Realizar un programa "
+                + "que permita<br> leer un número y obtenga e imprima su cuadrado y su cubo. <html>"),
+        "Ejercicio 1", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_enunciado2ActionPerformed
+
+    private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
+        if(numeroTextField.getText().isEmpty()){
+            numeroTextField.setText("0");
+        }
+        double numero = Double.parseDouble(numeroTextField.getText());
+        resultadoTextArea.setText("Cuadrado = "+Math.pow(numero, 2)
+            +"\nCúbo = "+Math.pow(numero, 3));
+    }//GEN-LAST:event_calcularBtnActionPerformed
+
+    private void numeroTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroTextFieldKeyTyped
+        ValidaEntrada validador = new ValidaEntrada();
+        validador.validaNumeros(evt);
+    }//GEN-LAST:event_numeroTextFieldKeyTyped
 
     /**
      * @param args the command line arguments
@@ -98,6 +193,12 @@ public class E2 extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton calcularBtn;
+    private javax.swing.JButton enunciado2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField numeroTextField;
+    private javax.swing.JTextArea resultadoTextArea;
     // End of variables declaration//GEN-END:variables
 }
