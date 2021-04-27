@@ -5,6 +5,7 @@
  */
 package Ejercicios;
 
+import Control.ValidaEntrada;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -57,6 +58,11 @@ public class E1 extends javax.swing.JDialog {
         });
 
         ladoTextField.setToolTipText("");
+        ladoTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                ladoTextFieldKeyTyped(evt);
+            }
+        });
 
         resultadoTextArea.setEditable(false);
         resultadoTextArea.setColumns(20);
@@ -146,6 +152,11 @@ public class E1 extends javax.swing.JDialog {
                 + " el valor de la altura y el área del triángulo.<html>"),
                 "Ejercicio 1", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_enunciado1ActionPerformed
+
+    private void ladoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ladoTextFieldKeyTyped
+        ValidaEntrada validador = new ValidaEntrada();
+        validador.validaNumerosDouble(evt);
+    }//GEN-LAST:event_ladoTextFieldKeyTyped
 
     /**
      * @param args the command line arguments

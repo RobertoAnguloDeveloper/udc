@@ -6,22 +6,25 @@
 package Ejercicios;
 
 import Control.ValidaEntrada;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import Enunciados.Enunciado3;
+import java.awt.Toolkit;
 
 /**
  *
  * @author TECNOLOGIA GC
  */
-public class E2 extends javax.swing.JDialog {
+public class E3 extends javax.swing.JDialog {
 
     /**
      * Creates new form E2
      */
-    public E2(java.awt.Frame parent, boolean modal) {
+    private ValidaEntrada validador;
+    public E3(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
+        resultadoTextArea.setText("1 - Manzana = $1.000");
+        validador = new ValidaEntrada();
     }
 
     /**
@@ -34,28 +37,29 @@ public class E2 extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        enunciado2 = new javax.swing.JButton();
+        enunciado3 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         numeroTextField = new javax.swing.JTextField();
         calcularBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         resultadoTextArea = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Ejercicio propuesto 2");
+        jLabel1.setText("Ejercicio propuesto 3");
 
-        enunciado2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        enunciado2.setText("Ver enunciado");
-        enunciado2.addActionListener(new java.awt.event.ActionListener() {
+        enunciado3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enunciado3.setText("Ver enunciado");
+        enunciado3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enunciado2ActionPerformed(evt);
+                enunciado3ActionPerformed(evt);
             }
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel2.setText("Ingrese un número para calcular su cuadrado y cubo");
+        jLabel2.setText("Ingrese la cantidad de manzanas a comprar");
 
         numeroTextField.setToolTipText("");
         numeroTextField.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -82,6 +86,10 @@ public class E2 extends javax.swing.JDialog {
         resultadoTextArea.setWrapStyleWord(true);
         jScrollPane1.setViewportView(resultadoTextArea);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel3.setLabelFor(resultadoTextArea);
+        jLabel3.setText("Factura");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -89,22 +97,27 @@ public class E2 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(38, 38, 38)
-                                .addComponent(enunciado2)))
+                                .addGap(35, 35, 35)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(70, 70, 70)
+                                .addComponent(enunciado3))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calcularBtn)
+                                    .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel3)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calcularBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1)))
                 .addContainerGap())
         );
@@ -114,42 +127,68 @@ public class E2 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enunciado2)
+                .addComponent(enunciado3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(calcularBtn))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(numeroTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(calcularBtn)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enunciado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado2ActionPerformed
-        JOptionPane.showMessageDialog(null, new JLabel("<html>Realizar un programa "
-                + "que permita<br> leer un número y obtenga e imprima su cuadrado y su cubo. <html>"),
-        "Ejercicio 1", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_enunciado2ActionPerformed
+    private void enunciado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado3ActionPerformed
+        Enunciado3 ejercicio3 = new Enunciado3(null, rootPaneCheckingEnabled);
+        ejercicio3.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_enunciado3ActionPerformed
 
     private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
+        int descuento = 0;
+        
         if(numeroTextField.getText().isEmpty()){
             numeroTextField.setText("0");
         }
-        double numero = Double.parseDouble(numeroTextField.getText());
-        resultadoTextArea.setText("Cuadrado = "+Math.pow(numero, 2)
-            +"\nCúbo = "+Math.pow(numero, 3));
+        
+        int numero = Integer.parseInt(numeroTextField.getText());
+        
+        if(numero >= 0 && numero <= 2){
+            resultadoTextArea.setText("\nTotal a pagar"
+                    +"\n$"+validador.separadorDeMiles(numero*1000)
+                    +" -----> 0% de descuento");
+        }else if(numero >= 3 && numero <= 5){
+            descuento = (int)(numero*0.1*1000);
+            numero = (int)(numero*1000 - descuento);
+            resultadoTextArea.setText("\nTotal a pagar"
+                    +"\n$"+validador.separadorDeMiles(numero - descuento)+" -----> 10% de descuento");
+        }else if(numero >= 6 && numero <= 10){
+            descuento = (int)(numero*0.15*1000);
+            numero = (int)(numero*1000 - descuento);
+            resultadoTextArea.setText("\nTotal a pagar"
+                    +"\n$"+validador.separadorDeMiles(numero)+" -----> 15% de descuento");
+        }else if(numero > 11){
+            descuento = (int)(numero*0.20*1000);
+            numero = (int)(numero*1000 - descuento);
+            numero = Math.abs(numero);
+            resultadoTextArea.setText("\nTotal a pagar"
+                    +"\n$"+validador.separadorDeMiles(numero)+" -----> 20% de descuento");
+        }
     }//GEN-LAST:event_calcularBtnActionPerformed
 
     private void numeroTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroTextFieldKeyTyped
-        ValidaEntrada validador = new ValidaEntrada();
-        validador.validaNumerosDouble(evt);
+        validador.validaNumerosInt(evt);
+        if(numeroTextField.getText().length() > 6){
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }            
     }//GEN-LAST:event_numeroTextFieldKeyTyped
-
+                 
     /**
      * @param args the command line arguments
      */
@@ -167,20 +206,21 @@ public class E2 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(E2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(E3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(E2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(E3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(E2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(E3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(E2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(E3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                E2 dialog = new E2(new javax.swing.JFrame(), true);
+                E3 dialog = new E3(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -194,9 +234,10 @@ public class E2 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularBtn;
-    private javax.swing.JButton enunciado2;
+    private javax.swing.JButton enunciado3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numeroTextField;
     private javax.swing.JTextArea resultadoTextArea;
