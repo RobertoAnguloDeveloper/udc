@@ -4,6 +4,7 @@ import Ejercicios.E1;
 import Ejercicios.E2;
 import Ejercicios.E3;
 import Ejercicios.E4;
+import Ejercicios.E5;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -46,6 +47,7 @@ public class Principal extends javax.swing.JFrame {
         ejercicio2 = new javax.swing.JMenuItem();
         ejercicio3 = new javax.swing.JMenuItem();
         ejercicio4 = new javax.swing.JMenuItem();
+        ejercicio5 = new javax.swing.JMenuItem();
         datosEstudianteMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -102,6 +104,16 @@ public class Principal extends javax.swing.JFrame {
         });
         abrirMenu.add(ejercicio4);
 
+        ejercicio5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio5.setText("Ejercicio 5");
+        ejercicio5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio5ActionPerformed(evt);
+            }
+        });
+        abrirMenu.add(ejercicio5);
+
         barraMenu.add(abrirMenu);
 
         datosEstudianteMenu.setText("Datos estudiante");
@@ -152,6 +164,11 @@ public class Principal extends javax.swing.JFrame {
         ejercicio4.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio4ActionPerformed
 
+    private void ejercicio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio5ActionPerformed
+        E5 ejercicio5 = new E5(this, rootPaneCheckingEnabled);
+        ejercicio5.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_ejercicio5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -195,6 +212,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem ejercicio2;
     private javax.swing.JMenuItem ejercicio3;
     private javax.swing.JMenuItem ejercicio4;
+    private javax.swing.JMenuItem ejercicio5;
     private javax.swing.JMenuItem investigacion;
     // End of variables declaration//GEN-END:variables
 }

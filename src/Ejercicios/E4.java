@@ -36,7 +36,7 @@ public class E4 extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        enunciado3 = new javax.swing.JButton();
+        enunciado4 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         valorEquipoTextField = new javax.swing.JTextField();
         calcularBtn = new javax.swing.JButton();
@@ -51,11 +51,11 @@ public class E4 extends javax.swing.JDialog {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Ejercicio propuesto 4");
 
-        enunciado3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        enunciado3.setText("Ver enunciado");
-        enunciado3.addActionListener(new java.awt.event.ActionListener() {
+        enunciado4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enunciado4.setText("Ver enunciado");
+        enunciado4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                enunciado3ActionPerformed(evt);
+                enunciado4ActionPerformed(evt);
             }
         });
 
@@ -92,11 +92,6 @@ public class E4 extends javax.swing.JDialog {
         jLabel3.setText("Factura");
 
         nombreEmpresaTextField.setToolTipText("");
-        nombreEmpresaTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                nombreEmpresaTextFieldKeyTyped(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Valor del equipo");
@@ -120,7 +115,7 @@ public class E4 extends javax.swing.JDialog {
                                     .addComponent(valorEquipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(enunciado3)
+                                        .addComponent(enunciado4)
                                         .addGap(37, 37, 37))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
@@ -137,15 +132,15 @@ public class E4 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(enunciado3)
+                .addComponent(enunciado4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreEmpresaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valorEquipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(valorEquipoTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nombreEmpresaTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(calcularBtn)
                 .addGap(18, 18, 18)
@@ -158,10 +153,10 @@ public class E4 extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void enunciado3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado3ActionPerformed
+    private void enunciado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado4ActionPerformed
         Enunciado4 ejercicio4 = new Enunciado4(null, rootPaneCheckingEnabled);
         ejercicio4.setVisible(rootPaneCheckingEnabled);
-    }//GEN-LAST:event_enunciado3ActionPerformed
+    }//GEN-LAST:event_enunciado4ActionPerformed
 
     private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
         int descuento = 0;
@@ -191,15 +186,11 @@ public class E4 extends javax.swing.JDialog {
 
     private void valorEquipoTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorEquipoTextFieldKeyTyped
         validador.validaNumerosInt(evt);
-        if(valorEquipoTextField.getText().length() > 6){
+        if(valorEquipoTextField.getText().length() > 8){
             Toolkit.getDefaultToolkit().beep();
             evt.consume();
         }            
     }//GEN-LAST:event_valorEquipoTextFieldKeyTyped
-
-    private void nombreEmpresaTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreEmpresaTextFieldKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nombreEmpresaTextFieldKeyTyped
                  
     /**
      * @param args the command line arguments
@@ -248,7 +239,7 @@ public class E4 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton calcularBtn;
-    private javax.swing.JButton enunciado3;
+    private javax.swing.JButton enunciado4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
