@@ -7,11 +7,8 @@ package EP2U1;
 
 import Control.ValidaEntrada;
 import Enunciados.E21;
-import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
