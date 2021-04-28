@@ -3,23 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicios;
+package EP1U1;
 
 import Control.ValidaEntrada;
-import Enunciados.Enunciado5;
+import Enunciados.E15;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author TECNOLOGIA GC
  */
-public class E5 extends javax.swing.JDialog {
+public class Ej15 extends javax.swing.JDialog {
 
     /**
      * Creates new form E2
      */
     private ValidaEntrada validador;
-    public E5(java.awt.Frame parent, boolean modal) {
+    
+    public Ej15(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -49,11 +51,12 @@ public class E5 extends javax.swing.JDialog {
         promedioTextField = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         nombreEstudianteJTextField = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Ejercicio propuesto 5");
+        jLabel1.setText("Ejercicios propuestos 1");
 
         enunciado5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         enunciado5.setText("Ver enunciado");
@@ -114,46 +117,62 @@ public class E5 extends javax.swing.JDialog {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("Nombre de Estudiante");
 
+        nombreEstudianteJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreEstudianteJTextFieldMouseClicked(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Ejercicio 5");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(promedioTextField))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(creditosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(nombreEstudianteJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22)
-                        .addComponent(tipoProgramaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(calcularBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel2))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(nombreEstudianteJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(22, 22, 22)
+                                .addComponent(tipoProgramaComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(calcularBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(enunciado5)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(enunciado5))
-                    .addComponent(jLabel1))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(promedioTextField))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(creditosTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jLabel1)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addComponent(jLabel7)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -162,8 +181,10 @@ public class E5 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addGap(8, 8, 8)
                 .addComponent(enunciado5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel6))
@@ -187,40 +208,93 @@ public class E5 extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void enunciado5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado5ActionPerformed
-        Enunciado5 ejercicio5 = new Enunciado5(null, rootPaneCheckingEnabled);
+        E15 ejercicio5 = new E15(null, rootPaneCheckingEnabled);
         ejercicio5.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_enunciado5ActionPerformed
 
     private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
+        
+        
+        if(creditosTextField.getText().isEmpty() 
+                || nombreEstudianteJTextField.getText().isEmpty() 
+                || promedioTextField.getText().isEmpty()){
+            creditosTextField.setText("1");
+            nombreEstudianteJTextField.setText("SIN NOMBRE");
+            promedioTextField.setText("0.0");
+        }
         int descuento = 0;
         
-        if(creditosTextField.getText().isEmpty()){
-            creditosTextField.setText("0");
-        }
+        double promedio = Double.valueOf(promedioTextField.getText());
+        int creditos = Integer.valueOf(creditosTextField.getText());
+        int valorPagar = creditos*50000;
         
-        int numero = Integer.valueOf(creditosTextField.getText());
-        int valorInicial = numero;
-        if(numero >= 1000000){
-            descuento = (int)(numero*0.1);
-            numero = numero - descuento;
-//            if(nombreEmpresaTextField.getText().toUpperCase().equals("ABACO")){
-//                descuento = (int)(valorInicial*0.05);
-//                numero = numero - descuento;
-//                resultadoTextArea.setText("\nTotal a pagar"
-//                    +"\n$"+validador.separadorDeMiles(numero)
-//                    +" -----> 15% de descuento");
-//            }else{
-//                resultadoTextArea.setText("\nTotal a pagar"
-//                    +"\n$"+validador.separadorDeMiles(numero)
-//                    +" -----> 10% de descuento");
-//            }
+        switch(tipoProgramaComboBox.getSelectedItem().toString().toLowerCase()){
+            case "pregrado":
+                if(promedio >= 2.5){
+                    resultadoTextArea.setText("El estudiante "
+                                +nombreEstudianteJTextField.getText()
+                                +" del programa de "
+                                +tipoProgramaComboBox.getSelectedItem().toString()
+                                +"\nDebe pagar"
+                                +"\n$"+validador.separadorDeMiles(valorPagar)
+                                +" -----> 0% de descuento");
+                    if(promedio >= 4.0 && promedio < 4.5 ){
+                        descuento = (int)(valorPagar*0.1);
+                        valorPagar -= descuento;
+                        resultadoTextArea.setText("El estudiante "
+                                +nombreEstudianteJTextField.getText()
+                                +" del programa de "
+                                +tipoProgramaComboBox.getSelectedItem().toString()
+                                +"\nDebe pagar"
+                                +"\n$"+validador.separadorDeMiles(valorPagar)
+                                +" -----> 10% de descuento");
+                    }else if(promedio >= 4.5){
+                        descuento = (int)(valorPagar*0.25);
+                        valorPagar -= descuento;
+                        resultadoTextArea.setText("El estudiante "
+                                +nombreEstudianteJTextField.getText()
+                                +" del programa de "
+                                +tipoProgramaComboBox.getSelectedItem().toString()
+                                +"\nDebe pagar"
+                                +"\n$"+validador.separadorDeMiles(valorPagar)
+                                +" -----> 25% de descuento");
+                    }
+                }else{
+                    JOptionPane.showMessageDialog(this, 
+                            "USTED NO PODRA MATRICULARSE", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                }
+                break;
+                
+            case "postgrado":
+                valorPagar = creditos*300000;
+                if(promedio >= 4.5){
+                    descuento = (int)(valorPagar*0.2);
+                    valorPagar -= descuento;
+                    resultadoTextArea.setText("El estudiante "
+                                    +nombreEstudianteJTextField.getText()
+                                    +" del programa de "
+                                    +tipoProgramaComboBox.getSelectedItem().toString()
+                                    +"\nDebe pagar"
+                                    +"\n$"+validador.separadorDeMiles(valorPagar)
+                                    +" -----> 20% de descuento");
+                }else{
+                    resultadoTextArea.setText("El estudiante "
+                                    +nombreEstudianteJTextField.getText()
+                                    +" del programa de "
+                                    +tipoProgramaComboBox.getSelectedItem().toString()
+                                    +"\nDebe pagar"
+                                    +"\n$"+validador.separadorDeMiles(valorPagar)
+                                    +" -----> 0% de descuento");
+                }
+            break;
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
 
@@ -235,6 +309,10 @@ public class E5 extends javax.swing.JDialog {
     private void promedioTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedioTextFieldKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_promedioTextFieldKeyTyped
+
+    private void nombreEstudianteJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEstudianteJTextFieldMouseClicked
+        nombreEstudianteJTextField.setText("");
+    }//GEN-LAST:event_nombreEstudianteJTextFieldMouseClicked
                  
     /**
      * @param args the command line arguments
@@ -253,14 +331,22 @@ public class E5 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(E5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej15.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(E5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej15.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(E5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej15.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(E5.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej15.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -273,7 +359,7 @@ public class E5 extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                E5 dialog = new E5(new javax.swing.JFrame(), true);
+                Ej15 dialog = new Ej15(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -295,6 +381,7 @@ public class E5 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreEstudianteJTextField;
     private javax.swing.JTextField promedioTextField;

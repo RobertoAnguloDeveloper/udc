@@ -1,10 +1,11 @@
 package Principal;
 
-import Ejercicios.E1;
-import Ejercicios.E2;
-import Ejercicios.E3;
-import Ejercicios.E4;
-import Ejercicios.E5;
+import EP1U1.Ej11;
+import EP1U1.Ej12;
+import EP1U1.Ej13;
+import EP1U1.Ej14;
+import EP1U1.Ej15;
+import EP2U1.Ej21;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -41,19 +42,28 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         barraMenu = new javax.swing.JMenuBar();
-        abrirMenu = new javax.swing.JMenu();
+        ejerciciosPropuestos1 = new javax.swing.JMenu();
         investigacion = new javax.swing.JMenuItem();
         ejercicio1 = new javax.swing.JMenuItem();
         ejercicio2 = new javax.swing.JMenuItem();
         ejercicio3 = new javax.swing.JMenuItem();
         ejercicio4 = new javax.swing.JMenuItem();
         ejercicio5 = new javax.swing.JMenuItem();
-        datosEstudianteMenu = new javax.swing.JMenu();
+        ejerciciosPropuestos2 = new javax.swing.JMenu();
+        investigacion2 = new javax.swing.JMenuItem();
+        ejercicio6 = new javax.swing.JMenuItem();
+        ejercicio7 = new javax.swing.JMenuItem();
+        ejercicio8 = new javax.swing.JMenuItem();
+        ejercicio9 = new javax.swing.JMenuItem();
+        ejercicio10 = new javax.swing.JMenuItem();
+        infoSobreDesarrolladorMenu = new javax.swing.JMenu();
+        info = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Actividad de Aprendizaje Unidad 1");
 
-        abrirMenu.setText("Abrir");
+        ejerciciosPropuestos1.setText("Ejercicios propuestos 1");
+        ejerciciosPropuestos1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         investigacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pdf.png"))); // NOI18N
         investigacion.setText("Investigación");
@@ -62,7 +72,7 @@ public class Principal extends javax.swing.JFrame {
                 investigacionActionPerformed(evt);
             }
         });
-        abrirMenu.add(investigacion);
+        ejerciciosPropuestos1.add(investigacion);
 
         ejercicio1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
@@ -72,7 +82,7 @@ public class Principal extends javax.swing.JFrame {
                 ejercicio1ActionPerformed(evt);
             }
         });
-        abrirMenu.add(ejercicio1);
+        ejerciciosPropuestos1.add(ejercicio1);
 
         ejercicio2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
@@ -82,7 +92,7 @@ public class Principal extends javax.swing.JFrame {
                 ejercicio2ActionPerformed(evt);
             }
         });
-        abrirMenu.add(ejercicio2);
+        ejerciciosPropuestos1.add(ejercicio2);
 
         ejercicio3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
@@ -92,7 +102,7 @@ public class Principal extends javax.swing.JFrame {
                 ejercicio3ActionPerformed(evt);
             }
         });
-        abrirMenu.add(ejercicio3);
+        ejerciciosPropuestos1.add(ejercicio3);
 
         ejercicio4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
@@ -102,7 +112,7 @@ public class Principal extends javax.swing.JFrame {
                 ejercicio4ActionPerformed(evt);
             }
         });
-        abrirMenu.add(ejercicio4);
+        ejerciciosPropuestos1.add(ejercicio4);
 
         ejercicio5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         ejercicio5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
@@ -112,12 +122,85 @@ public class Principal extends javax.swing.JFrame {
                 ejercicio5ActionPerformed(evt);
             }
         });
-        abrirMenu.add(ejercicio5);
+        ejerciciosPropuestos1.add(ejercicio5);
 
-        barraMenu.add(abrirMenu);
+        barraMenu.add(ejerciciosPropuestos1);
 
-        datosEstudianteMenu.setText("Datos estudiante");
-        barraMenu.add(datosEstudianteMenu);
+        ejerciciosPropuestos2.setText("Ejercicios propuestos 2");
+        ejerciciosPropuestos2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+
+        investigacion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/pdf.png"))); // NOI18N
+        investigacion2.setText("Investigación");
+        investigacion2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                investigacion2ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(investigacion2);
+
+        ejercicio6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio6.setText("Ejercicio 1");
+        ejercicio6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio6ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(ejercicio6);
+
+        ejercicio7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio7.setText("Ejercicio 2");
+        ejercicio7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio7ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(ejercicio7);
+
+        ejercicio8.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio8.setText("Ejercicio 3");
+        ejercicio8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio8ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(ejercicio8);
+
+        ejercicio9.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio9.setText("Ejercicio 4");
+        ejercicio9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio9ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(ejercicio9);
+
+        ejercicio10.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ejercicio10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/java24.png"))); // NOI18N
+        ejercicio10.setText("Ejercicio 5");
+        ejercicio10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ejercicio10ActionPerformed(evt);
+            }
+        });
+        ejerciciosPropuestos2.add(ejercicio10);
+
+        barraMenu.add(ejerciciosPropuestos2);
+
+        infoSobreDesarrolladorMenu.setText("Acerca de...");
+
+        info.setText("Desarrollador info");
+        info.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                infoActionPerformed(evt);
+            }
+        });
+        infoSobreDesarrolladorMenu.add(info);
+
+        barraMenu.add(infoSobreDesarrolladorMenu);
 
         setJMenuBar(barraMenu);
 
@@ -136,7 +219,7 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void investigacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_investigacionActionPerformed
-        File archivo = new File("src/documents/AAU1.pdf");
+        File archivo = new File("src/documents/AAU1-1.pdf");
         try {
             Desktop.getDesktop().open(archivo);
         } catch (IOException ex) {
@@ -145,29 +228,64 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_investigacionActionPerformed
 
     private void ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio1ActionPerformed
-        E1 ejercicio1 = new E1(this, rootPaneCheckingEnabled);
+        Ej11 ejercicio1 = new Ej11(this, rootPaneCheckingEnabled);
         ejercicio1.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio1ActionPerformed
 
     private void ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio2ActionPerformed
-        E2 ejercicio2 = new E2(this, rootPaneCheckingEnabled);
+        Ej12 ejercicio2 = new Ej12(this, rootPaneCheckingEnabled);
         ejercicio2.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio2ActionPerformed
 
     private void ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio3ActionPerformed
-        E3 ejercicio3 = new E3(this, rootPaneCheckingEnabled);
+        Ej13 ejercicio3 = new Ej13(this, rootPaneCheckingEnabled);
         ejercicio3.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio3ActionPerformed
 
     private void ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio4ActionPerformed
-        E4 ejercicio4 = new E4(this, rootPaneCheckingEnabled);
+        Ej14 ejercicio4 = new Ej14(this, rootPaneCheckingEnabled);
         ejercicio4.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio4ActionPerformed
 
     private void ejercicio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio5ActionPerformed
-        E5 ejercicio5 = new E5(this, rootPaneCheckingEnabled);
+        Ej15 ejercicio5 = new Ej15(this, rootPaneCheckingEnabled);
         ejercicio5.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio5ActionPerformed
+
+    private void infoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoActionPerformed
+        About estudiante = new About(this, rootPaneCheckingEnabled);
+        estudiante.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_infoActionPerformed
+
+    private void investigacion2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_investigacion2ActionPerformed
+        File archivo = new File("src/documents/AAU1-2.pdf");
+        try {
+            Desktop.getDesktop().open(archivo);
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_investigacion2ActionPerformed
+
+    private void ejercicio6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio6ActionPerformed
+        Ej21 ejercicio21 = new Ej21(this, rootPaneCheckingEnabled);
+        ejercicio21.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_ejercicio6ActionPerformed
+
+    private void ejercicio7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejercicio7ActionPerformed
+
+    private void ejercicio8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejercicio8ActionPerformed
+
+    private void ejercicio9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio9ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejercicio9ActionPerformed
+
+    private void ejercicio10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio10ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ejercicio10ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -205,14 +323,22 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu abrirMenu;
     private javax.swing.JMenuBar barraMenu;
-    private javax.swing.JMenu datosEstudianteMenu;
     private javax.swing.JMenuItem ejercicio1;
+    private javax.swing.JMenuItem ejercicio10;
     private javax.swing.JMenuItem ejercicio2;
     private javax.swing.JMenuItem ejercicio3;
     private javax.swing.JMenuItem ejercicio4;
     private javax.swing.JMenuItem ejercicio5;
+    private javax.swing.JMenuItem ejercicio6;
+    private javax.swing.JMenuItem ejercicio7;
+    private javax.swing.JMenuItem ejercicio8;
+    private javax.swing.JMenuItem ejercicio9;
+    private javax.swing.JMenu ejerciciosPropuestos1;
+    private javax.swing.JMenu ejerciciosPropuestos2;
+    private javax.swing.JMenuItem info;
+    private javax.swing.JMenu infoSobreDesarrolladorMenu;
     private javax.swing.JMenuItem investigacion;
+    private javax.swing.JMenuItem investigacion2;
     // End of variables declaration//GEN-END:variables
 }

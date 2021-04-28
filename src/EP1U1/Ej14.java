@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Ejercicios;
+package EP1U1;
 
 import Control.ValidaEntrada;
-import Enunciados.Enunciado4;
+import Enunciados.E14;
 import java.awt.Toolkit;
 
 /**
  *
  * @author TECNOLOGIA GC
  */
-public class E4 extends javax.swing.JDialog {
+public class Ej14 extends javax.swing.JDialog {
 
     /**
      * Creates new form E2
      */
     private ValidaEntrada validador;
-    public E4(java.awt.Frame parent, boolean modal) {
+    public Ej14(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
@@ -45,11 +45,12 @@ public class E4 extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         nombreEmpresaTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Ejercicio propuesto 4");
+        jLabel1.setText("Ejercicios propuestos 1");
 
         enunciado4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         enunciado4.setText("Ver enunciado");
@@ -96,6 +97,9 @@ public class E4 extends javax.swing.JDialog {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Valor del equipo");
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Ejercicio 4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -122,8 +126,11 @@ public class E4 extends javax.swing.JDialog {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel4))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel1)))
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel5)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -131,9 +138,11 @@ public class E4 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel5)
+                .addGap(3, 3, 3)
                 .addComponent(enunciado4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4))
@@ -147,14 +156,14 @@ public class E4 extends javax.swing.JDialog {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void enunciado4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado4ActionPerformed
-        Enunciado4 ejercicio4 = new Enunciado4(null, rootPaneCheckingEnabled);
+        E14 ejercicio4 = new E14(null, rootPaneCheckingEnabled);
         ejercicio4.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_enunciado4ActionPerformed
 
@@ -181,6 +190,10 @@ public class E4 extends javax.swing.JDialog {
                     +"\n$"+validador.separadorDeMiles(numero)
                     +" -----> 10% de descuento");
             }
+        }else{
+            resultadoTextArea.setText("\nTotal a pagar"
+                    +"\n$"+validador.separadorDeMiles(numero)
+                    +" -----> 0% de descuento");
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
 
@@ -209,14 +222,18 @@ public class E4 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(E4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(E4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(E4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(E4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Ej14.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -225,7 +242,7 @@ public class E4 extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                E4 dialog = new E4(new javax.swing.JFrame(), true);
+                Ej14 dialog = new Ej14(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -244,6 +261,7 @@ public class E4 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nombreEmpresaTextField;
     private javax.swing.JTextArea resultadoTextArea;

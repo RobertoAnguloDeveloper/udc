@@ -1,4 +1,4 @@
-package EPU1;
+package Ejercicios;
 
 import java.util.Scanner;
 

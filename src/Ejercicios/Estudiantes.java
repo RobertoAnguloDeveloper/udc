@@ -1,4 +1,4 @@
-package EPU1;
+package Ejercicios;
 
 public class Estudiantes {
     private int edad;
