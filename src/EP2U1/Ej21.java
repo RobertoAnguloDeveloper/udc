@@ -8,6 +8,7 @@ package EP2U1;
 import Control.ValidaEntrada;
 import Enunciados.E21;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,15 +114,20 @@ public class Ej21 extends javax.swing.JDialog {
     }//GEN-LAST:event_enunciado3ActionPerformed
 
     public int menu(){
-        System.out.print("********CALCULADORA MENU********"
-                + "\n1.SUMAR"
-                + "\n2.RESTAR"
-                + "\n3.MULTIPLICAR"
-                + "\n4.DIVIDIR"
-                + "\n5.SALIR"
-                + "\n********CALCULADORA MENU********"
-                + "\nESCOJA UNA OPERACION A REALIZAR: ");
-        int op = key.nextInt();
+        int op = 0;
+        try{
+            System.out.print("********CALCULADORA MENU********"
+                    + "\n1.SUMAR"
+                    + "\n2.RESTAR"
+                    + "\n3.MULTIPLICAR"
+                    + "\n4.DIVIDIR"
+                    + "\n5.SALIR"
+                    + "\n********CALCULADORA MENU********"
+                    + "\nESCOJA UNA OPERACION A REALIZAR: ");
+            op = key.nextInt();
+        }catch(NumberFormatException | InputMismatchException err){
+            System.out.println("OCION INVALIDA");
+        }
         return op;
     }
     
@@ -147,6 +153,7 @@ public class Ej21 extends javax.swing.JDialog {
                 dato2 = key.nextDouble();
                 
                 System.out.println("Resultado = "+(dato1-dato2));
+                calcularBtnActionPerformed(evt);
                 break;
                 
             case 3:
@@ -157,6 +164,7 @@ public class Ej21 extends javax.swing.JDialog {
                 dato2 = key.nextDouble();
                 
                 System.out.println("Resultado = "+(dato1*dato2));
+                calcularBtnActionPerformed(evt);
                 break;
                 
             case 4:
@@ -170,10 +178,12 @@ public class Ej21 extends javax.swing.JDialog {
                     System.out.println("Resultado = "+(dato1/dato2));
                 else
                     System.out.println("La división por cero no está definida");
+                calcularBtnActionPerformed(evt);
                 break;
                 
             case 5:
                 System.out.println("Gracias por usar nuestra Calculadora, Bye");
+                dispose();
                 break;
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
