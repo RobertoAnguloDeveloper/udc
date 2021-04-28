@@ -150,10 +150,18 @@ public class Ej12 extends javax.swing.JDialog {
     private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
         if(numeroTextField.getText().isEmpty()){
             numeroTextField.setText("0");
+        }else{
+            try{
+                double numero = Double.parseDouble(numeroTextField.getText());
+                resultadoTextArea.setText("Cuadrado = "+Math.pow(numero, 2)
+                    +"\nCúbo = "+Math.pow(numero, 3));
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, 
+                            "DATO INVALIDO", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                numeroTextField.setText("");
+            }
         }
-        double numero = Double.parseDouble(numeroTextField.getText());
-        resultadoTextArea.setText("Cuadrado = "+Math.pow(numero, 2)
-            +"\nCúbo = "+Math.pow(numero, 3));
     }//GEN-LAST:event_calcularBtnActionPerformed
 
     private void numeroTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_numeroTextFieldKeyTyped

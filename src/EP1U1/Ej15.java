@@ -228,73 +228,83 @@ public class Ej15 extends javax.swing.JDialog {
             creditosTextField.setText("1");
             nombreEstudianteJTextField.setText("SIN NOMBRE");
             promedioTextField.setText("0.0");
-        }
-        int descuento = 0;
-        
-        double promedio = Double.valueOf(promedioTextField.getText());
-        int creditos = Integer.valueOf(creditosTextField.getText());
-        int valorPagar = creditos*50000;
-        
-        switch(tipoProgramaComboBox.getSelectedItem().toString().toLowerCase()){
-            case "pregrado":
-                if(promedio >= 2.5){
-                    resultadoTextArea.setText("El estudiante "
-                                +nombreEstudianteJTextField.getText()
-                                +" del programa de "
-                                +tipoProgramaComboBox.getSelectedItem().toString()
-                                +"\nDebe pagar"
-                                +"\n$"+validador.separadorDeMiles(valorPagar)
-                                +" -----> 0% de descuento");
-                    if(promedio >= 4.0 && promedio < 4.5 ){
-                        descuento = (int)(valorPagar*0.1);
-                        valorPagar -= descuento;
-                        resultadoTextArea.setText("El estudiante "
-                                +nombreEstudianteJTextField.getText()
-                                +" del programa de "
-                                +tipoProgramaComboBox.getSelectedItem().toString()
-                                +"\nDebe pagar"
-                                +"\n$"+validador.separadorDeMiles(valorPagar)
-                                +" -----> 10% de descuento");
-                    }else if(promedio >= 4.5){
-                        descuento = (int)(valorPagar*0.25);
-                        valorPagar -= descuento;
-                        resultadoTextArea.setText("El estudiante "
-                                +nombreEstudianteJTextField.getText()
-                                +" del programa de "
-                                +tipoProgramaComboBox.getSelectedItem().toString()
-                                +"\nDebe pagar"
-                                +"\n$"+validador.separadorDeMiles(valorPagar)
-                                +" -----> 25% de descuento");
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(this, 
-                            "USTED NO PODRA MATRICULARSE", "LO SENTIMOS", 
+        }else{
+            try{
+                int descuento = 0;
+
+                double promedio = Double.valueOf(promedioTextField.getText());
+                int creditos = Integer.valueOf(creditosTextField.getText());
+                int valorPagar = creditos*50000;
+
+                switch(tipoProgramaComboBox.getSelectedItem().toString().toLowerCase()){
+                    case "pregrado":
+                        if(promedio >= 2.5){
+                            resultadoTextArea.setText("El estudiante "
+                                        +nombreEstudianteJTextField.getText()
+                                        +" del programa de "
+                                        +tipoProgramaComboBox.getSelectedItem().toString()
+                                        +"\nDebe pagar"
+                                        +"\n$"+validador.separadorDeMiles(valorPagar)
+                                        +" -----> 0% de descuento");
+                            if(promedio >= 4.0 && promedio < 4.5 ){
+                                descuento = (int)(valorPagar*0.1);
+                                valorPagar -= descuento;
+                                resultadoTextArea.setText("El estudiante "
+                                        +nombreEstudianteJTextField.getText()
+                                        +" del programa de "
+                                        +tipoProgramaComboBox.getSelectedItem().toString()
+                                        +"\nDebe pagar"
+                                        +"\n$"+validador.separadorDeMiles(valorPagar)
+                                        +" -----> 10% de descuento");
+                            }else if(promedio >= 4.5){
+                                descuento = (int)(valorPagar*0.25);
+                                valorPagar -= descuento;
+                                resultadoTextArea.setText("El estudiante "
+                                        +nombreEstudianteJTextField.getText()
+                                        +" del programa de "
+                                        +tipoProgramaComboBox.getSelectedItem().toString()
+                                        +"\nDebe pagar"
+                                        +"\n$"+validador.separadorDeMiles(valorPagar)
+                                        +" -----> 25% de descuento");
+                            }
+                        }else{
+                            JOptionPane.showMessageDialog(this, 
+                                    "USTED NO PODRA MATRICULARSE", "LO SENTIMOS", 
+                                    JOptionPane.ERROR_MESSAGE);
+                        }
+                        break;
+
+                    case "postgrado":
+                        valorPagar = creditos*300000;
+                        if(promedio >= 4.5){
+                            descuento = (int)(valorPagar*0.2);
+                            valorPagar -= descuento;
+                            resultadoTextArea.setText("El estudiante "
+                                            +nombreEstudianteJTextField.getText()
+                                            +" del programa de "
+                                            +tipoProgramaComboBox.getSelectedItem().toString()
+                                            +"\nDebe pagar"
+                                            +"\n$"+validador.separadorDeMiles(valorPagar)
+                                            +" -----> 20% de descuento");
+                        }else{
+                            resultadoTextArea.setText("El estudiante "
+                                            +nombreEstudianteJTextField.getText()
+                                            +" del programa de "
+                                            +tipoProgramaComboBox.getSelectedItem().toString()
+                                            +"\nDebe pagar"
+                                            +"\n$"+validador.separadorDeMiles(valorPagar)
+                                            +" -----> 0% de descuento");
+                        }
+                    break;
+                }
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, 
+                            "DATO INVALIDO", "LO SENTIMOS", 
                             JOptionPane.ERROR_MESSAGE);
-                }
-                break;
-                
-            case "postgrado":
-                valorPagar = creditos*300000;
-                if(promedio >= 4.5){
-                    descuento = (int)(valorPagar*0.2);
-                    valorPagar -= descuento;
-                    resultadoTextArea.setText("El estudiante "
-                                    +nombreEstudianteJTextField.getText()
-                                    +" del programa de "
-                                    +tipoProgramaComboBox.getSelectedItem().toString()
-                                    +"\nDebe pagar"
-                                    +"\n$"+validador.separadorDeMiles(valorPagar)
-                                    +" -----> 20% de descuento");
-                }else{
-                    resultadoTextArea.setText("El estudiante "
-                                    +nombreEstudianteJTextField.getText()
-                                    +" del programa de "
-                                    +tipoProgramaComboBox.getSelectedItem().toString()
-                                    +"\nDebe pagar"
-                                    +"\n$"+validador.separadorDeMiles(valorPagar)
-                                    +" -----> 0% de descuento");
-                }
-            break;
+                creditosTextField.setText("1");
+                nombreEstudianteJTextField.setText("SIN NOMBRE");
+                promedioTextField.setText("0.0");
+            }
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
 
@@ -307,7 +317,7 @@ public class Ej15 extends javax.swing.JDialog {
     }//GEN-LAST:event_creditosTextFieldKeyTyped
 
     private void promedioTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_promedioTextFieldKeyTyped
-        // TODO add your handling code here:
+        validador.validaNumerosInt(evt);
     }//GEN-LAST:event_promedioTextFieldKeyTyped
 
     private void nombreEstudianteJTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreEstudianteJTextFieldMouseClicked

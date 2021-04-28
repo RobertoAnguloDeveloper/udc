@@ -8,6 +8,7 @@ package EP1U1;
 import Control.ValidaEntrada;
 import Enunciados.E14;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -172,28 +173,35 @@ public class Ej14 extends javax.swing.JDialog {
         
         if(valorEquipoTextField.getText().isEmpty()){
             valorEquipoTextField.setText("0");
-        }
-        
-        int numero = Integer.valueOf(valorEquipoTextField.getText());
-        int valorInicial = numero;
-        if(numero >= 1000000){
-            descuento = (int)(numero*0.1);
-            numero = numero - descuento;
-            if(nombreEmpresaTextField.getText().toUpperCase().equals("ABACO")){
-                descuento = (int)(valorInicial*0.05);
-                numero = numero - descuento;
-                resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero)
-                    +" -----> 15% de descuento");
-            }else{
-                resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero)
-                    +" -----> 10% de descuento");
-            }
         }else{
-            resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero)
-                    +" -----> 0% de descuento");
+            try{
+                int numero = Integer.valueOf(valorEquipoTextField.getText());
+                int valorInicial = numero;
+                if(numero >= 1000000){
+                    descuento = (int)(numero*0.1);
+                    numero = numero - descuento;
+                    if(nombreEmpresaTextField.getText().toUpperCase().equals("ABACO")){
+                        descuento = (int)(valorInicial*0.05);
+                        numero = numero - descuento;
+                        resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero)
+                            +" -----> 15% de descuento");
+                    }else{
+                        resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero)
+                            +" -----> 10% de descuento");
+                    }
+                }else{
+                    resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero)
+                            +" -----> 0% de descuento");
+                }
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, 
+                            "DATO INVALIDO", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                valorEquipoTextField.setText("");
+            }
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
 

@@ -8,6 +8,7 @@ package EP1U1;
 import Control.ValidaEntrada;
 import Enunciados.E13;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -158,30 +159,37 @@ public class Ej13 extends javax.swing.JDialog {
         
         if(numeroTextField.getText().isEmpty()){
             numeroTextField.setText("0");
-        }
-        
-        int numero = Integer.parseInt(numeroTextField.getText());
-        
-        if(numero >= 0 && numero <= 2){
-            resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero*1000)
-                    +" -----> 0% de descuento");
-        }else if(numero >= 3 && numero <= 5){
-            descuento = (int)(numero*0.1*1000);
-            numero = (int)(numero*1000 - descuento);
-            resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero - descuento)+" -----> 10% de descuento");
-        }else if(numero >= 6 && numero <= 10){
-            descuento = (int)(numero*0.15*1000);
-            numero = (int)(numero*1000 - descuento);
-            resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero)+" -----> 15% de descuento");
-        }else if(numero > 11){
-            descuento = (int)(numero*0.20*1000);
-            numero = (int)(numero*1000 - descuento);
-            numero = Math.abs(numero);
-            resultadoTextArea.setText("\nTotal a pagar"
-                    +"\n$"+validador.separadorDeMiles(numero)+" -----> 20% de descuento");
+        }else{
+            try{
+                int numero = Integer.parseInt(numeroTextField.getText());
+
+                if(numero >= 0 && numero <= 2){
+                    resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero*1000)
+                            +" -----> 0% de descuento");
+                }else if(numero >= 3 && numero <= 5){
+                    descuento = (int)(numero*0.1*1000);
+                    numero = (int)(numero*1000 - descuento);
+                    resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero - descuento)+" -----> 10% de descuento");
+                }else if(numero >= 6 && numero <= 10){
+                    descuento = (int)(numero*0.15*1000);
+                    numero = (int)(numero*1000 - descuento);
+                    resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero)+" -----> 15% de descuento");
+                }else if(numero > 11){
+                    descuento = (int)(numero*0.20*1000);
+                    numero = (int)(numero*1000 - descuento);
+                    numero = Math.abs(numero);
+                    resultadoTextArea.setText("\nTotal a pagar"
+                            +"\n$"+validador.separadorDeMiles(numero)+" -----> 20% de descuento");
+                }
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, 
+                            "DATO INVALIDO", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                numeroTextField.setText("");
+            }
         }
     }//GEN-LAST:event_calcularBtnActionPerformed
 

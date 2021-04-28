@@ -6,6 +6,7 @@
 package EP1U1;
 
 import Control.ValidaEntrada;
+import java.util.InputMismatchException;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -143,15 +144,22 @@ public class Ej11 extends javax.swing.JDialog {
     private void calcularBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcularBtnActionPerformed
         if(ladoTextField.getText().isEmpty()){
             ladoTextField.setText("0");
-        }
-        double lado = Double.parseDouble(ladoTextField.getText());
-        double perimetro = lado*3;
-        double altura = Math.sqrt(Math.pow(lado,2)-(Math.pow(lado,2))/4);
-        double area = (lado*altura)/2;
+        }else{
+            try{
+                double lado = Double.parseDouble(ladoTextField.getText());
+                double perimetro = lado*3;
+                double altura = Math.sqrt(Math.pow(lado,2)-(Math.pow(lado,2))/4);
+                double area = (lado*altura)/2;
 
-        resultadoTextArea.setText("Perímetro = "+perimetro
-            +"\nÁrea = "+area+"\nAltura = "+altura);
-        //JOptionPane.showMessageDialog(null, "Area = "+area, "Area", JOptionPane.INFORMATION_MESSAGE);
+                resultadoTextArea.setText("Perímetro = "+perimetro
+                    +"\nÁrea = "+area+"\nAltura = "+altura);
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, 
+                            "DATO INVALIDO", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                ladoTextField.setText("");
+            }
+        } 
     }//GEN-LAST:event_calcularBtnActionPerformed
 
     private void enunciado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enunciado1ActionPerformed
