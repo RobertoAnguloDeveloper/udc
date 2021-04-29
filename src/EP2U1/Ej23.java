@@ -21,15 +21,15 @@ public class Ej23 extends javax.swing.JDialog {
      * Creates new form E2
      */
     private ValidaEntrada validador;
-    private ArrayList<Estudiante> estudiantes;
-    private Estudiante estudiante;
+    private Vendedor vendedor;
+    private ArrayList<Vendedor> vendedores;
     
     public Ej23(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         setLocationRelativeTo(null);
         validador = new ValidaEntrada();
-        estudiantes = new ArrayList<>();
+        vendedores = new ArrayList<>();
     }
 
     /**
@@ -73,6 +73,11 @@ public class Ej23 extends javax.swing.JDialog {
         jLabel2.setText("Forma de pago");
 
         valorCompraTextField.setToolTipText("");
+        valorCompraTextField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                valorCompraTextFieldMouseClicked(evt);
+            }
+        });
         valorCompraTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 valorCompraTextFieldKeyTyped(evt);
@@ -104,6 +109,11 @@ public class Ej23 extends javax.swing.JDialog {
         idVendedorJTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 idVendedorJTextFieldMouseClicked(evt);
+            }
+        });
+        idVendedorJTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                idVendedorJTextFieldKeyTyped(evt);
             }
         });
 
@@ -211,45 +221,31 @@ public class Ej23 extends javax.swing.JDialog {
     }//GEN-LAST:event_enunciado5ActionPerformed
 
     private void pagarNominaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pagarNominaBtnActionPerformed
-        int promedioEdades = 0, sumatoria = 0;
-        int contadorHombres = 0, contadorMujeres = 0, contadorMujeresIngenieria = 0;
-
-        for(int i = 0; i < estudiantes.size(); i++){
-            if(estudiantes.get(i).getCarrera().toLowerCase()
-                    .equals("ingeniería")){
-
-                sumatoria += estudiantes.get(i).getEdad();
-
-                if(estudiantes.get(i).getSexo().toLowerCase().equals("femenino")){
-                    contadorMujeresIngenieria++;
-                }
-            }
-
-            if(estudiantes.get(i).getSexo().toLowerCase().equals("masculino")){
-                contadorHombres++;
-            }
-
-            if(estudiantes.get(i).getSexo().toLowerCase().equals("femenino")){
-                contadorMujeres++;
+        String id = JOptionPane.showInputDialog(null,"Ingrese ID de Vendedor");
+        boolean noEncontrado = false;
+        
+        for(int i = 0; i<vendedores.size(); i++){
+            if(vendedores.get(i).getId().equals(id)){
+                resultadoTextArea.setText("ID: "+vendedores.get(i).getId()
+                        +"\nForma de Pago: "+vendedores.get(i).getFormaPago().toUpperCase()
+                        +"\nValor de la venta: $"+vendedores.get(i).getCompra()
+                        +"\nComisión a pagar: $"+vendedores.get(i).getComision()
+                        +"\nPorcentaje de comisión: "+vendedores.get(i).getPorcentajeComision()+"%");
+                noEncontrado = false;
+                break;
+            }else{
+                noEncontrado = true;
             }
         }
-
-        promedioEdades = sumatoria/estudiantes.size();
-
-        resultadoTextArea.setText("El promedio de edad en Ingeniería es "
-                +promedioEdades);
-        resultadoTextArea.append("\nEl "+((contadorHombres*100)/estudiantes.size())
-                +"% de los estudiantes son Hombres");
-        if(contadorMujeres != 0){
-            resultadoTextArea.append("\nEl "+((contadorMujeresIngenieria*100)/contadorMujeres)
-                +"% de las Mujeres estudian Ingeniería");
-        }else{
-            resultadoTextArea.append("\nEl 0% de los Mujeres estudian Ingeniería");
+        
+        if(noEncontrado){
+            JOptionPane.showMessageDialog(null, "ID no encontrado"
+                    ,"ERROR",JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_pagarNominaBtnActionPerformed
 
     private void valorCompraTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_valorCompraTextFieldKeyTyped
-        validador.validaNumerosInt(evt);
+        validador.validaNumerosDouble(evt);
         if(valorCompraTextField.getText().length() > 8){
             Toolkit.getDefaultToolkit().beep();
             evt.consume();
@@ -261,34 +257,43 @@ public class Ej23 extends javax.swing.JDialog {
     }//GEN-LAST:event_idVendedorJTextFieldMouseClicked
 
     private void agregarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBtnActionPerformed
-//        if(valorCompraTextField.getText().isEmpty() 
-//                || idVendedorJTextField.getText().isEmpty()){
-//            valorCompraTextField.setText("0");
-//            idVendedorJTextField.setText("SIN NOMBRE");
-//            JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS CAMPOS"
-//                    ,"ADVERTENCIA",JOptionPane.ERROR_MESSAGE);
-//        }else{
-//            try{
-//                int edad = Integer.valueOf(valorCompraTextField.getText());
-//                
-//                estudiante = new Estudiante(idVendedorJTextField.getText()
-//                , edad, formaPagoComboBox.getSelectedItem().toString()
-//                , carreraComboBox.getSelectedItem().toString());
-//                
-//                estudiantes.add(estudiante);
-//                valorCompraTextField.setText("");
-//                idVendedorJTextField.setText("");
-//            }catch(NumberFormatException err){
-//                JOptionPane.showMessageDialog(this, "DATO INVALIDO", "LO SENTIMOS", 
-//                            JOptionPane.ERROR_MESSAGE);
-//                
-//                valorCompraTextField.setText("1");
-//                idVendedorJTextField.setText("SIN NOMBRE");
-//            }
-//            
-//            pagarNominaBtn.setEnabled(true);
-//        }
+        if(valorCompraTextField.getText().isEmpty() 
+                || idVendedorJTextField.getText().isEmpty()){
+            valorCompraTextField.setText("$0");
+            idVendedorJTextField.setText("SIN ID");
+            JOptionPane.showMessageDialog(null, "POR FAVOR LLENE LOS CAMPOS"
+                    ,"ADVERTENCIA",JOptionPane.ERROR_MESSAGE);
+        }else{
+            try{
+                double compra = Double.valueOf(valorCompraTextField.getText());
+                vendedor = new Vendedor(idVendedorJTextField.getText()
+                        ,formaPagoComboBox.getSelectedItem().toString().toLowerCase(), compra);
+                vendedores.add(vendedor);
+                valorCompraTextField.setText("$0");
+                idVendedorJTextField.setText("");
+                JOptionPane.showMessageDialog(this, "VENDEDOR AGREGADO", "EXCELENTE", 
+                            JOptionPane.INFORMATION_MESSAGE);
+            }catch(NumberFormatException err){
+                JOptionPane.showMessageDialog(this, "DATO INVALIDO", "LO SENTIMOS", 
+                            JOptionPane.ERROR_MESSAGE);
+                valorCompraTextField.setText("$0");
+                idVendedorJTextField.setText("SIN ID");
+            }
+            pagarNominaBtn.setEnabled(true);
+        }
     }//GEN-LAST:event_agregarBtnActionPerformed
+
+    private void idVendedorJTextFieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idVendedorJTextFieldKeyTyped
+        validador.validaNumerosInt(evt);
+        if(valorCompraTextField.getText().length() > 8){
+            Toolkit.getDefaultToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_idVendedorJTextFieldKeyTyped
+
+    private void valorCompraTextFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_valorCompraTextFieldMouseClicked
+        valorCompraTextField.setText("");
+    }//GEN-LAST:event_valorCompraTextFieldMouseClicked
                  
     /**
      * @param args the command line arguments
