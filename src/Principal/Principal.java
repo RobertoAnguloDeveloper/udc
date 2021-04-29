@@ -8,6 +8,7 @@ import EP1U1.Ej15;
 import EP2U1.Ej21;
 import EP2U1.Ej22;
 import EP2U1.Ej23;
+import EP2U1.Ej24;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.IOException;
@@ -273,7 +274,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_ejercicio23ActionPerformed
 
     private void ejercicio24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ejercicio24ActionPerformed
-        // TODO add your handling code here:
+        Ej24 ejercicio24 = new Ej24(this, rootPaneCheckingEnabled);
+        ejercicio24.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_ejercicio24ActionPerformed
 
     /**
