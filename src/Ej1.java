@@ -26,19 +26,25 @@ public class Ej1 {
 
         int [] numeros = new int[dimension*dimension];
         int [] pares = new int[numeros.length/2];
+        int [] restantes = new int[numeros.length/2];
         int [] esquina = new int[4];
                 
         for(int i = 0; i < numeros.length; i++){
             numeros[i] = i+1;
         }
         
-        int contadorEsquina = 0;
+        int contadorEsquina = 0, contadorRestantes = 0;
         for(int i = 0; i < numeros.length; i++){
+            //LLENANDO ARREGLO DE ESQUINAS
             if(numeros[i] % 2 == 0){
                 if(contadorEsquina < esquina.length){
                     esquina[contadorEsquina] = numeros[i];
                     contadorEsquina++;
                 }
+                //LLENANDO ARREGLO DE NUMEROS RESTANTES
+            }else if(numeros[i] != numeroMedio){
+                restantes[contadorRestantes] = numeros[i];
+                contadorRestantes++;
             }
         }
         
