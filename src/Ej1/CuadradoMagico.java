@@ -70,11 +70,11 @@ public class CuadradoMagico {
         
         ctrl = cuadroMagico[i][j] != 0;
         
-        if(ctrl){
+//        if(ctrl){
 //            System.out.println("CELDA LLENA");
-        }else{
+//        }else{
 //            System.out.println("CELDA VACIA");
-        }
+//        }
         return ctrl;
     }
     

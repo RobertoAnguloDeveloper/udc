@@ -28,16 +28,37 @@ public class Ej1 {
         
         int indiceNumeros = 0, posicionGuiaFila = 0, posicionGuiaColumna = 0;
         
+        //LLENANDO EL CUADRO MAGICO SEGUNDO NUMERO
         for(int i = 0; i < cuadroMagico.length; i++){
             for(int j = 0; j < cuadroMagico[0].length; j++){
                 if(i == cuadro.getNumeroUnoFila() && j == cuadro.getNumeroUnoColumna()){
+                    ++indiceNumeros;
                     posicionGuiaFila = cuadroMagico[i].length-1;
                     posicionGuiaColumna = j+1;
-                    cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros+1];
-                }else{
-                    
+                    cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
+                    --posicionGuiaFila;
+                    ++posicionGuiaColumna;
+                    ++indiceNumeros;
                 }
             }
+        }
+        
+        //LLENANDO EL RESTO
+        while(!cuadro.isCeldaLlena(cuadroMagico, posicionGuiaFila, posicionGuiaColumna)){
+            if(!cuadro.noColumna(cuadroMagico, posicionGuiaColumna)){
+                if(!cuadro.noFila(cuadroMagico, posicionGuiaFila)){
+                    cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
+                    posicionGuiaFila--;
+                }
+                indiceNumeros++;
+                posicionGuiaColumna++;
+            }else{
+                posicionGuiaColumna = 0;
+                cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
+            }
+            System.out.println("POSICION COLUMNA "+posicionGuiaColumna
+                    +"\nTAMAÑO COLUMNA "+(cuadroMagico[0].length));
+            
         }
         
         cuadro.imprimeMatriz(cuadroMagico);
