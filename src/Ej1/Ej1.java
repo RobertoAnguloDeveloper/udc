@@ -64,23 +64,14 @@ public class Ej1 {
                 posicionGuiaColumna--;
             }
             
+            if(cuadro.noFila(cuadroMagico, posicionGuiaFila) 
+                    && cuadro.noColumna(cuadroMagico, posicionGuiaColumna)){
+                posicionGuiaFila = 1;
+                posicionGuiaColumna = cuadroMagico[0].length-1;
+            }
         }
         
-        cuadro.imprimeMatriz(cuadroMagico);
-                
-//        System.out.println("VERIFIQUE FILA: ");
-//        int verF = key.nextInt();
-//        cuadro.noFila(cuadroMagico, verF);
-//        
-//        System.out.println("VERIFIQUE COLUMNA: ");
-//        int verC = key.nextInt();
-//        cuadro.noColumna(cuadroMagico, verC);
-//        
-//        System.out.println("VERIFIQUE CELDA LLENA: ");
-//        int verCeldaX = key.nextInt();
-//        int verCeldaY = key.nextInt();
-//        cuadro.isCeldaLlena(cuadroMagico, verCeldaX, verCeldaY);
-//        
+        cuadro.imprimeMatriz(cuadroMagico);     
     }
     
 }
