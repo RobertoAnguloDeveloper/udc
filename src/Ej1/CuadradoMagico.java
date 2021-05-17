@@ -13,6 +13,7 @@ public class CuadradoMagico {
     private int numeroUnoFila;
     private int numeroUnoColumna;
     private int [] numeros;
+    private int filaNoExiste, columnaNoExiste;
     
     public void numeros(int [] numeros){
         //LLENANDO ARREGLO DE NUMEROS POSIBLES 
@@ -40,42 +41,35 @@ public class CuadradoMagico {
     }
     
     public boolean noFila(int [][] cuadroMagico, int i){
-        boolean ctrl = false;
-        
         try{
             int celda = cuadroMagico[i][0];
-//            System.out.println("SI EXISTE FILA");
-            return ctrl = false;
+            return false;
         }catch(ArrayIndexOutOfBoundsException err){
-//            System.out.println("NO EXISTE FILA");
-            return ctrl = true;
+            return true;
         }
     }
     
     public boolean noColumna(int [][] cuadroMagico, int j){
-        boolean ctrl = false;
-        
         try{
             int celda = cuadroMagico[0][j];
-//            System.out.println("SI EXISTE COLUMNA");
-            return ctrl = false;
+            return false;
         }catch(ArrayIndexOutOfBoundsException err){
-//            System.out.println("NO EXISTE COLUMNA");
-            return ctrl = true;
+            return true;
         }
     }
     
     public boolean isCeldaLlena(int [][] cuadroMagico, int i, int j){
-        boolean ctrl = false;
+        return cuadroMagico[i][j] != 0;
+    }
+    
+    public boolean celdaExiste(int [][] cuadroMagico, int i, int j){
+        try{
+            int celda = cuadroMagico[i][j];
+            return true;
+        }catch(ArrayIndexOutOfBoundsException err){
+            return false;
+        }
         
-        ctrl = cuadroMagico[i][j] != 0;
-        
-//        if(ctrl){
-//            System.out.println("CELDA LLENA");
-//        }else{
-//            System.out.println("CELDA VACIA");
-//        }
-        return ctrl;
     }
     
     public void imprimeMatriz(int [][] cuadroMagico){

@@ -36,33 +36,38 @@ public class Ej1 {
                     posicionGuiaFila = cuadroMagico[i].length-1;
                     posicionGuiaColumna = j+1;
                     cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
-                    --posicionGuiaFila;
-                    ++posicionGuiaColumna;
-                    ++indiceNumeros;
+                    indiceNumeros++;
+                    posicionGuiaFila--;
+                    posicionGuiaColumna++;
                 }
             }
         }
         
         //LLENANDO EL RESTO
-        while(!cuadro.isCeldaLlena(cuadroMagico, posicionGuiaFila, posicionGuiaColumna)){
-            if(!cuadro.noColumna(cuadroMagico, posicionGuiaColumna)){
-                if(!cuadro.noFila(cuadroMagico, posicionGuiaFila)){
-                    cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
-                    posicionGuiaFila--;
-                }
-                indiceNumeros++;
-                posicionGuiaColumna++;
-            }else{
-                posicionGuiaColumna = 0;
+        for(int i = 0; i < (dimension*dimension); i++){
+            if(cuadro.celdaExiste(cuadroMagico, posicionGuiaFila, posicionGuiaColumna) 
+                    && !cuadro.isCeldaLlena(cuadroMagico, posicionGuiaFila, posicionGuiaColumna)){
+                
                 cuadroMagico[posicionGuiaFila][posicionGuiaColumna] = numeros[indiceNumeros];
+                
+                indiceNumeros++;
+                posicionGuiaFila--;
+                posicionGuiaColumna++;
             }
-            System.out.println("POSICION COLUMNA "+posicionGuiaColumna
-                    +"\nTAMAÑO COLUMNA "+(cuadroMagico[0].length));
+            
+            if(cuadro.noFila(cuadroMagico, posicionGuiaFila)){
+                posicionGuiaFila = cuadroMagico.length-1;
+            }else if(cuadro.noColumna(cuadroMagico, posicionGuiaColumna)){
+                posicionGuiaColumna = 0;
+            }else if(cuadro.isCeldaLlena(cuadroMagico, posicionGuiaFila, posicionGuiaColumna)){
+                posicionGuiaFila += 2;
+                posicionGuiaColumna--;
+            }
             
         }
         
         cuadro.imprimeMatriz(cuadroMagico);
-        
+                
 //        System.out.println("VERIFIQUE FILA: ");
 //        int verF = key.nextInt();
 //        cuadro.noFila(cuadroMagico, verF);
