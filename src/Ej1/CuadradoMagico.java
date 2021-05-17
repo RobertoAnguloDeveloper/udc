@@ -10,12 +10,16 @@ package Ej1;
  * @author hacke
  */
 public class CuadradoMagico {
+    private int numeroUnoFila;
+    private int numeroUnoColumna;
+    private int [] numeros;
     
     public void numeros(int [] numeros){
         //LLENANDO ARREGLO DE NUMEROS POSIBLES 
         for(int i = 0; i < numeros.length; i++){
             numeros[i] = i+1;
         }
+        this.numeros = numeros;
     }
     
     public void llenadoInicial(int [][] cuadroMagico){
@@ -25,6 +29,8 @@ public class CuadradoMagico {
             for(int j = 0; j < cuadroMagico[0].length; j++){
                 if(j == (cuadroMagico.length-1)/2 && !ctrl){
                     cuadroMagico[i][j] = 1;
+                    numeroUnoFila = i;
+                    numeroUnoColumna = j;
                     ctrl = true;
                 }else{
                     cuadroMagico[i][j] = 0;
@@ -38,10 +44,10 @@ public class CuadradoMagico {
         
         try{
             int celda = cuadroMagico[i][0];
-            System.out.println("SI EXISTE FILA");
+//            System.out.println("SI EXISTE FILA");
             return ctrl = false;
         }catch(ArrayIndexOutOfBoundsException err){
-            System.out.println("NO EXISTE FILA");
+//            System.out.println("NO EXISTE FILA");
             return ctrl = true;
         }
     }
@@ -51,10 +57,10 @@ public class CuadradoMagico {
         
         try{
             int celda = cuadroMagico[0][j];
-            System.out.println("SI EXISTE COLUMNA");
+//            System.out.println("SI EXISTE COLUMNA");
             return ctrl = false;
         }catch(ArrayIndexOutOfBoundsException err){
-            System.out.println("NO EXISTE COLUMNA");
+//            System.out.println("NO EXISTE COLUMNA");
             return ctrl = true;
         }
     }
@@ -65,9 +71,9 @@ public class CuadradoMagico {
         ctrl = cuadroMagico[i][j] != 0;
         
         if(ctrl){
-            System.out.println("CELDA LLENA");
+//            System.out.println("CELDA LLENA");
         }else{
-            System.out.println("CELDA VACIA");
+//            System.out.println("CELDA VACIA");
         }
         return ctrl;
     }
@@ -83,4 +89,29 @@ public class CuadradoMagico {
             }
         }
     }
+
+    public int[] getNumeros() {
+        return numeros;
+    }
+
+    public void setNumeros(int[] numeros) {
+        this.numeros = numeros;
+    }
+    
+    public int getNumeroUnoFila() {
+        return numeroUnoFila;
+    }
+
+    public void setNumeroUnoFila(int numeroUnoFila) {
+        this.numeroUnoFila = numeroUnoFila;
+    }
+
+    public int getNumeroUnoColumna() {
+        return numeroUnoColumna;
+    }
+
+    public void setNumeroUnoColumna(int numeroUnoColumna) {
+        this.numeroUnoColumna = numeroUnoColumna;
+    }
+    
 }
