@@ -71,6 +71,14 @@ public class Ej1 {
             }
         }
         
+        if(cuadro.celdaVacia(cuadroMagico)[0] > 0 || cuadro.celdaVacia(cuadroMagico)[1] > 0){
+            int i = cuadro.celdaVacia(cuadroMagico)[0];
+            int j = cuadro.celdaVacia(cuadroMagico)[1];
+            cuadroMagico[i][j] = 9;
+        }else{
+            System.out.println("NO HAY CELDAS VACIAS");
+        }
+        
         cuadro.imprimeMatriz(cuadroMagico);     
     }
     

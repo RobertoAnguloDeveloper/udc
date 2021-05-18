@@ -84,6 +84,11 @@ public class CuadradoMagico {
                 }
             }
         }
+        
+        if(coordenadasCeldaVacia[0] == 0 || coordenadasCeldaVacia[1] == 0){
+            coordenadasCeldaVacia[0] = -1;
+            coordenadasCeldaVacia[1] = -1;
+        }
         return coordenadasCeldaVacia;
     }
     
