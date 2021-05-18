@@ -72,6 +72,21 @@ public class CuadradoMagico {
         
     }
     
+    public int [] celdaVacia(int [][] cuadroMagico){
+        //IMPRIME MATRIZ FINAL
+        int [] coordenadasCeldaVacia = new int[2];
+        for(int i = 0; i < cuadroMagico.length; i++){
+            for(int j = 0; j < cuadroMagico[0].length; j++){
+                if(cuadroMagico[i][j] == 0){
+                    coordenadasCeldaVacia[0] = i;
+                    coordenadasCeldaVacia[1] = j;
+                    return coordenadasCeldaVacia;
+                }
+            }
+        }
+        return coordenadasCeldaVacia;
+    }
+    
     public void imprimeMatriz(int [][] cuadroMagico){
         //IMPRIME MATRIZ FINAL
         for(int i = 0; i < cuadroMagico.length; i++){
