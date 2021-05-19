@@ -79,5 +79,4 @@ public class Ej1 {
         
         cuadro.imprimeMatriz(cuadroMagico);     
     }
-    
 }
