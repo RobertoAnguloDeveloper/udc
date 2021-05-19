@@ -5,17 +5,44 @@
  */
 package Ej2;
 
+import java.util.Scanner;
+
 /**
  *
  * @author TECNOLOGIA GC
  */
 public class Ej2 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        Scanner key = new Scanner(System.in);
+        System.out.println("CUANTAS TEMPERATURAS DESEA INGRESAR?");
+        int n = key.nextInt();
+        double [] temperaturas = new double[n];
+        
+        //LLENANDO EL ARREGLO
+        for(int i = 0; i < temperaturas.length; i++){
+            System.out.print("TEMPERATURA ["+(i+1)+"]: ");
+            temperaturas[i] = key.nextDouble();
+        }
+        
+        //SUMANDO TEMPERATURAS
+        double promedio = 0;
+        for(int i = 0; i < temperaturas.length; i++){
+            promedio += temperaturas[i];
+        }
+        promedio /= n;
+        System.out.println("\nPROMEDIO "+promedio);
+        
+        int mayorIgualromedio = 0;
+        //VERIFICANDO QUE DATOS SON MAYORES O IGUALES AL PROMEDIO
+        for(int i = 0; i < temperaturas.length; i++){
+            if(temperaturas[i] >= promedio){
+                mayorIgualromedio++;
+            }
+        }
+        
+        System.out.print(mayorIgualromedio+" TEMPERATURAS SON MAYORES O IGUALES AL PROMEDIO");
     }
     
 }
