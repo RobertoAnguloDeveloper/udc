@@ -1,40 +1,30 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package Ej6;
 
+package Ej4;
+
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
-/**
- *
- * @author hacke
- */
-public class Ej6 {
+public class Ej4 {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        int [] notasEstudiante = new int[5];
+        Double [] notasEstudiante = new Double[5];
         
         Scanner key = new Scanner(System.in);
         
         //LLENANDO EL ARREGLO
         for(int i = 0; i < notasEstudiante.length; i++){
             System.out.println("Ingrese las notas del estudiante: ");
-            notasEstudiante[i] = key.nextInt();
+            notasEstudiante[i] = key.nextDouble();
         }
         
         //ORDENANDO ARREGLO DESCENDENTEMENTE (MAYOR A MENOR)
-        
+        Arrays.sort(notasEstudiante, Collections.reverseOrder());
             
         int indice = 0;
-        for (int notas : notasEstudiante) {
+        for (double notas : notasEstudiante) {
             indice++;
             System.out.println("Nota ["+indice+"]: "+notas);
         }
     }
-    
 }
