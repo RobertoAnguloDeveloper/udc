@@ -32,35 +32,39 @@ public class Ej3 {
             }
         }
         
-        System.out.println("\nMATRIZ LLENA"
-                +"\n***************");
+        System.out.println("\nMATRIZ LLENA");
+        System.out.println("**************************");
         //IMPRIME MATRIZ FINAL Y SUMA FILAS Y COLUMNAS
-        int j = 0, indiceSumaFilas = 0, indiceSumaColumnas = 0, sumaTempFilas = 0
+        int indiceSumaFilas = 0, indiceSumaColumnas = 0, sumaTempFilas = 0
                 , sumaTempColumnas = 0;
         for(int i = 0; i < matriz.length; i++){
-            for(j = 0; j < matriz[0].length; j++){
+            for(int j = 0; j < matriz[0].length; j++){
                 sumaTempFilas += matriz[i][j];
+                sumaTempColumnas += matriz[j][i];
                 System.out.print("\t"+matriz[i][j]);
                 if(j == matriz[0].length-1){
                     System.out.println("");
                 }
             }
-//            sumaTempColumnas += matriz[i][j];
-            sumaFilas[indiceSumaFilas] = sumaTempFilas;
+            
             sumaColumnas[indiceSumaColumnas] = sumaTempColumnas;
-//            j++;
-            sumaTempFilas = 0;
             sumaTempColumnas = 0;
+            indiceSumaColumnas++;
+                
+            sumaFilas[indiceSumaFilas] = sumaTempFilas;
+            sumaTempFilas = 0;
             indiceSumaFilas++;
         }
+        System.out.println("************************");
+        
         
         for(int i = 0; i < sumaFilas.length; i++){
-            System.out.println("SUMA FILA "+(i+1)+" = "+sumaFilas[i]);
+            System.out.println("SUMA DE LA FILA "+(i+1)+" = "+sumaFilas[i]);
         }
         
+        System.out.println("");
         for(int i = 0; i < sumaColumnas.length; i++){
-            System.out.println("SUMA COLUMNA "+(i+1)+" = "+sumaColumnas[i]);
+            System.out.println("SUMA DE LA COLUMNA "+(i+1)+" = "+sumaColumnas[i]);
         }
     }
-    
 }
