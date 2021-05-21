@@ -1,40 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Ej6;
 
 import java.util.Scanner;
 
-/**
- *
- * @author hacke
- */
 public class Ej6 {
-
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String[] args) {
-        int [] notasEstudiante = new int[5];
         
         Scanner key = new Scanner(System.in);
         
-        //LLENANDO EL ARREGLO
-        for(int i = 0; i < notasEstudiante.length; i++){
-            System.out.println("Ingrese las notas del estudiante: ");
-            notasEstudiante[i] = key.nextInt();
+        System.out.println("CUANTOS NUMEROS DESEA INGRESAR: ");
+        int dimension = key.nextInt();
+        
+        int [] arreglo = new int[dimension];
+        
+        for(int i = 0; i < arreglo.length; i++){
+            System.out.println("NUMERO ["+(i+1)+"]: ");
+            arreglo[i] = key.nextInt();
         }
         
-        //ORDENANDO ARREGLO DESCENDENTEMENTE (MAYOR A MENOR)
+        int temp = 0;
+        //ORDENAMIENTO TIPO BURBUJA
+        for(int i = 0; i < arreglo.length; i++){
+            for(int j = 0; j < arreglo.length-1; j++){
+                if(arreglo[j] < arreglo[j+1]){
+                    temp = arreglo[j];
+                    arreglo[j] = arreglo[j+1];
+                    arreglo[j+1] = temp;
+                }
+            }
+        }
         
-            
         int indice = 0;
-        for (int notas : notasEstudiante) {
+        for(int array : arreglo){
+            System.out.println("Vector ["+indice+"] = "+array);
             indice++;
-            System.out.println("Nota ["+indice+"]: "+notas);
         }
+        
     }
     
 }
