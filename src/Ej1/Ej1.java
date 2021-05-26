@@ -20,10 +20,12 @@ public class Ej1 {
         Nodo nodo2 = new Nodo();
         nodo.setValor(30);
         nodo2.setValor("Salir");
-        Lista lista = new Lista(nodo);
+        Lista lista = new Lista();
         
-        lista.insertar(1, nodo);
+        lista.insertar(0, nodo);
         lista.insertar(0, nodo2);
+        
+        lista.imprimeLista();
     }
     
 }

@@ -9,49 +9,61 @@ package Ej1;
 
 public class Lista{
     private Nodo [] nodo;
+    private Nodo cabeza;
+    private Nodo cola;
     
-    public Lista(Nodo nodoCabeza){
+    public Lista(){
         nodo = new Nodo[1];
-        this.nodo[0] = nodoCabeza;
+        cabeza = new Nodo();
+        cabeza = nodo[0];
+        cola = new Nodo();
+        cola = nodo[0];
+        
     }
-
+    
+    public void correr(Nodo [] listaCopia){
+        for(int i = 0; i < listaCopia.length-1; i++){
+            Nodo temp = new Nodo();
+            temp = listaCopia[i];
+            nodo[i+1] =temp;
+        }
+    }
+    
+    public Nodo [] copiaLista(Nodo [] listaCopia){
+        for(int i = 0; i < nodo.length; i++){
+            listaCopia[i] = nodo[i];
+        }
+        return listaCopia;
+    }
+    
     public void insertar(int posicionInsertar
             , Nodo nodoInsertar){
         Nodo [] listaCopia = new Nodo[nodo.length+1];
         
-//        try{
-//            nodo.
-//        }catch(NullPointerException err){
-//            
-//        }
+        nodo = new Nodo[copiaLista(listaCopia).length];
         
-        //COPIANDO LA LISTA PARA LUEGO REORGANIZARLA
-        for(int i = 0; i < nodo.length; i++){
-            listaCopia[i] = nodo[i];
-        }
-        
-//        nodo = new Nodo[listaCopia.length];
-        
-        if(posicionInsertar == 0){
-            listaCopia[1] = listaCopia[0];
-            listaCopia[posicionInsertar] = nodoInsertar;
-            
-        }else if(posicionInsertar == nodo.length-1){
-            listaCopia[posicionInsertar] = nodoInsertar;
-//            System.out.println("ENTRO");
-        }else if(posicionInsertar > nodo.length-1){
-            for(int i = posicionInsertar; i < listaCopia.length-1; i++){
-                listaCopia[i] = listaCopia[i+1];
+        if(cabeza != null){
+            if(posicionInsertar == 0){
+                cabeza = nodoInsertar;
+                nodo[0] = nodoInsertar;
+                correr(listaCopia);
+                
+            }else{
+                nodo[posicionInsertar] = nodoInsertar;
+                correr(listaCopia);
             }
-            
-            listaCopia[posicionInsertar] = nodoInsertar;
+        }else{
+            nodo = new Nodo[1];
+            cabeza = nodoInsertar;
+            nodo[0] = nodoInsertar;
         }
-        
-        int pos = 0;
-        for (Nodo nodo1 : listaCopia) {
-            System.out.println("POS ["+pos+"]: "+(nodo1.getValor()));
-            pos++;
+    }
+    
+    public void imprimeLista(){
+        int nodoPos = 0;
+        for (Nodo nodo1 : nodo) {
+            System.out.println("NODO ["+nodoPos+"]: "+(nodo1.getValor()));
+            nodoPos++;
         }
-            
     }
 }
