@@ -19,6 +19,12 @@ public class Lista{
             , Nodo nodoInsertar){
         Nodo [] listaCopia = new Nodo[nodo.length+1];
         
+//        try{
+//            nodo.
+//        }catch(NullPointerException err){
+//            
+//        }
+        
         //COPIANDO LA LISTA PARA LUEGO REORGANIZARLA
         for(int i = 0; i < nodo.length; i++){
             listaCopia[i] = nodo[i];
@@ -27,25 +33,25 @@ public class Lista{
 //        nodo = new Nodo[listaCopia.length];
         
         if(posicionInsertar == 0){
-            nodo[1] = nodo[0];
-            nodo[posicionInsertar] = nodoInsertar;
+            listaCopia[1] = listaCopia[0];
+            listaCopia[posicionInsertar] = nodoInsertar;
             
         }else if(posicionInsertar == nodo.length-1){
-            nodo[posicionInsertar] = nodoInsertar;
-            System.out.println("ENTRO");
-        }else{
-            for(int i = posicionInsertar; i < nodo.length; i++){
-                nodo[i] = nodo[i+1];
+            listaCopia[posicionInsertar] = nodoInsertar;
+//            System.out.println("ENTRO");
+        }else if(posicionInsertar > nodo.length-1){
+            for(int i = posicionInsertar; i < listaCopia.length-1; i++){
+                listaCopia[i] = listaCopia[i+1];
             }
             
-            nodo[posicionInsertar] = nodoInsertar;
+            listaCopia[posicionInsertar] = nodoInsertar;
         }
         
-//        int pos = 0;
-//        for (Nodo nodo1 : nodo) {
-//            System.out.println("POS ["+pos+"]: "+(nodo1.getValor()));
-//            pos++;
-//        }
+        int pos = 0;
+        for (Nodo nodo1 : listaCopia) {
+            System.out.println("POS ["+pos+"]: "+(nodo1.getValor()));
+            pos++;
+        }
             
     }
 }
