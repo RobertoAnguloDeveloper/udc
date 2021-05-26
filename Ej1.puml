@@ -1,0 +1,5 @@
+@startuml
+class Ej1.Ej1
+class Ej1.Lista
+class Ej1.Nodo
+@enduml
