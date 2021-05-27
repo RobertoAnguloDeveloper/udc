@@ -8,6 +8,7 @@ entre 7 y 9, la lista debe quedar [2, 4, 7, 9 10, 20, 22]
 package Ej1;
 
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class Lista{
     private Nodo [] nodo;
@@ -44,13 +45,22 @@ public class Lista{
                 cabeza = nodoInsertar;
                 this.nodo[0] = nodoInsertar;
                 cola = nodo[nodo.length-1];
+                nodo[0].setDespues(nodo[1]);
             }else{
                 try{
                     this.nodo[posicionInsertar] = nodoInsertar;
                 }catch(ArrayIndexOutOfBoundsException ex){
                     Nodo [] listaTemp = Arrays.copyOf(nodo, nodo.length);
-                    this.nodo = correDerecha(posicionInsertar, listaTemp);
-                    this.nodo[posicionInsertar] = nodoInsertar;
+                    if(posicionInsertar == this.nodo.length){
+                        this.nodo = correDerecha(posicionInsertar, listaTemp);
+                        this.nodo[posicionInsertar] = nodoInsertar;
+                        
+                    }else{
+                        JOptionPane.showMessageDialog(null, 
+                                "LA POSICION A INSERTAR ESTA DISTANTE DE LA "
+                                        + "COLA DE LA LISTA", "ADVERTENCIA", 
+                                        JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }else{
@@ -61,13 +71,22 @@ public class Lista{
         }
     }
     
-    public void imprimeLista(){
-        int nodoPos = 0;
-        
+    public String imprimeLista(){
+        int nodoPos = 0, ultimaPos = nodo.length-1;
+        String resultado = "";
         for (Nodo nodo1 : nodo) {
-            System.out.println("NODO ["+nodoPos+"]: "+(nodo1.getValor()));
+            if(nodoPos == ultimaPos){
+                System.out.print("["+nodo1.getValor()+"]");
+                resultado += "["+nodo1.getValor()+"]";
+            }else{
+                System.out.print("["+nodo1.getValor()+"] -\t");
+                resultado += "["+nodo1.getValor()+"] -\t";
+            }
             nodoPos++;
         }
+        System.out.println("");
+        
+        return resultado;
     }
     
 }
