@@ -62,7 +62,7 @@ public class Ej2 {
         lista1 = mezclarListas(lista1.size()-1, lista1,listasMezcladas);
         lista2 = mezclarListas(lista2.size()-1, lista2,listasMezcladas);
         
-        imprimir(lista2, "mezclada");
+        imprimir(listasMezcladas, "mezclada");
     }
     
 }
