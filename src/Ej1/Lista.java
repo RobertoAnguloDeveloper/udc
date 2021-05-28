@@ -24,16 +24,13 @@ public class Lista{
     }
     
     public Nodo [] correDerecha(int indice, Nodo [] nodo){
-        Nodo [] listaCopia = new Nodo[nodo.length];
-        listaCopia = nodo;
+        Nodo [] seccionCorrer = Arrays.copyOfRange(nodo, indice, nodo.length-1);
+        System.out.println(seccionCorrer.length);
         
-        nodo = Arrays.copyOf(nodo, nodo.length+1);
-        
-        for(int i = indice; i < nodo.length-1; i++){
-            Nodo temp = new Nodo();
-            temp = listaCopia[i];
-            nodo[i+1] =temp;
+        for(int i = indice, j = 0; i < nodo.length-1; i++, j++){
+            nodo[i+1] = seccionCorrer[j];
         }
+        
         return nodo;
     }
     
@@ -41,20 +38,21 @@ public class Lista{
             , Nodo nodoInsertar){
         if(cabeza != null){
             if(posicionInsertar == 0){
-                this.nodo = correDerecha(posicionInsertar, this.nodo);
+                nodo = Arrays.copyOf(nodo, nodo.length+1);
+                nodo = correDerecha(posicionInsertar, nodo);
                 cabeza = nodoInsertar;
-                this.nodo[0] = nodoInsertar;
+                nodo[0] = nodoInsertar;
                 cola = nodo[nodo.length-1];
                 nodo[0].setDespues(nodo[1]);
-            }else{
+            }else if(posicionInsertar > nodo.length-1){
                 try{
                     this.nodo[posicionInsertar] = nodoInsertar;
                 }catch(ArrayIndexOutOfBoundsException ex){
-                    Nodo [] listaTemp = Arrays.copyOf(nodo, nodo.length);
                     if(posicionInsertar == this.nodo.length){
-                        this.nodo = correDerecha(posicionInsertar, listaTemp);
-                        this.nodo[posicionInsertar] = nodoInsertar;
-                        
+                        nodo = Arrays.copyOf(nodo, nodo.length+1);
+                        nodo[posicionInsertar] = nodoInsertar;
+                        cola = nodo[posicionInsertar];
+                        nodoInsertar.setAntes(nodo[posicionInsertar-1]);
                     }else{
                         JOptionPane.showMessageDialog(null, 
                                 "LA POSICION A INSERTAR ESTA DISTANTE DE LA "
@@ -62,6 +60,13 @@ public class Lista{
                                         JOptionPane.ERROR_MESSAGE);
                     }
                 }
+            }else{
+                nodo = Arrays.copyOf(nodo, nodo.length+1);
+                nodo = correDerecha(posicionInsertar, nodo);
+                nodo[posicionInsertar] = nodoInsertar;
+                nodoInsertar.setAntes(nodo[posicionInsertar-1]);
+                nodoInsertar.setDespues(nodo[posicionInsertar+1]);
+                cola = nodo[nodo.length-1];
             }
         }else{
             nodo = new Nodo[1];
