@@ -32,18 +32,17 @@ public class Ej2 {
     }
     
     public static List mezclarListas(int indiceLista1, List lista1, 
-            int indiceLista2, List lista2, List listasMezcladas){
+            List listasMezcladas){
         
-        if(indiceLista1 < lista1.size() && indiceLista1 >= 0){
+        if(indiceLista1 >= 0){
             listasMezcladas.add(lista1.get(indiceLista1));
-            mezclarListas(indiceLista1--, lista1, indiceLista2, lista2, listasMezcladas);
+            mezclarListas(indiceLista1-1, lista1, listasMezcladas);
         }
-        
         
         return listasMezcladas;
     }
     
-    public static void imprimir(List lista, int numeroLista){
+    public static void imprimir(List lista, String numeroLista){
         System.out.println("LISTA "+numeroLista);
         for (int i = 0; i < lista.size(); i++) {
             System.out.println(" NODO["+i+"]: "+lista.get(i));
@@ -56,11 +55,14 @@ public class Ej2 {
         List listasMezcladas = new LinkedList();
         
         lista1 = llenarLista(lista1, 1);
-        imprimir(lista1, 1);
+        imprimir(lista1, "1");
         lista2 = llenarLista(lista2, 2);
-        imprimir(lista2, 2);
+        imprimir(lista2, "2");
         
-        mezclarListas(lista1.size()-1, lista1, lista2.size()-1, lista2, listasMezcladas);
+        lista1 = mezclarListas(lista1.size()-1, lista1,listasMezcladas);
+        lista2 = mezclarListas(lista2.size()-1, lista2,listasMezcladas);
+        
+        imprimir(lista2, "mezclada");
     }
     
 }
