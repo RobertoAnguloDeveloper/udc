@@ -51,7 +51,7 @@ public class Ej1 {
             nodo.setValor(valor);
             lista.insertar(pos, nodo);
             
-            JOptionPane.showMessageDialog(null, lista.imprimeLista(), "TITULO", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, lista.imprimeLista(), "LISTA", JOptionPane.INFORMATION_MESSAGE);
             
             int op = JOptionPane.showConfirmDialog(null, "Desea agregar otro nodo?");
             if(op == 0){
