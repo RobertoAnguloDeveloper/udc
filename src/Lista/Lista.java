@@ -5,7 +5,7 @@ si la lista es de [2, 7, 9 10, 20, 22]  y si insertas el elemento 4 por ejemplo
 entre 7 y 9, la lista debe quedar [2, 4, 7, 9 10, 20, 22]
  */
 
-package Ej1;
+package Lista;
 
 import javax.swing.JOptionPane;
 
@@ -14,6 +14,26 @@ public class Lista{
 
     public Lista() {
         lista = new Nodo[1];
+    }
+
+    public Nodo[] getLista() {
+        return lista;
+    }
+
+    public void setLista(Nodo[] lista) {
+        this.lista = lista;
+    }
+    
+    public void agregar(Nodo nodo){        
+        Nodo [] listaCopia = lista;
+        
+        lista = new Nodo[lista.length+1];
+        
+        for (int i = 0; i < lista.length; i++) {
+            lista[i] = listaCopia[i];
+        }
+        
+        lista[lista.length-1] = nodo;
     }
     
     public void insertar(int posicion, Nodo nodo){

@@ -4,6 +4,8 @@ como referencia en una lista ordenada.
  */
 package Ej1;
 
+import Lista.Nodo;
+import Lista.Lista;
 import javax.swing.JOptionPane;
 
 

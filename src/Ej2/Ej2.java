@@ -4,32 +4,13 @@ la mezcle generando una nueva lista ordenada descendentemente.
  */
 package Ej2;
 
-import java.util.LinkedList;
+import Lista.Lista;
+import Lista.Nodo;
 import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Ej2 {
-    public static List llenarLista(List lista, int numeroLista){
-        boolean loop = true;
-        int i = 0;
-        
-        do{
-            String dato = JOptionPane.showInputDialog(null, 
-                    "INGRESE EL VALOR DEL NODO["+i+"]", "LLENADO DE LISTA "+numeroLista, 
-                    JOptionPane.INFORMATION_MESSAGE);
-            
-            if(dato == null){
-                loop = false;
-                JOptionPane.showMessageDialog(null, "NO INGRESO DATOS EN LA LISTA "
-                        +numeroLista+" NODO["+i+"]", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
-            }else{
-                lista.add(dato);
-            }
-            i++;
-        }while(loop);
-        
-        return lista;
-    }
+    
     
     public static List mezclarListas(int indiceLista1, List lista1, 
             List listasMezcladas){
@@ -50,19 +31,51 @@ public class Ej2 {
     }
     
     public static void main(String[] args) {
-        List lista1 = new LinkedList();
-        List lista2 = new LinkedList();
-        List listasMezcladas = new LinkedList();
+        Nodo dato;
+        Lista lista1 = new Lista();
+        Lista lista2 = new Lista();
+        Lista listasMezcladas = new Lista();
         
-        lista1 = llenarLista(lista1, 1);
-        imprimir(lista1, "1");
-        lista2 = llenarLista(lista2, 2);
-        imprimir(lista2, "2");
+        //LLENANDO LISTA 1
+        boolean loop = true;
+        int i = 0;
+        do{
+            dato = new Nodo();
+            dato.setValor(JOptionPane.showInputDialog(null, 
+                    "INGRESE EL VALOR DEL NODO["+i+"]", "LLENADO DE LISTA 1", 
+                    JOptionPane.INFORMATION_MESSAGE));
+            
+            if(dato.getValor() == null){
+                loop = false;
+                JOptionPane.showMessageDialog(null, "NO INGRESO DATOS EN LA LISTA 1 "
+                        + "NODO["+i+"]", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
+            }else{
+                lista1.agregar(dato);
+            }
+            i++;
+        }while(loop);
         
-        lista1 = mezclarListas(lista1.size()-1, lista1,listasMezcladas);
-        lista2 = mezclarListas(lista2.size()-1, lista2,listasMezcladas);
+        //LLENANDO LISTA 2
+        loop = true;
+        i = 0;
+        do{
+            dato = new Nodo();
+            dato.setValor(JOptionPane.showInputDialog(null, 
+                    "INGRESE EL VALOR DEL NODO["+i+"]", "LLENADO DE LISTA 1", 
+                    JOptionPane.INFORMATION_MESSAGE));
+            
+            if(dato.getValor() == null){
+                loop = false;
+                JOptionPane.showMessageDialog(null, "NO INGRESO DATOS EN LA LISTA 1 "
+                        + "NODO["+i+"]", "ADVERTENCIA", JOptionPane.ERROR_MESSAGE);
+            }else{
+                lista1.agregar(dato);
+            }
+            i++;
+        }while(loop);
         
-        imprimir(listasMezcladas, "mezclada");
+       
+        
     }
     
 }
