@@ -7,85 +7,69 @@ entre 7 y 9, la lista debe quedar [2, 4, 7, 9 10, 20, 22]
 
 package Ej1;
 
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class Lista{
-    private Nodo [] nodo;
-    private Nodo cabeza;
-    private Nodo cola;
-    
-    public Lista(){
-        nodo = new Nodo[1];
-        cabeza = new Nodo();
-        cabeza = nodo[0];
-        cola = new Nodo();
-        cola = nodo[0];
+    private Nodo [] lista;
+
+    public Lista() {
+        lista = new Nodo[1];
     }
     
-    public Nodo [] correDerecha(int indice, Nodo [] nodo){
-        Nodo [] seccionCorrer = Arrays.copyOfRange(nodo, indice, nodo.length-1);
-        System.out.println(seccionCorrer.length);
+    public void insertar(int posicion, Nodo nodo){
+        Nodo [] listaCopia = new Nodo[lista.length+1];
         
-        for(int i = indice, j = 0; i < nodo.length-1; i++, j++){
-            nodo[i+1] = seccionCorrer[j];
-        }
-        
-        return nodo;
-    }
-    
-    public void insertar(int posicionInsertar
-            , Nodo nodoInsertar){
-        if(cabeza != null){
-            if(posicionInsertar == 0){
-                nodo = Arrays.copyOf(nodo, nodo.length+1);
-                nodo = correDerecha(posicionInsertar, nodo);
-                cabeza = nodoInsertar;
-                nodo[0] = nodoInsertar;
-                cola = nodo[nodo.length-1];
-                nodo[0].setDespues(nodo[1]);
-            }else if(posicionInsertar > nodo.length-1){
-                try{
-                    this.nodo[posicionInsertar] = nodoInsertar;
-                }catch(ArrayIndexOutOfBoundsException ex){
-                    if(posicionInsertar == this.nodo.length){
-                        nodo = Arrays.copyOf(nodo, nodo.length+1);
-                        nodo[posicionInsertar] = nodoInsertar;
-                        cola = nodo[posicionInsertar];
-                        nodoInsertar.setAntes(nodo[posicionInsertar-1]);
-                    }else{
-                        JOptionPane.showMessageDialog(null, 
-                                "LA POSICION A INSERTAR ESTA DISTANTE DE LA "
-                                        + "COLA DE LA LISTA", "ADVERTENCIA", 
-                                        JOptionPane.ERROR_MESSAGE);
+        if(posicion > lista.length){
+            JOptionPane.showMessageDialog(null, "POSICION MUY "
+                    + "DISTANTE DE LA COLA", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            if(posicion == 0){
+                if(lista[0] == null){
+                    lista[0] = nodo;
+                }else {
+                    for (int i = posicion+1, j = 0; j < lista.length; i++, j++) {
+                        listaCopia[i] = lista[j];
                     }
+                    lista = listaCopia;
+                    lista[0] = nodo;
+                }
+            }else if(posicion > lista.length-1){
+                for (int i = 0; i <lista.length; i++) {
+                    listaCopia[i] = lista[i];
+                }
+
+                lista = new Nodo[lista.length+1];
+
+                for (int i = 0; i < lista.length; i++) {
+                    lista[i] = listaCopia[i];
                 }
             }else{
-                nodo = Arrays.copyOf(nodo, nodo.length+1);
-                nodo = correDerecha(posicionInsertar, nodo);
-                nodo[posicionInsertar] = nodoInsertar;
-                nodoInsertar.setAntes(nodo[posicionInsertar-1]);
-                nodoInsertar.setDespues(nodo[posicionInsertar+1]);
-                cola = nodo[nodo.length-1];
+                for (int i = 0; i < lista.length; i++) {
+                    listaCopia[i] = lista[i];
+                }
+
+                for (int i = posicion+1, j = posicion; i < listaCopia.length; i++, j++) {
+                    listaCopia[i] = lista[j];
+                }
+                lista = listaCopia;
             }
-        }else{
-            nodo = new Nodo[1];
-            cabeza = nodoInsertar;
-            cola = cabeza;
-            nodo[0] = nodoInsertar;
+
+
+            lista[posicion] = nodo;
         }
     }
     
     public String imprimeLista(){
-        int nodoPos = 0, ultimaPos = nodo.length-1;
+        int nodoPos = 0, ultimaPos = lista.length-1;
         String resultado = "";
-        for (Nodo nodo1 : nodo) {
+        
+        for (Nodo nodo : lista) {
             if(nodoPos == ultimaPos){
-                System.out.print("["+nodo1.getValor()+"]");
-                resultado += "["+nodo1.getValor()+"]";
+                System.out.print("["+nodo.getValor()+"]");
+                resultado += "["+nodo.getValor()+"]";
             }else{
-                System.out.print("["+nodo1.getValor()+"] -\t");
-                resultado += "["+nodo1.getValor()+"] -\t";
+                System.out.print("["+nodo.getValor()+"]-");
+                resultado += "["+nodo.getValor()+"]-";
             }
             nodoPos++;
         }
