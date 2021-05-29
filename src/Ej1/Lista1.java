@@ -58,14 +58,6 @@ public class Lista1{
             lista[posicion] = nodo;
         }
     }
-
-    public Nodo1[] getLista() {
-        return lista;
-    }
-
-    public void setLista(Nodo1[] lista) {
-        this.lista = lista;
-    }
     
     public String imprimeLista(){
         int nodoPos = 0, ultimaPos = lista.length-1;
