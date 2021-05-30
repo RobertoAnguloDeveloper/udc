@@ -11,6 +11,30 @@ public class Pila {
         cabeza = pila[0];
         cola = pila[0];
     }
+
+    public Nodo[] getPila() {
+        return pila;
+    }
+
+    public void setPila(Nodo[] pila) {
+        this.pila = pila;
+    }
+
+    public Nodo getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(Nodo cabeza) {
+        this.cabeza = cabeza;
+    }
+
+    public Nodo getCola() {
+        return cola;
+    }
+
+    public void setCola(Nodo cola) {
+        this.cola = cola;
+    }
     
     public void metePila(Nodo nodo){
         Nodo [] pilaCopia = new Nodo[pila.length+1];
