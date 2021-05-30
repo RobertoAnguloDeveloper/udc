@@ -2,7 +2,7 @@
 CLASE DISEÑADA PARA TODOS LOS EJERCICIOS DE LA ACTIVIDAD DE APRENDIZAJE UNIDAD 3
 ESTRUCTURA DE DATOS
  */
-package Lista;
+package EstructurasDatos;
 
 public class Nodo {
     private Object antes;

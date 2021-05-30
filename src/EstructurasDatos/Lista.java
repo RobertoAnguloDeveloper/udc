@@ -3,7 +3,7 @@ CLASE DISEÑADA PARA TODOS LOS EJERCICIOS DE LA ACTIVIDAD DE APRENDIZAJE UNIDAD 
 ESTRUCTURA DE DATOS
  */
 
-package Lista;
+package EstructurasDatos;
 
 import javax.swing.JOptionPane;
 

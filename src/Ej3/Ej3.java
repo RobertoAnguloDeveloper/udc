@@ -3,8 +3,8 @@ Defina un programa para insertar elementos en una lista circular.
  */
 package Ej3;
 
-import Lista.Lista;
-import Lista.Nodo;
+import EstructurasDatos.Lista;
+import EstructurasDatos.Nodo;
 import javax.swing.JOptionPane;
 
 

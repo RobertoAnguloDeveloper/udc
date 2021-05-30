@@ -4,8 +4,8 @@ la mezcle generando una nueva lista ordenada descendentemente.
  */
 package Ej2;
 
-import Lista.Lista;
-import Lista.Nodo;
+import EstructurasDatos.Lista;
+import EstructurasDatos.Nodo;
 import javax.swing.JOptionPane;
 
 public class Ej2 {
