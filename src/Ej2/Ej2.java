@@ -10,24 +10,6 @@ import javax.swing.JOptionPane;
 
 public class Ej2 {
     
-//    public static List invertirLista(int indiceLista1, List lista1, 
-//            List listasMezcladas){
-//        
-//        if(indiceLista1 >= 0){
-//            listasMezcladas.add(lista1.get(indiceLista1));
-//            invertirLista(indiceLista1-1, lista1, listasMezcladas);
-//        }
-//        
-//        return listasMezcladas;
-//    }
-    
-//    public static void imprimir(List lista, String numeroLista){
-//        System.out.println("LISTA "+numeroLista);
-//        for (int i = 0; i < lista.size(); i++) {
-//            System.out.println(" NODO["+i+"]: "+lista.get(i));
-//        }
-//    }
-    
     public static void main(String[] args) {
         Nodo dato;
         Lista lista1 = new Lista();
