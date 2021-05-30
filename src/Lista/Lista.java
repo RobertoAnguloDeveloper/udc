@@ -1,8 +1,6 @@
 /*
- Defina un programa para insertar, si es posible, un elemento antes de otro nodo dado 
-como referencia en una lista ordenada.
-si la lista es de [2, 7, 9 10, 20, 22]  y si insertas el elemento 4 por ejemplo 
-entre 7 y 9, la lista debe quedar [2, 4, 7, 9 10, 20, 22]
+CLASE DISEÑADA PARA TODOS LOS EJERCICIOS DE LA ACTIVIDAD DE APRENDIZAJE UNIDAD 3
+ESTRUCTURA DE DATOS
  */
 
 package Lista;
@@ -11,9 +9,13 @@ import javax.swing.JOptionPane;
 
 public class Lista{
     private Nodo [] lista;
+    private Nodo cabeza;
+    private Nodo cola;
 
     public Lista() {
         lista = new Nodo[1];
+        cabeza = lista[0];
+        cola = lista[0];
     }
 
     public Nodo[] getLista() {
@@ -34,6 +36,9 @@ public class Lista{
         if(lista[0] != null){
             listaCopia[listaCopia.length-1] = nodo;
             lista = listaCopia;
+            cola = lista[lista.length-1];
+            lista[lista.length-1].setAntes(lista[lista.length-2]);
+            lista[lista.length-1].setDespues(null);
         }else{
             lista[0] = nodo;
         }
@@ -55,6 +60,8 @@ public class Lista{
                     }
                     lista = listaCopia;
                     lista[0] = nodo;
+                    lista[0].setAntes(null);
+                    lista[0].setDespues(lista[1]);
                 }
             }else if(posicion > lista.length-1){
                 for (int i = 0; i <lista.length; i++) {
@@ -66,6 +73,10 @@ public class Lista{
                 for (int i = 0; i < lista.length; i++) {
                     lista[i] = listaCopia[i];
                 }
+                
+                lista[posicion] = nodo;
+                lista[posicion].setAntes(lista[posicion-1]);
+                lista[posicion].setDespues(null);
             }else{
                 for (int i = 0; i < lista.length; i++) {
                     listaCopia[i] = lista[i];
@@ -75,10 +86,76 @@ public class Lista{
                     listaCopia[i] = lista[j];
                 }
                 lista = listaCopia;
+                lista[posicion].setAntes(lista[posicion-1]);
+                lista[posicion].setDespues(lista[posicion+1]);
             }
 
+            lista[posicion] = nodo;
+        }
+    }
+    
+    public void insertarListaCircular(int posicion, Nodo nodo){
+        Nodo [] listaCopia = new Nodo[lista.length+1];
+        
+        if(posicion > lista.length){
+            JOptionPane.showMessageDialog(null, "POSICION MUY "
+                    + "DISTANTE DE LA COLA", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }else{
+            if(posicion == 0){
+                if(lista[0] == null){
+                    lista[0] = nodo;
+                    cabeza = lista[0];
+                    cola = lista[0];
+                    cola.setDespues(cabeza);
+                }else {
+                    for (int i = posicion+1, j = 0; j < lista.length; i++, j++) {
+                        listaCopia[i] = lista[j];
+                    }
+                    lista = listaCopia;
+                    lista[0] = nodo;
+                    cabeza = lista[0];
+                    cola = lista[lista.length-1];
+                    cola.setDespues(cabeza);
+                    lista[0].setAntes(null);
+                    lista[0].setDespues(lista[1]);
+                }
+            }else if(posicion > lista.length-1){
+                for (int i = 0; i <lista.length; i++) {
+                    listaCopia[i] = lista[i];
+                }
+
+                lista = new Nodo[lista.length+1];
+
+                for (int i = 0; i < lista.length; i++) {
+                    lista[i] = listaCopia[i];
+                }
+                
+                lista[posicion] = nodo;
+                cabeza = lista[0];
+                cola = lista[posicion];
+                cola.setDespues(cabeza);
+                lista[posicion].setAntes(lista[posicion-1]);
+                lista[posicion].setDespues(null);
+            }else{
+                for (int i = 0; i < lista.length; i++) {
+                    listaCopia[i] = lista[i];
+                }
+
+                for (int i = posicion+1, j = posicion; i < listaCopia.length; i++, j++) {
+                    listaCopia[i] = lista[j];
+                }
+                lista = listaCopia;
+                cabeza = lista[0];
+                cola = lista[lista.length-1];
+                cola.setDespues(cabeza);
+                lista[posicion].setAntes(lista[posicion-1]);
+                lista[posicion].setDespues(lista[posicion+1]);
+            }
 
             lista[posicion] = nodo;
+            cabeza = lista[0];
+            cola = lista[lista.length-1];
+            cola.setDespues(cabeza);
         }
     }
     

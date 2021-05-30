@@ -1,14 +1,9 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+CLASE DISEÑADA PARA TODOS LOS EJERCICIOS DE LA ACTIVIDAD DE APRENDIZAJE UNIDAD 3
+ESTRUCTURA DE DATOS
  */
 package Lista;
 
-/**
- *
- * @author hacke
- */
 public class Nodo {
     private Object antes;
     private Object despues;
