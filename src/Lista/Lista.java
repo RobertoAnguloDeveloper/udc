@@ -25,15 +25,18 @@ public class Lista{
     }
     
     public void agregar(Nodo nodo){        
-        Nodo [] listaCopia = lista;
-        
-        lista = new Nodo[lista.length+1];
+        Nodo [] listaCopia = new Nodo[lista.length+1];
         
         for (int i = 0; i < lista.length; i++) {
-            lista[i] = listaCopia[i];
+            listaCopia[i] = lista[i];
         }
         
-        lista[lista.length-1] = nodo;
+        if(lista[0] != null){
+            listaCopia[listaCopia.length-1] = nodo;
+            lista = listaCopia;
+        }else{
+            lista[0] = nodo;
+        }
     }
     
     public void insertar(int posicion, Nodo nodo){
@@ -77,6 +80,14 @@ public class Lista{
 
             lista[posicion] = nodo;
         }
+    }
+    
+    public Lista invertirLista(Lista lista, Lista listaInvertida, int posicionFinal){
+        if(posicionFinal >= 0){
+            listaInvertida.agregar(lista.getLista()[posicionFinal]);
+            listaInvertida = invertirLista(lista, listaInvertida, posicionFinal-1);
+        }
+        return listaInvertida;
     }
     
     public String imprimeLista(){
