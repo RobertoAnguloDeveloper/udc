@@ -61,7 +61,7 @@ public class Ej2 {
         listasMezcladas.invertirLista(lista1, listasMezcladas,lista1.getLista().length-1);
         listasMezcladas.invertirLista(lista2, listasMezcladas,lista2.getLista().length-1);
         
-        JOptionPane.showMessageDialog(null, listasMezcladas.imprimeLista(), "LISTAs MEZCLADAS", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, listasMezcladas.imprimeLista(), "LISTAS MEZCLADAS", JOptionPane.INFORMATION_MESSAGE);
     }
     
 }
