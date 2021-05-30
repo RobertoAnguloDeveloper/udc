@@ -4,12 +4,12 @@ package EstructurasDatos;
 public class Pila {
     private Nodo [] pila;
     private Nodo cabeza; 
-    private Nodo cola;
+    private Nodo tope;
     
     public Pila(){
         pila = new Nodo[1];
         cabeza = pila[0];
-        cola = pila[0];
+        tope = pila[0];
     }
 
     public Nodo[] getPila() {
@@ -29,11 +29,11 @@ public class Pila {
     }
 
     public Nodo getCola() {
-        return cola;
+        return tope;
     }
 
     public void setCola(Nodo cola) {
-        this.cola = cola;
+        this.tope = cola;
     }
     
     public void metePila(Nodo nodo){
@@ -46,13 +46,13 @@ public class Pila {
         if(pila[0] != null){
             pilaCopia[pilaCopia.length-1] = nodo;
             pila = pilaCopia;
-            cola = pila[pila.length-1];
+            tope = pila[pila.length-1];
             pila[pila.length-1].setAntes(pila[pila.length-2]);
             pila[pila.length-1].setDespues(null);
         }else{
             pila[0] = nodo;
             cabeza = pila[0];
-            cola = pila[0];
+            tope = pila[0];
         }
     }
     
@@ -70,11 +70,18 @@ public class Pila {
     
     public String imprimePila(){
         int i = 0;
+        int nodoPos = 0, ultimaPos = pila.length-1;
         String resultado = "";
+        System.out.println("\nPILA");
         for (Nodo nodo : pila) {
-            System.out.print("["+nodo.getValor()+"]-");
-            resultado += "["+nodo.getValor()+"]-";
-            i++;
+            if(nodoPos == ultimaPos){
+                System.out.print("["+nodo.getValor()+"]");
+                resultado += "["+nodo.getValor()+"]";
+            }else{
+                System.out.print("["+nodo.getValor()+"]-");
+                resultado += "["+nodo.getValor()+"]-";
+            }
+            nodoPos++;
         }
         return resultado;
     }

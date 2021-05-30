@@ -1,17 +1,16 @@
 /*
-Realice dos métodos “Mete_Pila” y “Saca_ Pila” para insertar y eliminar, 
-respectivamente, un elemento de una pila implementada por medio de una lista.
+Defina un programa para implementar una estructura tipo cola mediante listas
  */
-package Ej4;
+package Ej5;
 
+import EstructurasDatos.Cola;
 import EstructurasDatos.Nodo;
-import EstructurasDatos.Pila;
 import javax.swing.JOptionPane;
 
-public class Ej4 {
+public class Ej5 {
 
     public static void main(String[] args) {
-        Pila pila = new Pila();
+        Cola cola = new Cola();
         
         boolean loop = true;
         boolean loop2 = true;
@@ -19,9 +18,9 @@ public class Ej4 {
         
         do{
             int op1 = JOptionPane.showOptionDialog(null, "QUE OPERACION DESEA REALIZAR?"
-                    , "PILA",JOptionPane.YES_NO_CANCEL_OPTION 
+                    , "COLAS",JOptionPane.YES_NO_CANCEL_OPTION 
                     , JOptionPane.QUESTION_MESSAGE, null
-                    , new String[] { "Meter en la Pila", "Sacar de la Pila"},"Meter en la Pila" );
+                    , new String[] { "Encolar", "Desencolar"},"Encolar");
             switch(op1){
                 case 0 -> {
                     do{
@@ -31,13 +30,13 @@ public class Ej4 {
                                 , JOptionPane.INFORMATION_MESSAGE);
                         nodo.setValor(valor);
                         if(valor != null){
-                            pila.metePila(nodo);
+                            cola.encolar(nodo);
                         }else
                             System.exit(0);
 
-                        JOptionPane.showMessageDialog(null,pila.imprimePila(), "PILA", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,cola.imprimePila(), "COLA", JOptionPane.INFORMATION_MESSAGE);
 
-                        int op2 = JOptionPane.showConfirmDialog(null, "Desea agregar otro nodo a la Pila?");
+                        int op2 = JOptionPane.showConfirmDialog(null, "Desea agregar otro nodo a la Cola?");
                         if(op2 == 0){
                             loop = true;
                         }else{
@@ -48,21 +47,21 @@ public class Ej4 {
                 
                 case 1 -> {
                     do{
-                        if(pila.getPila().length > 0 && pila.getCabeza() != null){
-                            pila.sacaPila();
+                        if(cola.getCola().length > 0 && cola.getCabeza() != null){
+                            cola.desencolar();
 
-                            JOptionPane.showMessageDialog(null,pila.imprimePila(), "PILA", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,cola.imprimePila(), "COLA", JOptionPane.INFORMATION_MESSAGE);
 
-                            int op2 = JOptionPane.showConfirmDialog(null, "Desea sacar otro nodo de la Pila?");
+                            int op2 = JOptionPane.showConfirmDialog(null, "Desea sacar otro nodo de la Cola?");
                             if(op2 == 0){
                                 loop = true;
                             }else{
                                 loop = false;
                             }
                         }else{
-                            JOptionPane.showMessageDialog(null, "LO SIENTO YA NO HAY MAS NODOS EN LA PILA", "ERROR", JOptionPane.ERROR_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "LO SIENTO YA NO HAY MAS NODOS EN LA COLA", "ERROR", JOptionPane.ERROR_MESSAGE);
                             loop = false;
-                            pila = new Pila();
+                            cola = new Cola();
                         }
                     }while(loop);
                 }
@@ -71,5 +70,4 @@ public class Ej4 {
             }
         }while(loop2);
     }
-    
 }
