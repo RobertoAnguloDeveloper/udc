@@ -35,7 +35,7 @@ public class Ej6 {
                         }else
                             System.exit(0);
 
-                        JOptionPane.showMessageDialog(null,cola.imprimePila(), "COLA", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(null,cola.imprimeCola(), "COLA", JOptionPane.INFORMATION_MESSAGE);
 
                         int op2 = JOptionPane.showConfirmDialog(null, "Desea agregar otro nodo a la Cola?");
                         if(op2 == 0){
@@ -50,7 +50,7 @@ public class Ej6 {
                     do{
                         if(cola.getCola().length > 0 && cola.getCabeza() != null){
                             cola.eliminaRepetidos();
-                            JOptionPane.showMessageDialog(null,cola.imprimePila(), "COLA", JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(null,cola.imprimeCola(), "COLA", JOptionPane.INFORMATION_MESSAGE);
                             
                         }else{
                             JOptionPane.showMessageDialog(null, "LO SIENTO, NO HAY NODOS EN LA COLA", "ERROR", JOptionPane.ERROR_MESSAGE);

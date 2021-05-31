@@ -103,7 +103,37 @@ public class Cola {
         }
     }
     
-    public String imprimePila(){
+    public void insertarDerecha(Nodo nodo){        
+        Nodo [] colaCopia = new Nodo[cola.length+1];
+        
+        for (int i = 0; i < cola.length; i++) {
+            colaCopia[i] = cola[i];
+        }
+        
+        if(cola[0] != null){
+            colaCopia[colaCopia.length-1] = nodo;
+            cola = colaCopia;
+            tope = cola[cola.length-1];
+            cola[cola.length-1].setAntes(cola[cola.length-2]);
+            cola[cola.length-1].setDespues(null);
+        }else{
+            cola[0] = nodo;
+        }
+    }
+    
+    public void elimarDerecha(){
+        Nodo [] colaCopia = new Nodo[cola.length-1];
+        
+        for (int i = 0; i < colaCopia.length; i++) {
+            colaCopia[i] = cola[i];
+        }
+        
+        if(cola[0] != null){
+            cola = colaCopia;
+        }
+    }
+    
+    public String imprimeCola(){
         int i = 0;
         int nodoPos = 0, ultimaPos = cola.length-1;
         String resultado = "";
