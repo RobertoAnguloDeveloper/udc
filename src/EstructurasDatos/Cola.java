@@ -67,6 +67,43 @@ public class Cola {
         }
     }
     
+    public void eliminaRepetidos(){
+        
+        Nodo [] colaCopia = new Nodo[cola.length];
+        
+        for (int i = 0; i < colaCopia.length; i++) {
+            colaCopia[i] = cola[i];
+        }
+        
+        for (int i = 0; i < cola.length; i++) {
+            int contador = 0;
+            for (int j = 0; j < colaCopia.length; j++) {
+                if(cola[i].getValor().equals(colaCopia[j].getValor())){
+                    contador++;
+                    if(contador > 1){
+                        colaCopia[j].setValor("vacio");
+                    }
+                }
+            }
+        }
+        
+        int nuevaDimension = 0;
+        for (int i = 0; i < colaCopia.length; i++) {
+            if(colaCopia[i].getValor() != "vacio"){
+                nuevaDimension++;
+            }
+        }
+        
+        cola = new Nodo[nuevaDimension];
+        
+        for (int i = 0, j = 0; i < cola.length; i++) {
+            if(colaCopia[i].getValor() != "vacio"){
+                cola[j] = colaCopia[i];
+                j++;
+            }
+        }
+    }
+    
     public String imprimePila(){
         int i = 0;
         int nodoPos = 0, ultimaPos = cola.length-1;
