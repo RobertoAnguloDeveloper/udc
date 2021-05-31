@@ -68,7 +68,6 @@ public class Cola {
     }
     
     public void eliminaRepetidos(){
-        
         Nodo [] colaCopia = new Nodo[cola.length];
         
         for (int i = 0; i < colaCopia.length; i++) {
