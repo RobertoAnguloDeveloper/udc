@@ -8,7 +8,7 @@ public class Nodo {
     private Object antes;
     private Object despues;
     private Object valor;
-
+    
     public Object getAntes() {
         return antes;
     }

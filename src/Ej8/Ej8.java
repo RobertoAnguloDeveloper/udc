@@ -21,6 +21,7 @@ public class Ej8 {
         for (int i = 0; i < 6; i++) {
             c.insertarDerecha(new Nodo());
         }
+        
         Nodo frente = new Nodo();
         Nodo ultimo = new Nodo();
         frente = c.getCola()[0];
@@ -28,15 +29,18 @@ public class Ej8 {
         c.setCabeza(frente);
         c.setTope(ultimo);
         
+        c.getCola()[0].setValor('A');
+        c.setCabeza(c.getCola()[0]);
+        c.getCola()[1].setValor('B');
+        c.getCola()[2].setValor('C');
+        c.setTope(c.getCola()[2]);
         c.getCola()[0].setValor(null);
-        c.getCola()[1].setValor('E');
-        c.getCola()[2].setValor('D');
-        c.getCola()[3].setValor('A');
-        c.getCola()[4].setValor('B');
+        c.getCola()[0].setValor('E');
+        c.getCola()[1].setValor('D');
+        c.getCola()[2].setValor('B');
+        c.getCola()[3].setValor('C');
         c.getCola()[5].setValor(null);
         
-        c.desencolar();
-        c.elimarDerecha();
         c.imprimeCola();
     }
     

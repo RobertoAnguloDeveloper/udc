@@ -5,11 +5,15 @@ public class Pila {
     private Nodo [] pila;
     private Nodo cabeza; 
     private Nodo tope;
+    private int primero;
+    private int ultimo;
     
     public Pila(){
         pila = new Nodo[1];
         cabeza = pila[0];
         tope = pila[0];
+        primero = 0;
+        ultimo = 0;
     }
 
     public Nodo[] getPila() {
@@ -35,6 +39,30 @@ public class Pila {
     public void setCola(Nodo cola) {
         this.tope = cola;
     }
+
+    public Nodo getTope() {
+        return tope;
+    }
+
+    public void setTope(Nodo tope) {
+        this.tope = tope;
+    }
+
+    public int getPrimero() {
+        return primero;
+    }
+
+    public void setPrimero(int primero) {
+        this.primero = primero;
+    }
+
+    public int getUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo(int ultimo) {
+        this.ultimo = ultimo;
+    }
     
     public void metePila(Nodo nodo){
         Nodo [] pilaCopia = new Nodo[pila.length+1];
@@ -54,6 +82,8 @@ public class Pila {
             cabeza = pila[0];
             tope = pila[0];
         }
+        primero = 0;
+        ultimo = pila.length-1;
     }
     
     public void sacaPila(){
@@ -66,6 +96,8 @@ public class Pila {
         if(pila[0] != null){
             pila = listaCopia;
         }
+        primero = 0;
+        ultimo = pila.length-1;
     }
     
     public void eliminaRepetidos(){
@@ -102,11 +134,12 @@ public class Pila {
                 j++;
             }
         }
+        primero = 0;
+        ultimo = pila.length-1;
     }
     
     public String imprimePila(){
-        int i = 0;
-        int nodoPos = 0, ultimaPos = pila.length-1;
+        int nodoPos = 0, ultimaPos = ultimo;
         String resultado = "";
         System.out.println("\nPILA");
         for (Nodo nodo : pila) {

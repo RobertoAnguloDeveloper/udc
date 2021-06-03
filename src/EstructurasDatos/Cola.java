@@ -5,11 +5,15 @@ public class Cola {
     private Nodo [] cola;
     private Nodo cabeza; 
     private Nodo tope;
+    private int primero;
+    private int ultimo;
     
     public Cola(){
         cola = new Nodo[1];
         cabeza = cola[0];
         tope = cola[0];
+        primero = 0;
+        ultimo = 0;
     }
 
     public Nodo[] getCola() {
@@ -54,6 +58,9 @@ public class Cola {
             cabeza = cola[0];
             tope = cola[0];
         }
+        
+        primero = 0;
+        ultimo = cola.length-1;
     }
     
     public void desencolar(){
@@ -65,6 +72,9 @@ public class Cola {
             }
             cola = colaCopia;
         }
+        
+        primero = 0;
+        ultimo = cola.length-1;
     }
     
     public void eliminaRepetidos(){
@@ -101,6 +111,9 @@ public class Cola {
                 j++;
             }
         }
+        
+        primero = 0;
+        ultimo = cola.length-1;
     }
     
     public void insertarDerecha(Nodo nodo){        
@@ -119,6 +132,9 @@ public class Cola {
         }else{
             cola[0] = nodo;
         }
+        
+        primero = 0;
+        ultimo = cola.length-1;
     }
     
     public void elimarDerecha(){
@@ -131,6 +147,9 @@ public class Cola {
         if(cola[0] != null){
             cola = colaCopia;
         }
+        
+        primero = 0;
+        ultimo = cola.length-1;
     }
     
     public String imprimeCola(){
