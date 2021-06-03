@@ -33,9 +33,10 @@ public class Ej8 {
         c.setCabeza(c.getCola()[0]);
         c.getCola()[1].setValor('B');
         c.getCola()[2].setValor('C');
-        c.setTope(c.getCola()[2]);
         c.getCola()[0].setValor(null);
+        c.setCabeza(c.getCola()[0]);
         c.getCola()[0].setValor('E');
+        c.setCabeza(c.getCola()[0]);
         c.getCola()[1].setValor('D');
         c.getCola()[2].setValor('B');
         c.getCola()[3].setValor('C');
