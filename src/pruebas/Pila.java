@@ -12,8 +12,8 @@ public class Pila {
     private int tope;
     
     public Pila(){
-        nodoTope = new Nodo(null);
-        nodoTope.setAnterior(null);
+        nodoTope = null;
+        size = 0;
     }
     
     public Pila(int size){
@@ -32,6 +32,13 @@ public class Pila {
 
     public void desapilar(){
         nodoTope = nodoTope.getAnterior();
+        sizeMinus();
+    }
+    
+    public void vaciarPila(){
+        while(size == 0){
+            desapilar();
+        }
     }
     
     public Nodo[] getPila() {
@@ -42,6 +49,15 @@ public class Pila {
         this.pila = pila;
     }
 
+    public Nodo getNodoTope() {
+        return nodoTope;
+    }
+
+    public void setNodoTope(Nodo nodoTope) {
+        this.nodoTope = nodoTope;
+    }
+    
+    
     public int getSize() {
         return size;
     }
