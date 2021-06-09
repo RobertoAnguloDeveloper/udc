@@ -26,6 +26,7 @@ public class Pila {
             nodoTope = nodo;
         }else{
             nodo.setAnterior(nodoTope);
+            nodoTope = nodo;
         }
         sizePlus();
     }
