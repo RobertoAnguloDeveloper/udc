@@ -37,8 +37,9 @@ public class Pila {
     }
     
     public void vaciarPila(){
-        while(size == 0){
+        while(size > 0){
             desapilar();
+            System.out.println("ENTRO");
         }
     }
     
@@ -52,12 +53,12 @@ public class Pila {
 
     public Nodo getNodoTope() {
         return nodoTope;
+        
     }
 
     public void setNodoTope(Nodo nodoTope) {
         this.nodoTope = nodoTope;
     }
-    
     
     public int getSize() {
         return size;

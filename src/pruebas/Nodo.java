@@ -6,8 +6,17 @@
 package pruebas;
 
 public class Nodo {
-    private Nodo anterior;
     private Object dato;
+    private Nodo anterior;
+    private Nodo siguiente;
+
+    public Nodo getSiguiente() {
+        return siguiente;
+    }
+
+    public void setSiguiente(Nodo siguiente) {
+        this.siguiente = siguiente;
+    }
 
     public Nodo(Object dato) {
         this.dato = dato;

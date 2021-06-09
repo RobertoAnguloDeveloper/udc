@@ -11,9 +11,6 @@ package pruebas;
  */
 public class Pruebas {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Nodo nodo1 = new Nodo("Primero");
         Nodo nodo2 = new Nodo("Segundo");
@@ -26,7 +23,7 @@ public class Pruebas {
         pila.apilar(nodo3);
         pila.apilar(nodo4);
         pila.apilar(nodo5);
-        
+        pila.vaciarPila();
         System.out.println("TOPE = "+pila.getNodoTope().getDato());
     }
     
