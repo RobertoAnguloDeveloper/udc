@@ -38,7 +38,6 @@ public class Pila {
         }else{
             System.out.println("NO EXISTEN MAS NODOS EN LA PILA");
         }
-        
     }
     
     public void vaciarPila(){
@@ -49,6 +48,19 @@ public class Pila {
     }
     
     public void imprimir(){
+        pila = new Nodo[size];
+        
+        for (int i = pila.length-1; i >= 0; i--) {
+            pila[i] = nodoTope;
+            desapilar();
+        }
+        
+        int pos = 0;
+        for (Nodo nodo : pila) {
+            System.out.println("Nodo ["+pos+"] = "+nodo.getDato());
+            pos++;
+            apilar(nodo);
+        }
         
     }
     

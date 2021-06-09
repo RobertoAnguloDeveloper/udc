@@ -13,15 +13,16 @@ public class Pruebas {
         Nodo nodo3 = new Nodo("Tercero");
         Nodo nodo4 = new Nodo("Cuarto");
         Nodo nodo5 = new Nodo("Quinto");
+        
         Pila pila = new Pila();
+        
         pila.apilar(nodo1);
         pila.apilar(nodo2);
         pila.apilar(nodo3);
         pila.apilar(nodo4);
         pila.apilar(nodo5);
-        pila.desapilar();
-        pila.desapilar();
-        System.out.println("TOPE = "+pila.getNodoTope().getDato());
+        
+        pila.imprimir();
     }
     
 }
