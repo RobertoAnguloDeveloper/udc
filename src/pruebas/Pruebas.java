@@ -5,10 +5,6 @@
  */
 package pruebas;
 
-/**
- *
- * @author ROBERTO ANGULO
- */
 public class Pruebas {
 
     public static void main(String[] args) {
@@ -23,7 +19,8 @@ public class Pruebas {
         pila.apilar(nodo3);
         pila.apilar(nodo4);
         pila.apilar(nodo5);
-        pila.vaciarPila();
+        pila.desapilar();
+        pila.desapilar();
         System.out.println("TOPE = "+pila.getNodoTope().getDato());
     }
     

@@ -32,15 +32,28 @@ public class Pila {
     }
 
     public void desapilar(){
-        nodoTope = nodoTope.getAnterior();
-        sizeMinus();
+        if(!pilaVacia()){
+            nodoTope = nodoTope.getAnterior();
+            sizeMinus();
+        }else{
+            System.out.println("NO EXISTEN MAS NODOS EN LA PILA");
+        }
+        
     }
     
     public void vaciarPila(){
-        while(size > 0){
+        while(!pilaVacia()){
             desapilar();
-            System.out.println("ENTRO");
+            System.out.println("DESAPILO");
         }
+    }
+    
+    public void imprimir(){
+        
+    }
+    
+    public boolean pilaVacia(){
+        return size == 0;
     }
     
     public Nodo[] getPila() {

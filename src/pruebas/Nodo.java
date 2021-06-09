@@ -31,7 +31,11 @@ public class Nodo {
     }
     
     public Object getDato() {
-        return dato;
+        try{
+            return dato;
+        }catch(NullPointerException err){
+           return "null"; 
+        }
     }
 
     public void setDato(Object dato) {
