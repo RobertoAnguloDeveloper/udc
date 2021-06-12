@@ -103,10 +103,15 @@ public class Cola {
             }
         }
         
+        System.out.println("");
+        for (Nodo nodo : colaCopia) {
+            System.out.println(nodo.getValor());
+        }
+        
         cola = new Nodo[nuevaDimension];
         
-        for (int i = 0, j = 0; i < cola.length; i++) {
-            if(colaCopia[i].getValor() != "vacio"){
+        for (int i = 0, j = 0; i < colaCopia.length; i++) {
+            if(!colaCopia[i].getValor().equals("vacio")){
                 cola[j] = colaCopia[i];
                 j++;
             }
