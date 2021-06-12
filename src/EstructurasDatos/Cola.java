@@ -16,30 +16,6 @@ public class Cola {
         ultimo = 0;
     }
 
-    public Nodo[] getCola() {
-        return cola;
-    }
-
-    public void setCola(Nodo[] cola) {
-        this.cola = cola;
-    }
-
-    public Nodo getCabeza() {
-        return cabeza;
-    }
-
-    public void setCabeza(Nodo cabeza) {
-        this.cabeza = cabeza;
-    }
-
-    public Nodo getTope() {
-        return tope;
-    }
-
-    public void setTope(Nodo tope) {
-        this.tope = tope;
-    }
-
     public void encolar(Nodo nodo){
         Nodo [] colaCopia = new Nodo[cola.length+1];
         
@@ -175,4 +151,45 @@ public class Cola {
         System.out.println("");
         return resultado;
     }
+
+    public Nodo[] getCola() {
+        return cola;
+    }
+
+    public void setCola(Nodo[] cola) {
+        this.cola = cola;
+    }
+
+    public Nodo getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(Nodo cabeza) {
+        this.cabeza = cabeza;
+    }
+
+    public Nodo getTope() {
+        return tope;
+    }
+
+    public void setTope(Nodo tope) {
+        this.tope = tope;
+    }
+
+    public int getPrimero() {
+        return primero;
+    }
+
+    public void setPrimero(int primero) {
+        this.primero = primero;
+    }
+
+    public int getUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo(int ultimo) {
+        this.ultimo = ultimo;
+    }
+    
 }
