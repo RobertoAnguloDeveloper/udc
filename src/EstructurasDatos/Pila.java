@@ -16,54 +16,6 @@ public class Pila {
         ultimo = 0;
     }
 
-    public Nodo[] getPila() {
-        return pila;
-    }
-
-    public void setPila(Nodo[] pila) {
-        this.pila = pila;
-    }
-
-    public Nodo getCabeza() {
-        return cabeza;
-    }
-
-    public void setCabeza(Nodo cabeza) {
-        this.cabeza = cabeza;
-    }
-
-    public Nodo getCola() {
-        return tope;
-    }
-
-    public void setCola(Nodo cola) {
-        this.tope = cola;
-    }
-
-    public Nodo getTope() {
-        return tope;
-    }
-
-    public void setTope(Nodo tope) {
-        this.tope = tope;
-    }
-
-    public int getPrimero() {
-        return primero;
-    }
-
-    public void setPrimero(int primero) {
-        this.primero = primero;
-    }
-
-    public int getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(int ultimo) {
-        this.ultimo = ultimo;
-    }
-    
     public void metePila(Nodo nodo){
         Nodo [] pilaCopia = new Nodo[pila.length+1];
         
@@ -126,14 +78,20 @@ public class Pila {
             }
         }
         
+        System.out.println("");
+        for (Nodo nodo : pilaCopia) {
+            System.out.println(nodo.getValor());
+        }
+        
         pila = new Nodo[nuevaDimension];
         
-        for (int i = 0, j = 0; i < pila.length; i++) {
-            if(pilaCopia[i].getValor() != "vacio"){
+        for (int i = 0, j = 0; i < pilaCopia.length; i++) {
+            if(!pilaCopia[i].getValor().equals("vacio")){
                 pila[j] = pilaCopia[i];
                 j++;
             }
         }
+        
         primero = 0;
         ultimo = pila.length-1;
     }
@@ -153,5 +111,45 @@ public class Pila {
             nodoPos++;
         }
         return resultado;
+    }
+
+    public Nodo[] getPila() {
+        return pila;
+    }
+
+    public void setPila(Nodo[] pila) {
+        this.pila = pila;
+    }
+
+    public Nodo getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(Nodo cabeza) {
+        this.cabeza = cabeza;
+    }
+
+    public Nodo getTope() {
+        return tope;
+    }
+
+    public void setTope(Nodo tope) {
+        this.tope = tope;
+    }
+
+    public int getPrimero() {
+        return primero;
+    }
+
+    public void setPrimero(int primero) {
+        this.primero = primero;
+    }
+
+    public int getUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo(int ultimo) {
+        this.ultimo = ultimo;
     }
 }
