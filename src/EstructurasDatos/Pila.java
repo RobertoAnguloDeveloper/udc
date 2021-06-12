@@ -78,11 +78,6 @@ public class Pila {
             }
         }
         
-        System.out.println("");
-        for (Nodo nodo : pilaCopia) {
-            System.out.println(nodo.getValor());
-        }
-        
         pila = new Nodo[nuevaDimension];
         
         for (int i = 0, j = 0; i < pilaCopia.length; i++) {
