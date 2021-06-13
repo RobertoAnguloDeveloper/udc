@@ -79,11 +79,6 @@ public class Cola {
             }
         }
         
-        System.out.println("");
-        for (Nodo nodo : colaCopia) {
-            System.out.println(nodo.getValor());
-        }
-        
         cola = new Nodo[nuevaDimension];
         
         for (int i = 0, j = 0; i < colaCopia.length; i++) {
