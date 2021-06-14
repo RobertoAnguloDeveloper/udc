@@ -1,20 +1,21 @@
 
 package EstructurasDatos;
 
-public class Cola {
+public class ColaCircular {
     private Nodo [] cola;
     private Nodo nodoTope;
     private Nodo cabeza;
     private int size;
     
-    public Cola(){
+    public ColaCircular(){
         cabeza = null;
         nodoTope = null;
         size = 0;
     }
     
-    public Cola(int n){
-        nodoTope = cabeza;
+    public ColaCircular(int n){
+        cabeza = null;
+        nodoTope = null;
         size = n;
     }
     
@@ -22,7 +23,7 @@ public class Cola {
         if(size == 0){
             cabeza = nodo;
             nodoTope = nodo;
-            nodoTope.setSiguiente(null);
+            nodoTope.setSiguiente(cabeza);
             size++;
         }else{
             nodo.setSiguiente(cabeza);
@@ -33,11 +34,39 @@ public class Cola {
         asignaAnteriores();
     }
     
+    public void encolarDerecha(Nodo nodo){
+        if(cabeza == null){
+            nodo.setAnterior(null);
+            nodo.setSiguiente(null);
+            nodoTope = nodo;
+            cabeza = nodoTope;
+            size++;
+        }else{
+            nodo.setAnterior(nodoTope);
+            nodoTope.setSiguiente(nodo);
+            nodo.setSiguiente(null);
+            nodoTope = nodo;
+            size++;
+        }
+    }
+    
     public void desencolar(){
         if(size > 0){
             if(cabeza != nodoTope){
                 cabeza = cabeza.getSiguiente();
                 cabeza.setAnterior(null);
+                size--;
+            }else{
+                cabeza = null;
+            }
+        }
+    }
+    
+    public void desencolarDerecha(){
+        if(size > 0){
+            if(nodoTope != cabeza){
+                nodoTope = nodoTope.getAnterior();
+                nodoTope.setSiguiente(null);
                 size--;
             }else{
                 cabeza = null;

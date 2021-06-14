@@ -20,7 +20,6 @@ public class Ej2 {
         boolean loop = true;
         int i = 0;
         do{
-            
             String valor = JOptionPane.showInputDialog(null, 
                     "INGRESE EL VALOR DEL NODO["+i+"]", "LLENADO DE LISTA 1", 
                     JOptionPane.INFORMATION_MESSAGE);

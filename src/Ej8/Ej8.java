@@ -10,7 +10,7 @@ cada una de las siguientes operaciones:
  */
 package Ej8;
 
-import EstructurasDatos.Cola;
+import EstructurasDatos.ColaCircular;
 import EstructurasDatos.Nodo;
 
 public class Ej8 {
@@ -22,7 +22,7 @@ public class Ej8 {
         Nodo nodoD = new Nodo("D");
         Nodo nodoE = new Nodo("E");
         
-        Cola c = new Cola(6);
+        ColaCircular c = new ColaCircular(6);
         
         c.encolarDerecha(nodoA);
         c.encolarDerecha(nodoB);
@@ -38,6 +38,7 @@ public class Ej8 {
         
         c.desencolarDerecha();
         c.imprimir();
+        
     }
     
 }
