@@ -26,7 +26,6 @@ public class Cola {
         
         if(cola[0] != null){
             colaCopia[0] = nodo;
-            cola = new Nodo[colaCopia.length];
             cola = colaCopia;
         }else{
             cola[0] = nodo;

@@ -28,21 +28,32 @@ public class Ej8 {
         nodoD.setValor("D");
         Nodo nodoE = new Nodo();
         nodoE.setValor("E");
+        Nodo nodoNull = new Nodo();
         
         c.encolarDerecha(nodoA);
         c.encolarDerecha(nodoB);
         c.encolarDerecha(nodoC);
+        c.encolarDerecha(nodoNull);
+        c.encolarDerecha(nodoNull);
+        c.encolarDerecha(nodoNull);
+        System.out.print("\b1. Insertar por el extremo derecho tres elementos: A, B y C.");
         c.imprimeCola();
-        
         
         c.desencolar();
+        c.encolar(nodoNull);
+        System.out.print("\n2. Eliminar por el extremo izquierdo un elemento.");
         c.imprimeCola();
-
+        
+        c.desencolar();
         c.encolar(nodoD);
         c.encolar(nodoE);
+        c.desencolarDerecha();
+        System.out.print("\n3. Insertar por el extremo izquierdo dos elementos: D y E.");
         c.imprimeCola();
         
         c.desencolarDerecha();
+        c.encolarDerecha(nodoNull);
+        System.out.print("\n4. Eliminar por la derecha un elemento.");
         c.imprimeCola();
     }
     
