@@ -14,8 +14,7 @@ public class Cola {
     }
     
     public Cola(int n){
-        cabeza = null;
-        nodoTope = null;
+        nodoTope = cabeza;
         size = 6;
     }
     
@@ -34,11 +33,39 @@ public class Cola {
         asignaAnteriores();
     }
     
+    public void encolarDerecha(Nodo nodo){
+        if(cabeza == null){
+            nodo.setAnterior(null);
+            nodo.setSiguiente(null);
+            nodoTope = nodo;
+            cabeza = nodoTope;
+            size++;
+        }else{
+            nodo.setAnterior(nodoTope);
+            nodoTope.setSiguiente(nodo);
+            nodo.setSiguiente(null);
+            nodoTope = nodo;
+            size++;
+        }
+    }
+    
     public void desencolar(){
         if(size > 0){
             if(cabeza != nodoTope){
                 cabeza = cabeza.getSiguiente();
                 cabeza.setAnterior(null);
+                size--;
+            }else{
+                cabeza = null;
+            }
+        }
+    }
+    
+    public void desencolarDerecha(){
+        if(size > 0){
+            if(nodoTope != cabeza){
+                nodoTope = nodoTope.getAnterior();
+                nodoTope.setSiguiente(null);
                 size--;
             }else{
                 cabeza = null;

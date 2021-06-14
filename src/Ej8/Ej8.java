@@ -16,21 +16,27 @@ import EstructurasDatos.Nodo;
 public class Ej8 {
 
     public static void main(String[] args) {
+        Nodo nodoA = new Nodo("A");
+        Nodo nodoB = new Nodo("B");
+        Nodo nodoC = new Nodo("C");
+        Nodo nodoD = new Nodo("D");
+        Nodo nodoE = new Nodo("E");
+        
         Cola c = new Cola(6);
         
-        c.getCola()[0].setDato('A');
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[1].setDato('B');
-        c.getCola()[2].setDato('C');
-        c.getCola()[0].setDato(null);
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[0].setDato('E');
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[1].setDato('D');
-        c.getCola()[2].setDato('B');
-        c.getCola()[3].setDato('C');
-        c.getCola()[5].setDato(null);
+        c.encolarDerecha(nodoA);
+        c.encolarDerecha(nodoB);
+        c.encolarDerecha(nodoC);
+        c.imprimir();
         
+        c.desencolar();
+        c.imprimir();
+        
+        c.encolar(nodoD);
+        c.encolar(nodoE);
+        c.imprimir();
+        
+        c.desencolarDerecha();
         c.imprimir();
     }
     
