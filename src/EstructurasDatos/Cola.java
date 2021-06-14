@@ -19,6 +19,28 @@ public class Cola {
     public void encolar(Nodo nodo){
         Nodo [] colaCopia = new Nodo[cola.length+1];
         
+        for (int i = 1, j = 0; i < colaCopia.length; i++, j++) {
+            colaCopia[i] = cola[j];
+        }
+        
+        
+        if(cola.length > 0){
+            colaCopia[0] = nodo;
+            cola = new Nodo[colaCopia.length];
+            cola = colaCopia;
+        }else{
+            cola[0] = nodo;
+            cabeza = cola[0];
+            tope = cola[0];
+        }
+        
+        primero = 0;
+        ultimo = cola.length-1;
+    }
+    
+    public void encolarDerecha(Nodo nodo){
+        Nodo [] colaCopia = new Nodo[cola.length+1];
+        
         for (int i = 0; i < cola.length; i++) {
             colaCopia[i] = cola[i];
         }
@@ -34,7 +56,6 @@ public class Cola {
             cabeza = cola[0];
             tope = cola[0];
         }
-        
         primero = 0;
         ultimo = cola.length-1;
     }
@@ -49,6 +70,20 @@ public class Cola {
             cola = colaCopia;
         }
         
+        primero = 0;
+        ultimo = cola.length-1;
+    }
+    
+    public void desencolarDerecha(){
+        Nodo [] colaCopia = new Nodo[cola.length-1];
+        
+        for (int i = 0; i < colaCopia.length; i++) {
+            colaCopia[i] = cola[i];
+        }
+        
+        if(cola[0] != null){
+            cola = colaCopia;
+        }
         primero = 0;
         ultimo = cola.length-1;
     }

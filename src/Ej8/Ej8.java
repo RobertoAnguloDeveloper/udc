@@ -18,30 +18,31 @@ public class Ej8 {
     public static void main(String[] args) {
         Cola c = new Cola();
         
-        for (int i = 0; i < 6; i++) {
-            c.insertarDerecha(new Nodo());
-        }
+        Nodo nodoA = new Nodo();
+        nodoA.setValor("A");
+        Nodo nodoB = new Nodo();
+        nodoB.setValor("B");
+        Nodo nodoC = new Nodo();
+        nodoC.setValor("C");
+        Nodo nodoD = new Nodo();
+        nodoD.setValor("D");
+        Nodo nodoE = new Nodo();
+        nodoE.setValor("E");
         
-        Nodo frente = new Nodo();
-        Nodo ultimo = new Nodo();
-        frente = c.getCola()[0];
-        ultimo = c.getCola()[0];
-        c.setCabeza(frente);
-        c.setTope(ultimo);
+        c.encolarDerecha(nodoA);
+        c.encolarDerecha(nodoB);
+        c.encolarDerecha(nodoC);
+        c.imprimeCola();
         
-        c.getCola()[0].setValor('A');
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[1].setValor('B');
-        c.getCola()[2].setValor('C');
-        c.getCola()[0].setValor(null);
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[0].setValor('E');
-        c.setCabeza(c.getCola()[0]);
-        c.getCola()[1].setValor('D');
-        c.getCola()[2].setValor('B');
-        c.getCola()[3].setValor('C');
-        c.getCola()[5].setValor(null);
         
+        c.desencolar();
+        c.imprimeCola();
+
+        c.encolar(nodoD);
+        c.encolar(nodoE);
+        c.imprimeCola();
+        
+        c.desencolarDerecha();
         c.imprimeCola();
     }
     
