@@ -5,9 +5,11 @@ public class ArbolBinario {
     private int contadorNodos;
     private int contadorHojas;
     private int contadorNiveles;
+    public int iter;
 
     public ArbolBinario(){
         raiz = null;
+        iter = 0;
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -30,6 +32,24 @@ public class ArbolBinario {
                 temp.setIzquierdo(nodo);
             }
             contadorNodos++;
+    }
+
+    public void preOrden(Nodo padre, Nodo movil){
+        //SUBARBOL IZQUIERDO
+        if(padre != null){
+            System.out.println("NODO = "+padre.getDato());
+            if(padre.getIzquierdo() != null){
+                preOrden(padre.getIzquierdo(), movil);
+            }else{
+                System.out.println("NODO = "+padre.getDato());
+                preOrden(padre.getPadre().getDerecho(), movil);
+            }
+        }else{
+            
+        }
+        
+        iter++;
+        System.out.println("ITERACIONES = "+iter);
     }
 
     public void asignaHojas(){
