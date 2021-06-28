@@ -4,6 +4,7 @@ public class Nodo {
     private Object dato;
     private Nodo izquierdo;
     private Nodo derecho;
+    private Nodo padre;
     
     public Nodo() {}
 
@@ -33,5 +34,13 @@ public class Nodo {
 
     public void setDerecho(Nodo derecho){
         this.derecho = derecho;
+    }
+
+    public Nodo getPadre(){
+        return padre;
+    }
+
+    public void setPadre(Nodo padre){
+        this.padre = padre;
     }
 }
