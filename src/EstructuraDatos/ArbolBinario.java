@@ -6,10 +6,12 @@ public class ArbolBinario {
     private int contadorHojas;
     private int contadorNiveles;
     public int iter;
+    public int nivel;
 
     public ArbolBinario(){
         raiz = null;
         iter = 0;
+        nivel = 0;
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -35,45 +37,41 @@ public class ArbolBinario {
     }
 
     public void preOrden(Nodo padre){
-        //SUBARBOL IZQUIERDO
-        
         if(padre != null){
-            System.out.println(padre.getDato());
-            if(padre.getIzquierdo() != null){
-                preOrden(padre.getIzquierdo());
-                preOrden(padre.getDerecho());
-            }
+            System.out.print(padre.getDato()+" ");
+            preOrden(padre.getIzquierdo());
+            preOrden(padre.getDerecho());
+
             if(padre.getIzquierdo() == null && padre.getDerecho() == null){
                 padre.setTipo("hoja");
                 contadorHojas++;
             }
         }
-        
     }
 
-    public void imprimir(){
-        Nodo temp;
-        int nivel = 1;
+    public void inOrden(Nodo padre){
+        if(padre != null){
+            inOrden(padre.getIzquierdo());
+            System.out.print(padre.getDato()+" ");
+            inOrden(padre.getDerecho());
+        }
+    }
 
-        System.out.println("NIVEL--> 0 = RAIZ"
-                            +"\n******************"
-                            +"\n"+raiz.getDato());
-        System.out.println("");
-        
-        temp = raiz.getIzquierdo();
-        while(temp != null){
-            System.out.println("NIVEL-->"+nivel
-                            +"\n*************");
-            
-            System.out.println("IZQ "+temp.getDato());
+    public void postOrden(Nodo padre){
+        if(padre != null){
+            postOrden(padre.getIzquierdo());
+            postOrden(padre.getDerecho());
+            System.out.print(padre.getDato()+" ");
+        }
+    }
 
-            if(temp.getPadre().getDerecho() != null){
-                System.out.println("DER "+temp.getPadre().getDerecho().getDato());
+    public void imprimir(Nodo nodo){
+        if(nodo != null){
+            if(nodo.getIzquierdo() != null || nodo.getDerecho() != null){
+                imprimir(nodo.getIzquierdo());
+                System.out.println(nodo.getDato());
+                imprimir(nodo.getDerecho());
             }
-            System.out.println("");
-
-            temp = temp.getIzquierdo();
-            nivel++;
         }
     }
     

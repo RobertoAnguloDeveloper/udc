@@ -30,5 +30,23 @@ public class Pruebas {
 
         //System.out.println("PADRE DE B = "+nodo2.getPadre().getDato());
         arbol.preOrden(nodo1);
+        /*arbol.imprimir(nodo1);
+        System.out.println(nodo10.getDato()+" = "+nodo10.getTipo());
+        System.out.println("HOJAS = "+arbol.getContadorHojas());
+        System.out.println("NODO = "+arbol.getRaiz().getDerecho().getDerecho().getDato());
+        System.out.println("NIVEL = "+arbol.getRaiz().getDerecho().getDerecho().getNivel());
+        System.out.println("TIPO = "+arbol.getRaiz().getDerecho().getDerecho().getTipo());
+        System.out.println("CANTIDAD DE NODOS = "+arbol.getContadorNodos());*/
+
+        /*System.out.println(arbol.getRaiz().getDato()+" <---Nivel 0");
+        System.out.println(arbol.getRaiz().getIzquierdo().getDato()+" - "+arbol.getRaiz().getDerecho().getDato()+" <---Nivel 1");
+        System.out.println(arbol.getRaiz().getIzquierdo().getIzquierdo().getDato()+" - "
+                            +arbol.getRaiz().getIzquierdo().getDerecho().getDato()+" - "
+                            +arbol.getRaiz().getDerecho().getIzquierdo().getDato()+" - "
+                            +arbol.getRaiz().getDerecho().getDerecho().getDato()+" <---Nivel 2");
+        System.out.println(arbol.getRaiz().getIzquierdo().getDerecho().getIzquierdo().getDato()+" - "
+                            +arbol.getRaiz().getDerecho().getIzquierdo().getIzquierdo().getDato()+" - "
+                            +arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato()+" <---Nivel 3");
+        System.out.println(arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getIzquierdo().getDato()+" <---Nivel 4");*/
     }
 }
