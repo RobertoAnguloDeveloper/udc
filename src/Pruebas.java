@@ -29,6 +29,6 @@ public class Pruebas {
         arbol.agregarNodo(nodo11, nodo10);
 
         //System.out.println("PADRE DE B = "+nodo2.getPadre().getDato());
-        arbol.preOrden(nodo1, nodo1);
+        arbol.preOrden(nodo1);
     }
 }

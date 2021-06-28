@@ -34,18 +34,16 @@ public class ArbolBinario {
             contadorNodos++;
     }
 
-    public void preOrden(Nodo padre, Nodo movil){
+    public void preOrden(Nodo padre){
         //SUBARBOL IZQUIERDO
         if(padre != null){
             System.out.println("NODO = "+padre.getDato());
             if(padre.getIzquierdo() != null){
-                preOrden(padre.getIzquierdo(), movil);
-            }else{
-                System.out.println("NODO = "+padre.getDato());
-                preOrden(padre.getPadre().getDerecho(), movil);
+                preOrden(padre.getIzquierdo());
+            }else if(padre.getDerecho() != null){
+                System.out.println("ENTRO");
+                preOrden(padre.getPadre().getDerecho());
             }
-        }else{
-            
         }
         
         iter++;
