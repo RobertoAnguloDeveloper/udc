@@ -40,14 +40,9 @@ public class ArbolBinario {
             System.out.println("NODO = "+padre.getDato());
             if(padre.getIzquierdo() != null){
                 preOrden(padre.getIzquierdo());
-            }else if(padre.getDerecho() != null){
-                System.out.println("ENTRO");
-                preOrden(padre.getPadre().getDerecho());
+                preOrden(padre.getDerecho());
             }
         }
-        
-        iter++;
-        System.out.println("ITERACIONES = "+iter);
     }
 
     public void asignaHojas(){
@@ -55,7 +50,7 @@ public class ArbolBinario {
 
         while (temp != null && !temp.getTipo().equals("hoja")) {
             if(temp.getIzquierdo() == null){
-                System.out.println("TREH = "+temp.getDato());
+                System.out.println("LEAF = "+temp.getDato());
                 temp.setTipo("hoja");
                 temp = temp.getPadre().getDerecho();
             }else {
@@ -66,7 +61,7 @@ public class ArbolBinario {
         temp = raiz.getDerecho();
         while (temp != null && !temp.getTipo().equals("hoja")) {
             if(temp.getIzquierdo() == null){
-                System.out.println("TREH = "+temp.getDato());
+                System.out.println("LEAF = "+temp.getDato());
                 temp.setTipo("hoja");
                 temp = temp.getPadre().getDerecho();
             }else {
