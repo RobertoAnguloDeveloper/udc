@@ -25,22 +25,24 @@ public class ArbolBinario {
         Nodo temp;
         int nivel = 1;
 
-        System.out.println("RAIZ"
-                            +"\n*****"
+        System.out.println("NIVEL--> 0 = RAIZ"
+                            +"\n******************"
                             +"\n"+raiz.getDato());
-        System.out.println("SUBARBOL IZQUIERDO"
-                            +"\n*****************");
+        
         temp = raiz.getIzquierdo();
         while(temp != null){
             System.out.println("NIVEL-->"+nivel
-                            +"\n*****************");
+                            +"\n*************");
             
             System.out.println("IZQ "+temp.getDato());
-            if(temp.getDerecho() != null){
-                System.out.println("DER "+temp.getDerecho().getDato());
+
+            if(temp.getPadre().getDerecho() != null){
+                System.out.println("DER "+temp.getPadre().getDerecho().getDato());
             }
-            nivel++;
+            System.out.println("");
+
             temp = temp.getIzquierdo();
+            nivel++;
         }
     }
     

@@ -9,20 +9,24 @@ public class Ej1 {
         Nodo nodo2 = new Nodo(6);
         Nodo nodo3 = new Nodo(7);
         Nodo nodo4 = new Nodo(8);
+        Nodo nodo5 = new Nodo("x");
         ArbolBinario arbol = new ArbolBinario();
 
         arbol.agregarNodo(nodo1, null);
         arbol.agregarNodo(nodo2, nodo1);
         arbol.agregarNodo(nodo3, nodo2);
         arbol.agregarNodo(nodo4, nodo2);
+        arbol.agregarNodo(nodo5, nodo1);
 
+        /*
         System.out.println("RAIZ");
         System.out.println(arbol.getRaiz().getDato());
         System.out.println("Nivel 1");
         System.out.println(arbol.getRaiz().getIzquierdo().getDato() + "<->NULL");
         System.out.println("Nivel 2");
         System.out.println(arbol.getRaiz().getIzquierdo().getIzquierdo().getDato() + "<->"
-                + arbol.getRaiz().getIzquierdo().getDerecho().getDato());
-        // arbol.imprimir();
+                + arbol.getRaiz().getIzquierdo().getDerecho().getDato());*/
+
+        arbol.imprimir();
     }
 }
