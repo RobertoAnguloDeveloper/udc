@@ -29,11 +29,13 @@ public class Ej1 {
         arbol.agregarNodo(nodo9, nodo6);
         arbol.agregarNodo(nodo10, nodo6);
         arbol.agregarNodo(nodo11, nodo10);
+        arbol.asignaHojas();
 
         arbol.imprimir();
         //System.out.println("HOJAS = "+arbol.getContadorHojas());
-        System.out.println("NODO = "+arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getIzquierdo().getDato());
-        System.out.println("NIVEL = "+arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getIzquierdo().getNivel());
+        System.out.println("NODO = "+arbol.getRaiz().getDerecho().getDerecho().getDato());
+        System.out.println("NIVEL = "+arbol.getRaiz().getDerecho().getDerecho().getNivel());
+        System.out.println("TIPO = "+arbol.getRaiz().getDerecho().getDerecho().getTipo());
         System.out.println("CANTIDAD DE NODOS = "+arbol.getContadorNodos());
     }
 }

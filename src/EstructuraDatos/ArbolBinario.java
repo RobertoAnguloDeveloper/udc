@@ -19,15 +19,42 @@ public class ArbolBinario {
             raiz = nodo;
         }else if(temp.getIzquierdo() != null){
             nodo.setNivel(contadorNiveles);
+            nodo.setTipo("padre");
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
             contadorNiveles++;
             }else {
                 nodo.setNivel(contadorNiveles);
+                nodo.setTipo("padre");
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
             }
             contadorNodos++;
+    }
+
+    public void asignaHojas(){
+        Nodo temp = raiz;
+
+        while (temp != null && !temp.getTipo().equals("hoja")) {
+            if(temp.getIzquierdo() == null){
+                System.out.println("TREH = "+temp.getDato());
+                temp.setTipo("hoja");
+                temp = temp.getPadre().getDerecho();
+            }else {
+                temp = temp.getIzquierdo();
+            }
+        }
+
+        temp = raiz.getDerecho();
+        while (temp != null && !temp.getTipo().equals("hoja")) {
+            if(temp.getIzquierdo() == null){
+                System.out.println("TREH = "+temp.getDato());
+                temp.setTipo("hoja");
+                temp = temp.getPadre().getDerecho();
+            }else {
+                temp = temp.getIzquierdo();
+            }
+        }
     }
 
     public void imprimir(){
@@ -50,10 +77,6 @@ public class ArbolBinario {
                 System.out.println("DER "+temp.getPadre().getDerecho().getDato());
             }
             System.out.println("");
-
-            if(temp.getIzquierdo() == null && temp.getDerecho() == null){
-                contadorHojas++;
-            }
 
             temp = temp.getIzquierdo();
             nivel++;
