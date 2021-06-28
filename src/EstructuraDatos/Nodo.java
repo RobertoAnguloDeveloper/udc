@@ -5,6 +5,8 @@ public class Nodo {
     private Nodo izquierdo;
     private Nodo derecho;
     private Nodo padre;
+    private int nivel;
+    private String tipo;
     
     public Nodo() {}
 
@@ -42,5 +44,21 @@ public class Nodo {
 
     public void setPadre(Nodo padre){
         this.padre = padre;
+    }
+
+    public int getNivel(){
+        return nivel;
+    }
+
+    public void setNivel(int nivel){
+        this.nivel = nivel;
+    }
+
+    public String getTipo(){
+        return tipo;
+    }
+
+    public void setTipo(String tipo){
+        this.tipo = tipo;
     }
 }

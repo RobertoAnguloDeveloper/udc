@@ -2,6 +2,9 @@ package EstructuraDatos;
 
 public class ArbolBinario {
     private Nodo raiz;
+    private int contadorNodos;
+    private int contadorHojas;
+    private int contadorNiveles;
 
     public ArbolBinario(){
         raiz = null;
@@ -11,14 +14,20 @@ public class ArbolBinario {
         Nodo temp = padre;
         
         if(raiz == null){
+            nodo.setNivel(0);
+            nodo.setTipo("raiz");
             raiz = nodo;
         }else if(temp.getIzquierdo() != null){
+            nodo.setNivel(contadorNiveles);
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
+            contadorNiveles++;
             }else {
+                nodo.setNivel(contadorNiveles);
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
             }
+            contadorNodos++;
     }
 
     public void imprimir(){
@@ -28,6 +37,7 @@ public class ArbolBinario {
         System.out.println("NIVEL--> 0 = RAIZ"
                             +"\n******************"
                             +"\n"+raiz.getDato());
+        System.out.println("");
         
         temp = raiz.getIzquierdo();
         while(temp != null){
@@ -41,6 +51,10 @@ public class ArbolBinario {
             }
             System.out.println("");
 
+            if(temp.getIzquierdo() == null && temp.getDerecho() == null){
+                contadorHojas++;
+            }
+
             temp = temp.getIzquierdo();
             nivel++;
         }
@@ -48,5 +62,13 @@ public class ArbolBinario {
     
     public Nodo getRaiz(){
         return raiz;
+    }
+
+    public int getContadorNodos(){
+        return contadorNodos;
+    }
+
+    public int getContadorHojas(){
+        return contadorHojas;
     }
 }
