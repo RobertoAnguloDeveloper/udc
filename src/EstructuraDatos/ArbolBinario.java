@@ -36,38 +36,19 @@ public class ArbolBinario {
 
     public void preOrden(Nodo padre){
         //SUBARBOL IZQUIERDO
+        
         if(padre != null){
-            System.out.println("NODO = "+padre.getDato());
+            System.out.println(padre.getDato());
             if(padre.getIzquierdo() != null){
                 preOrden(padre.getIzquierdo());
                 preOrden(padre.getDerecho());
             }
-        }
-    }
-
-    public void asignaHojas(){
-        Nodo temp = raiz;
-
-        while (temp != null && !temp.getTipo().equals("hoja")) {
-            if(temp.getIzquierdo() == null){
-                System.out.println("LEAF = "+temp.getDato());
-                temp.setTipo("hoja");
-                temp = temp.getPadre().getDerecho();
-            }else {
-                temp = temp.getIzquierdo();
+            if(padre.getIzquierdo() == null && padre.getDerecho() == null){
+                padre.setTipo("hoja");
+                contadorHojas++;
             }
         }
-
-        temp = raiz.getDerecho();
-        while (temp != null && !temp.getTipo().equals("hoja")) {
-            if(temp.getIzquierdo() == null){
-                System.out.println("LEAF = "+temp.getDato());
-                temp.setTipo("hoja");
-                temp = temp.getPadre().getDerecho();
-            }else {
-                temp = temp.getIzquierdo();
-            }
-        }
+        
     }
 
     public void imprimir(){
