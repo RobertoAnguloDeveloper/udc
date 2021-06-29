@@ -1,8 +1,5 @@
 package Ej3;
 
-import java.util.Map;
-import java.util.TreeMap;
-
 import EstructuraDatos.ArbolBinario;
 import EstructuraDatos.Nodo;
 
@@ -45,7 +42,7 @@ public class Ej3 {
 
         arbolA.asignarNivel(nodo1, 0);
         arbolA.imprimir();
-        
+
         // ARBOL INTERCAMBIADO
         System.out.println();
         System.out.println("ARBOL INTERCAMBIADO");
