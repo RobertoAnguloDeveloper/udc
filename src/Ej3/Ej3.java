@@ -28,7 +28,7 @@ public class Ej3 {
 
         //System.out.println("NIVELES MAX = "+arbolA.getContadorNiveles());
         
-        // ARBOL ORIGINAL
+        /*// ARBOL ORIGINAL
         System.out.println("ARBOL ORIGINAL");
         System.out.println("***************************");
         System.out.println(arbolA.getRaiz().getDato());
@@ -36,14 +36,14 @@ public class Ej3 {
         System.out.println(arbolA.getRaiz().getIzquierdo().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDato()
                 +" - "+ arbolA.getRaiz().getDerecho().getIzquierdo().getDato());
         System.out.println(arbolA.getRaiz().getIzquierdo().getDerecho().getIzquierdo().getDato() 
-                + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDerecho().getDato());
+                + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDerecho().getDato());*/
 
         arbolA.intercambiarSubarbol(nodo1);
 
         arbolA.asignarNivel(nodo1, 0);
         arbolA.imprimir();
 
-        // ARBOL INTERCAMBIADO
+        /*// ARBOL INTERCAMBIADO
         System.out.println();
         System.out.println("ARBOL INTERCAMBIADO");
         System.out.println("***************************");
@@ -53,6 +53,6 @@ public class Ej3 {
                 + arbolA.getRaiz().getDerecho().getIzquierdo().getDato() + " - "
                 + arbolA.getRaiz().getDerecho().getDerecho().getDato());
         System.out.println(arbolA.getRaiz().getDerecho().getIzquierdo().getIzquierdo().getDato() + " - "
-                + arbolA.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato());
+                + arbolA.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato());*/
     }
 }

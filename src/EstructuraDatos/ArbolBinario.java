@@ -155,8 +155,12 @@ public class ArbolBinario {
     }
 
     public void imprimir(){
-        for (Nodo nodo : nodos) {
+        /*for (Nodo nodo : nodos) {
             System.out.println(nodo.getDato()+" NIVEL = "+nodo.getNivel());
+        }*/
+
+        for (int i = 0; i < nodos.size(); i++) {
+            System.out.print(nodos.get(i).getDato());
         }
     }
 
