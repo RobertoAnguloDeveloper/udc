@@ -36,17 +36,30 @@ public class Ej2 {
         arbol.agregarNodo(nodoNum12, nodoNum11);
 
         System.out.println("CANTIDAD DE NODOS = "+arbol.getContadorNodos());
+        System.out.println("*************************");
         System.out.println("VALOR MAYOR = "+arbol.valorMayor());
+        System.out.println("*************************");
         System.out.println("VALOR PROMEDIO = "+arbol.promedio());
+        System.out.println("*************************");
 
-        ArrayList<Object> hojas = arbol.getHojas();
+        ArrayList<Nodo> hojas = arbol.getHojas();
+        ArrayList<Nodo> internos = arbol.getInternos();
 
         System.out.println();
         System.out.println("HOJAS");
-        System.out.println("****************");
+        System.out.println("*************************");
         for (int i = 0; i < hojas.size(); i++) {
-            System.out.print(hojas.get(i)+" ");
+            System.out.print(hojas.get(i).getDato()+" ");
         }
-        System.out.println("\n****************");
+        System.out.println("\n*************************");
+
+        System.out.println();
+        System.out.println("INTERNOS");
+        System.out.println("*************************");
+        for (int i = 0; i < internos.size(); i++) {
+            System.out.print(internos.get(i).getDato()+" ");
+        }
+        System.out.println("\n*************************");
+
     }
 }

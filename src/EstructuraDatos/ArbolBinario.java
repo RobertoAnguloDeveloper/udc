@@ -9,14 +9,16 @@ public class ArbolBinario {
     private int contadorHojas;
     private int contadorNiveles;
     private ArrayList<Integer> numeros;
-    private ArrayList<Object> hojas;
-    private ArrayList<Object> internos;
+    private ArrayList<Nodo> hojas;
+    private ArrayList<Nodo> nodos;
+    private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
         raiz = null;
         numeros = new ArrayList<Integer>();
-        hojas = new ArrayList<Object>();
-        internos = new ArrayList<Object>();
+        hojas = new ArrayList<Nodo>();
+        internos = new ArrayList<Nodo>();
+        nodos = new ArrayList<Nodo>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -70,16 +72,24 @@ public class ArbolBinario {
         }
     }
 
+    public void arbolToArrayNumeros(Nodo padre){
+        if(padre != null){
+            arbolToArrayNumeros(padre.getIzquierdo());
+            numeros.add(((Number) padre.getDato()).intValue());
+            arbolToArrayNumeros(padre.getDerecho());
+        }
+    }
+
     public void arbolToArray(Nodo padre){
         if(padre != null){
             arbolToArray(padre.getIzquierdo());
-            numeros.add(((Number) padre.getDato()).intValue());
+            nodos.add(padre);
             arbolToArray(padre.getDerecho());
         }
     }
 
     public int valorMayor(){
-        arbolToArray(raiz);
+        arbolToArrayNumeros(raiz);
         Collections.sort(numeros);
         return numeros.get(numeros.size()-1);
     }
@@ -99,7 +109,7 @@ public class ArbolBinario {
 
             if(padre.getIzquierdo() == null && padre.getDerecho() == null){
                 padre.setTipo("hoja");
-                hojas.add(padre.getDato());
+                hojas.add(padre);
                 contadorHojas++;
             }
         }
@@ -121,12 +131,19 @@ public class ArbolBinario {
         return numeros;
     }
 
-    public ArrayList<Object> getHojas(){
+    public ArrayList<Nodo> getHojas(){
         tomarHojas(raiz);
         return hojas;
     }
 
-    public ArrayList<Object> getInternos(){
+    public ArrayList<Nodo> getInternos(){
+        arbolToArray(raiz);
+        internos.add(raiz);
+        for (int i = 0; i < nodos.size(); i++) {
+            if(nodos.get(i).getTipo() == "padre"){
+                internos.add(nodos.get(i));
+            }
+        }
         return internos;
     }
 }
