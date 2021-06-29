@@ -11,6 +11,7 @@ public class ArbolBinario {
     private ArrayList<Integer> numeros;
     private ArrayList<Nodo> hojas;
     private ArrayList<Nodo> nodos;
+    private ArrayList<ArrayList<Nodo>> nodosPorNivel;
     private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
@@ -20,6 +21,7 @@ public class ArbolBinario {
         hojas = new ArrayList<Nodo>();
         internos = new ArrayList<Nodo>();
         nodos = new ArrayList<Nodo>();
+        nodosPorNivel = new ArrayList<ArrayList<Nodo>>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -81,6 +83,10 @@ public class ArbolBinario {
         }
     }
 
+    public void nodosNivelToArray(){
+
+    }
+
     public void arbolToArray(Nodo padre){
         if(padre != null){
             arbolToArray(padre.getIzquierdo());
@@ -104,6 +110,7 @@ public class ArbolBinario {
     }
 
     public void tomarHojas(Nodo padre){
+        asignarNivel(padre, 0);
         if(padre != null){
             tomarHojas(padre.getIzquierdo());
             tomarHojas(padre.getDerecho());
@@ -116,20 +123,19 @@ public class ArbolBinario {
         }
     }
 
-    public void asignarNivel(Nodo padre, int nivel){
-        
-        if(padre == null || nivel > contadorNiveles){
+    public void asignarNivel(Nodo padre, int nivelInicial){
+        if(padre == null || nivelInicial > contadorNiveles){
             return;
         }
 
-        if(nivel == 0){
+        if(nivelInicial == 0){
             padre.setNivel(0);
         }else{
-            padre.setNivel(nivel);
+            padre.setNivel(nivelInicial);
         }
 
-        asignarNivel(padre.getIzquierdo(), nivel+1);
-        asignarNivel(padre.getDerecho(), nivel+1);
+        asignarNivel(padre.getIzquierdo(), nivelInicial+1);
+        asignarNivel(padre.getDerecho(), nivelInicial+1);
     }
 
     public void intercambiarSubarbol(Nodo padre){
@@ -159,9 +165,9 @@ public class ArbolBinario {
             System.out.println(nodo.getDato()+" NIVEL = "+nodo.getNivel());
         }*/
 
-        for (int i = 0; i < nodos.size(); i++) {
+        /*for (int i = 0; i < nodos.size(); i++) {
             System.out.print(nodos.get(i).getDato());
-        }
+        }*/
     }
 
     public Nodo getRaiz(){
