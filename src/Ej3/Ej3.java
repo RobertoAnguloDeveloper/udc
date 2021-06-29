@@ -8,7 +8,7 @@ import EstructuraDatos.Nodo;
 
 public class Ej3 {
     public static void main(String[] args) {
-        //ARBOL A
+        // ARBOL A
         Nodo nodo1 = new Nodo('A');
         Nodo nodo2 = new Nodo('B');
         Nodo nodo3 = new Nodo('C');
@@ -28,24 +28,34 @@ public class Ej3 {
         arbolA.agregarNodo(nodo6, nodo3);
         arbolA.agregarNodo(nodo7, nodo5);
         arbolA.agregarNodo(nodo8, nodo5);
+
+        //System.out.println("NIVELES MAX = "+arbolA.getContadorNiveles());
         
-        
-        //arbolA.imprimir();
-        //ARBOL ORIGINAL
+        // ARBOL ORIGINAL
         System.out.println("ARBOL ORIGINAL");
         System.out.println("***************************");
         System.out.println(arbolA.getRaiz().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDato()+" - "+arbolA.getRaiz().getDerecho().getDato());
+        System.out.println(arbolA.getRaiz().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getDerecho().getDato());
+        System.out.println(arbolA.getRaiz().getIzquierdo().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDato()
+                +" - "+ arbolA.getRaiz().getDerecho().getIzquierdo().getDato());
+        System.out.println(arbolA.getRaiz().getIzquierdo().getDerecho().getIzquierdo().getDato() 
+                + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDerecho().getDato());
 
-        /*Nodo temp = arbolA.getRaiz().getIzquierdo();
-        arbolA.getRaiz().setIzquierdo(arbolA.getRaiz().getDerecho());
-        arbolA.getRaiz().setDerecho(temp);*/
         arbolA.intercambiarSubarbol(nodo1);
-        //ARBOL INTERCAMBIADO
+
+        arbolA.asignarNivel(nodo1, 0);
+        arbolA.imprimir();
+        
+        // ARBOL INTERCAMBIADO
+        System.out.println();
         System.out.println("ARBOL INTERCAMBIADO");
         System.out.println("***************************");
         System.out.println(arbolA.getRaiz().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDato()+" - "+arbolA.getRaiz().getDerecho().getDato());
-        //System.out.println(arbolA.getRaiz().getIzquierdo().getIzquierdo().getDato());
+        System.out.println(arbolA.getRaiz().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getDerecho().getDato());
+        System.out.println(arbolA.getRaiz().getIzquierdo().getDerecho().getDato() + " - "
+                + arbolA.getRaiz().getDerecho().getIzquierdo().getDato() + " - "
+                + arbolA.getRaiz().getDerecho().getDerecho().getDato());
+        System.out.println(arbolA.getRaiz().getDerecho().getIzquierdo().getIzquierdo().getDato() + " - "
+                + arbolA.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato());
     }
 }

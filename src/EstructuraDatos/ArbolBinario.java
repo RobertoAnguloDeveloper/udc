@@ -2,7 +2,6 @@ package EstructuraDatos;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ArbolBinario {
     private Nodo raiz;
@@ -27,19 +26,16 @@ public class ArbolBinario {
         Nodo temp = padre;
         
         if(raiz == null){
-            nodo.setNivel(0);
             nodo.setTipo("raiz");
             raiz = nodo;
             nodos.add(nodo);
         }else if(temp.getIzquierdo() != null){
-            nodo.setNivel(contadorNiveles);
             nodo.setTipo("padre");
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
             nodos.add(nodo);
             contadorNiveles++;
             }else {
-                nodo.setNivel(contadorNiveles);
                 nodo.setTipo("padre");
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
@@ -120,14 +116,41 @@ public class ArbolBinario {
         }
     }
 
-    public void intercambiarSubarbol(Nodo padre){
-        Nodo temp;
+    public void asignarNivel(Nodo padre, int nivel){
         
-        if(padre != null){
-            temp = padre.getIzquierdo();
-            padre.setIzquierdo(padre.getDerecho());
-            padre.setDerecho(temp);
+        if(padre == null || nivel > contadorNiveles){
+            return;
+        }
+
+        if(nivel == 0){
+            padre.setNivel(0);
+        }else{
+            padre.setNivel(nivel);
+        }
+
+        asignarNivel(padre.getIzquierdo(), nivel+1);
+        asignarNivel(padre.getDerecho(), nivel+1);
+    }
+
+    public void intercambiarSubarbol(Nodo padre){
+        if(padre == null){
+            return;
+        }
+        
+        if(padre.getIzquierdo() == null && padre.getDerecho() == null){
+            return;
+        }
+
+        Nodo temp = padre.getIzquierdo();
+        padre.setIzquierdo(padre.getDerecho());
+        padre.setDerecho(temp);
+
+        if(padre.getIzquierdo() != null){
             intercambiarSubarbol(padre.getIzquierdo());
+        }
+
+        if(padre.getDerecho() != null){
+            intercambiarSubarbol(padre.getDerecho());
         }
     }
 
@@ -147,6 +170,10 @@ public class ArbolBinario {
 
     public int getContadorHojas(){
         return contadorHojas;
+    }
+
+    public int getContadorNiveles(){
+        return contadorNiveles;
     }
 
     public ArrayList<Integer> getNumeros(){
