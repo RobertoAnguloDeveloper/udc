@@ -87,13 +87,32 @@ public class ArbolBinario {
         int nivelTemp = 0;
         int cuentaNodos = 0;
 
-        ArrayList<Nodo> listaTemp = new ArrayList<Nodo>();
+        ArrayList<Nodo> filaTemp = new ArrayList<Nodo>();
 
         for (int i = 0; i < nodos.size(); i++) {
-            listaTemp = new ArrayList<Nodo>();
+            filaTemp = new ArrayList<Nodo>();
             nivelTemp = nodos.get(i).getNivel();
-            listaTemp.add(nodos.get(i));
-            nodosPorNivel.add(listaTemp);
+
+            if(nodos.get(i).getTipo().equals("raiz")){
+                filaTemp.add(nodos.get(i));
+            }else{
+                for (int j = 1; j < nodos.size(); j++) {
+                    if(nodos.get(j).getNivel() == nivelTemp){
+                        filaTemp.add(nodos.get(j));
+                    }
+                }
+            }
+            nodosPorNivel.add(filaTemp);
+        }
+
+        //System.out.println("MATRIZ [1][0] = "+nodosPorNivel.get(1).get(0).getDato());
+        System.out.println("FILAS = "+nodosPorNivel.size());
+        System.out.println("COLUMNAS = "+nodosPorNivel.get(0).size());
+        
+        for (int i = 0; i < nodosPorNivel.size(); i++) {
+            for (int j = 0; j < nodosPorNivel.get(0).size(); j++) {
+                System.out.println(nodosPorNivel.get(i).get(j).getDato()+" NIVEL = "+i);
+            }
         }
     }
 

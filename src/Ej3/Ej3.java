@@ -41,6 +41,7 @@ public class Ej3 {
         arbolA.intercambiarSubarbol(nodo1);
 
         arbolA.asignarNivel(nodo1, 0);
+        arbolA.nodosNivelToArray();
         arbolA.imprimir();
 
         /*// ARBOL INTERCAMBIADO
