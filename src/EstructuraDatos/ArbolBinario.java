@@ -84,7 +84,17 @@ public class ArbolBinario {
     }
 
     public void nodosNivelToArray(){
+        int nivelTemp = 0;
+        int cuentaNodos = 0;
 
+        ArrayList<Nodo> listaTemp = new ArrayList<Nodo>();
+
+        for (int i = 0; i < nodos.size(); i++) {
+            listaTemp = new ArrayList<Nodo>();
+            nivelTemp = nodos.get(i).getNivel();
+            listaTemp.add(nodos.get(i));
+            nodosPorNivel.add(listaTemp);
+        }
     }
 
     public void arbolToArray(Nodo padre){
