@@ -46,7 +46,7 @@ public class Ej2 {
         ArrayList<Nodo> internos = arbol.getInternos();
 
         System.out.println();
-        System.out.println("HOJAS");
+        System.out.println("NODOS HOJA");
         System.out.println("*************************");
         for (int i = 0; i < hojas.size(); i++) {
             System.out.print(hojas.get(i).getDato()+" ");
@@ -54,7 +54,7 @@ public class Ej2 {
         System.out.println("\n*************************");
 
         System.out.println();
-        System.out.println("INTERNOS");
+        System.out.println("NODOS INTERNOS");
         System.out.println("*************************");
         for (int i = 0; i < internos.size(); i++) {
             System.out.print(internos.get(i).getDato()+" ");

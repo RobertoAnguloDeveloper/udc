@@ -2,6 +2,7 @@ package EstructuraDatos;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ArbolBinario {
     private Nodo raiz;
@@ -15,6 +16,7 @@ public class ArbolBinario {
 
     public ArbolBinario(){
         raiz = null;
+        contadorNiveles = 1;
         numeros = new ArrayList<Integer>();
         hojas = new ArrayList<Nodo>();
         internos = new ArrayList<Nodo>();
@@ -28,17 +30,20 @@ public class ArbolBinario {
             nodo.setNivel(0);
             nodo.setTipo("raiz");
             raiz = nodo;
+            nodos.add(nodo);
         }else if(temp.getIzquierdo() != null){
             nodo.setNivel(contadorNiveles);
             nodo.setTipo("padre");
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
+            nodos.add(nodo);
             contadorNiveles++;
             }else {
                 nodo.setNivel(contadorNiveles);
                 nodo.setTipo("padre");
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
+                nodos.add(nodo);
             }
             contadorNodos++;
     }
@@ -115,6 +120,23 @@ public class ArbolBinario {
         }
     }
 
+    public void intercambiarSubarbol(Nodo padre){
+        Nodo temp;
+        
+        if(padre != null){
+            temp = padre.getIzquierdo();
+            padre.setIzquierdo(padre.getDerecho());
+            padre.setDerecho(temp);
+            intercambiarSubarbol(padre.getIzquierdo());
+        }
+    }
+
+    public void imprimir(){
+        for (Nodo nodo : nodos) {
+            System.out.println(nodo.getDato()+" NIVEL = "+nodo.getNivel());
+        }
+    }
+
     public Nodo getRaiz(){
         return raiz;
     }
@@ -137,7 +159,6 @@ public class ArbolBinario {
     }
 
     public ArrayList<Nodo> getInternos(){
-        arbolToArray(raiz);
         internos.add(raiz);
         for (int i = 0; i < nodos.size(); i++) {
             if(nodos.get(i).getTipo() == "padre"){
