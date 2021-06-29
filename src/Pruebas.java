@@ -1,9 +1,11 @@
+import java.util.ArrayList;
+
 import EstructuraDatos.ArbolBinario;
 import EstructuraDatos.Nodo;
 
 public class Pruebas {
     public static void main(String[] args) throws Exception {
-        Nodo nodo1 = new Nodo('K');
+        /*Nodo nodo1 = new Nodo('K');
         Nodo nodo2 = new Nodo('B');
         Nodo nodo3 = new Nodo('W');
         Nodo nodo4 = new Nodo('A');
@@ -26,11 +28,11 @@ public class Pruebas {
         arbol.agregarNodo(nodo8, nodo5);
         arbol.agregarNodo(nodo9, nodo6);
         arbol.agregarNodo(nodo10, nodo6);
-        arbol.agregarNodo(nodo11, nodo10);
+        arbol.agregarNodo(nodo11, nodo10);*/
 
         //System.out.println("PADRE DE B = "+nodo2.getPadre().getDato());
-        arbol.preOrden(nodo1);
-        /*arbol.imprimir(nodo1);
+        /*arbol.preOrden(nodo1);
+        arbol.imprimir(nodo1);
         System.out.println(nodo10.getDato()+" = "+nodo10.getTipo());
         System.out.println("HOJAS = "+arbol.getContadorHojas());
         System.out.println("NODO = "+arbol.getRaiz().getDerecho().getDerecho().getDato());
@@ -48,5 +50,27 @@ public class Pruebas {
                             +arbol.getRaiz().getDerecho().getIzquierdo().getIzquierdo().getDato()+" - "
                             +arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato()+" <---Nivel 3");
         System.out.println(arbol.getRaiz().getDerecho().getIzquierdo().getDerecho().getIzquierdo().getDato()+" <---Nivel 4");*/
+
+        /*ArrayList<ArrayList<Integer>> prueba = new ArrayList<ArrayList<Integer>>();
+
+        ArrayList<Integer> numeros = new ArrayList<Integer>();
+        ArrayList<Integer> numeros2 = new ArrayList<Integer>();
+
+        numeros.add(10);
+        numeros.add(4);
+        numeros.add(6);
+        numeros.add(7);
+
+        prueba.add(numeros);
+
+        numeros.add(3);
+        numeros.add(8);
+        numeros.add(9);
+        numeros.add(17);
+
+        prueba.add(numeros2);
+
+        System.out.println("FILAS = "+prueba.size());
+        System.out.println("COLUMNAS = "+prueba.get(0).size());*/
     }
 }

@@ -12,6 +12,7 @@ public class ArbolBinario {
     private ArrayList<Nodo> hojas;
     private ArrayList<Nodo> nodos;
     private ArrayList<ArrayList<Nodo>> nodosPorNivel;
+    private ArrayList<Nodo> filaTempCopia;
     private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
@@ -22,6 +23,7 @@ public class ArbolBinario {
         internos = new ArrayList<Nodo>();
         nodos = new ArrayList<Nodo>();
         nodosPorNivel = new ArrayList<ArrayList<Nodo>>();
+        filaTempCopia = new ArrayList<Nodo>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -86,6 +88,7 @@ public class ArbolBinario {
     public void nodosNivelToArray(){
         int nivelTemp = 0;
         int cuentaNodos = 0;
+        int indiceDeRepetido = 0;
 
         ArrayList<Nodo> filaTemp = new ArrayList<Nodo>();
 
@@ -99,21 +102,18 @@ public class ArbolBinario {
                 for (int j = 1; j < nodos.size(); j++) {
                     if(nodos.get(j).getNivel() == nivelTemp){
                         filaTemp.add(nodos.get(j));
+                        indiceDeRepetido = j;
                     }
                 }
             }
+
+            i = indiceDeRepetido + 1;
             nodosPorNivel.add(filaTemp);
+            filaTempCopia = filaTemp;
         }
 
-        //System.out.println("MATRIZ [1][0] = "+nodosPorNivel.get(1).get(0).getDato());
         System.out.println("FILAS = "+nodosPorNivel.size());
-        System.out.println("COLUMNAS = "+nodosPorNivel.get(0).size());
-        
-        for (int i = 0; i < nodosPorNivel.size(); i++) {
-            for (int j = 0; j < nodosPorNivel.get(0).size(); j++) {
-                System.out.println(nodosPorNivel.get(i).get(j).getDato()+" NIVEL = "+i);
-            }
-        }
+        System.out.println("COLUMNAS = "+nodosPorNivel.get(2).size());
     }
 
     public void arbolToArray(Nodo padre){
@@ -196,6 +196,19 @@ public class ArbolBinario {
 
         /*for (int i = 0; i < nodos.size(); i++) {
             System.out.print(nodos.get(i).getDato());
+        }*/
+
+        /*for (int i = 0; i < nodosPorNivel.size(); i++) {
+            for (int j = 0; j < nodosPorNivel.get(0).size(); j++) {
+                System.out.println("ORIGINAL = "+nodosPorNivel.get(i).get(j).getDato());
+                
+            }
+        }*/
+
+        System.out.println("MATRIZ[][] = "+nodosPorNivel.get(2).get(2).getDato());
+
+        /*for (Nodo nodo : filaTempCopia) {
+            System.out.println("COPIA = "+nodo.getDato());
         }*/
     }
 
