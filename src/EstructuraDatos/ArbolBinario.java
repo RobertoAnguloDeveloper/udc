@@ -2,7 +2,6 @@ package EstructuraDatos;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 public class ArbolBinario {
     private Nodo raiz;
@@ -13,7 +12,6 @@ public class ArbolBinario {
     private ArrayList<Nodo> hojas;
     private ArrayList<Nodo> nodos;
     private ArrayList<ArrayList<Nodo>> nodosPorNivel;
-    private ArrayList<Nodo> filaTempCopia;
     private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
@@ -24,7 +22,6 @@ public class ArbolBinario {
         internos = new ArrayList<Nodo>();
         nodos = new ArrayList<Nodo>();
         nodosPorNivel = new ArrayList<ArrayList<Nodo>>();
-        filaTempCopia = new ArrayList<Nodo>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
@@ -110,7 +107,6 @@ public class ArbolBinario {
 
             i = indiceDeRepetido + 1;
             nodosPorNivel.add(filaTemp);
-            filaTempCopia = filaTemp;
         }
     }
 
