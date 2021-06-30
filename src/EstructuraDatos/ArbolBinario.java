@@ -12,6 +12,7 @@ public class ArbolBinario {
     private ArrayList<Nodo> hojas;
     private ArrayList<Nodo> nodos;
     private ArrayList<ArrayList<Nodo>> nodosPorNivel;
+    private ArrayList<ArrayList<Nodo>> nodosPorNivelIntercambiado;
     private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
@@ -22,23 +23,21 @@ public class ArbolBinario {
         internos = new ArrayList<Nodo>();
         nodos = new ArrayList<Nodo>();
         nodosPorNivel = new ArrayList<ArrayList<Nodo>>();
+        nodosPorNivelIntercambiado = new ArrayList<ArrayList<Nodo>>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
         Nodo temp = padre;
         
         if(raiz == null){
-            nodo.setTipo("raiz");
             raiz = nodo;
             nodos.add(nodo);
         }else if(temp.getIzquierdo() != null){
-            nodo.setTipo("padre");
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
             nodos.add(nodo);
             contadorNiveles++;
             }else {
-                nodo.setTipo("padre");
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
                 nodos.add(nodo);
@@ -53,7 +52,6 @@ public class ArbolBinario {
             preOrden(padre.getDerecho());
 
             if(padre.getIzquierdo() == null && padre.getDerecho() == null){
-                padre.setTipo("hoja");
                 contadorHojas++;
             }
         }
@@ -85,7 +83,6 @@ public class ArbolBinario {
 
     public void nodosNivelToArray(){
         int nivelTemp = 0;
-        int cuentaNodos = 0;
         int indiceDeRepetido = 0;
 
         ArrayList<Nodo> filaTemp = new ArrayList<Nodo>();
@@ -139,7 +136,7 @@ public class ArbolBinario {
             tomarHojas(padre.getDerecho());
 
             if(padre.getIzquierdo() == null && padre.getDerecho() == null){
-                padre.setTipo("hoja");
+                //padre.setTipo("hoja");
                 hojas.add(padre);
                 contadorHojas++;
             }
@@ -159,6 +156,25 @@ public class ArbolBinario {
 
         asignarNivel(padre.getIzquierdo(), nivelInicial+1);
         asignarNivel(padre.getDerecho(), nivelInicial+1);
+    }
+
+    public void asignarTipo(Nodo padre){
+        if(padre == null){
+            return;
+        }
+
+        if(padre.getNivel() == 0){
+            padre.setTipo("raiz");
+        }else{
+            padre.setTipo("padre");
+        }
+
+        if(padre.getIzquierdo() == null && padre.getDerecho() == null){
+            padre.setTipo("hoja");
+        }
+
+        asignarTipo(padre.getIzquierdo());
+        asignarTipo(padre.getDerecho());
     }
 
     public void intercambiarSubarbol(Nodo padre){

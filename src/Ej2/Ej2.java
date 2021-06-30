@@ -34,6 +34,8 @@ public class Ej2 {
         arbol.agregarNodo(nodoNum10, nodoNum6);
         arbol.agregarNodo(nodoNum11, nodoNum10);
         arbol.agregarNodo(nodoNum12, nodoNum11);
+        arbol.asignarNivel(nodoNum1, 0);
+        arbol.asignarTipo(nodoNum1);
 
         System.out.println("CANTIDAD DE NODOS = "+arbol.getContadorNodos());
         System.out.println("*************************");

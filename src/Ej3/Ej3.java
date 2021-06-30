@@ -25,35 +25,25 @@ public class Ej3 {
         arbolA.agregarNodo(nodo6, nodo3);
         arbolA.agregarNodo(nodo7, nodo5);
         arbolA.agregarNodo(nodo8, nodo5);
+        arbolA.asignarNivel(nodo1, 0);
+        arbolA.asignarTipo(nodo1);
 
-        //System.out.println("NIVELES MAX = "+arbolA.getContadorNiveles());
-        
-        /*// ARBOL ORIGINAL
+        // ARBOL ORIGINAL
         System.out.println("ARBOL ORIGINAL");
         System.out.println("***************************");
-        System.out.println(arbolA.getRaiz().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getDerecho().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDato()
-                +" - "+ arbolA.getRaiz().getDerecho().getIzquierdo().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDerecho().getIzquierdo().getDato() 
-                + " - " + arbolA.getRaiz().getIzquierdo().getDerecho().getDerecho().getDato());*/
-
-        arbolA.intercambiarSubarbol(nodo1);
-
-        arbolA.asignarNivel(nodo1, 0);
         arbolA.nodosNivelToArray();
         arbolA.imprimir();
 
-        /*// ARBOL INTERCAMBIADO
+        arbolA.intercambiarSubarbol(nodo1);
+        //arbolA.arbolToArray(arbolA.getRaiz());
+        
+        //System.out.println("------CAMBIADO------"+arbolA.getRaiz().getIzquierdo().getDato());
+
+        // ARBOL INTERCAMBIADO
         System.out.println();
         System.out.println("ARBOL INTERCAMBIADO");
         System.out.println("***************************");
-        System.out.println(arbolA.getRaiz().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDato() + " - " + arbolA.getRaiz().getDerecho().getDato());
-        System.out.println(arbolA.getRaiz().getIzquierdo().getDerecho().getDato() + " - "
-                + arbolA.getRaiz().getDerecho().getIzquierdo().getDato() + " - "
-                + arbolA.getRaiz().getDerecho().getDerecho().getDato());
-        System.out.println(arbolA.getRaiz().getDerecho().getIzquierdo().getIzquierdo().getDato() + " - "
-                + arbolA.getRaiz().getDerecho().getIzquierdo().getDerecho().getDato());*/
+        
+        arbolA.imprimir();
     }
 }
