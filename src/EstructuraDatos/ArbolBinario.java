@@ -11,8 +11,6 @@ public class ArbolBinario {
     private ArrayList<Integer> numeros;
     private ArrayList<Nodo> hojas;
     private ArrayList<Nodo> nodos;
-    private ArrayList<ArrayList<Nodo>> nodosPorNivel;
-    private ArrayList<ArrayList<Nodo>> nodosPorNivelIntercambiado;
     private ArrayList<Nodo> internos;
 
     public ArbolBinario(){
@@ -22,22 +20,20 @@ public class ArbolBinario {
         hojas = new ArrayList<Nodo>();
         internos = new ArrayList<Nodo>();
         nodos = new ArrayList<Nodo>();
-        nodosPorNivel = new ArrayList<ArrayList<Nodo>>();
-        nodosPorNivelIntercambiado = new ArrayList<ArrayList<Nodo>>();
     }
     
     public void agregarNodo(Nodo nodo, Nodo padre){
-        Nodo temp = padre;
+        Nodo nodoAux1 = padre;
         
         if(raiz == null){
             raiz = nodo;
-        }else if(temp.getIzquierdo() != null){
-            nodo.setPadre(temp);
-            temp.setDerecho(nodo);
+        }else if(nodoAux1.getIzquierdo() != null){
+            nodo.setPadre(nodoAux1);
+            nodoAux1.setDerecho(nodo);
             contadorNiveles++;
             }else {
                 nodo.setPadre(padre);
-                temp.setIzquierdo(nodo);
+                nodoAux1.setIzquierdo(nodo);
             }
             contadorNodos++;
     }
@@ -70,19 +66,30 @@ public class ArbolBinario {
         }
     }
 
-    public void arbolToArray(Nodo padre, int nivelAComparar){
+    public void arbolToArray(Nodo padre, int iterador){
         if(padre != null){
-            
-            if(padre.getNivel() == nivelAComparar){
+            if(padre.getTipo().equals("raiz")){
                 nodos.add(padre);
-                nivelAComparar++;
-                if(!nodos.isEmpty()){
-                    
+            }else{
+                if(padre.getNivel() <= iterador){
+                    nodos.add(padre);
+                    iterador++;
                 }
             }
+            arbolToArray(padre.getIzquierdo(), iterador);
+            arbolToArray(padre.getDerecho(), iterador);
+        }
+    }
 
-            arbolToArray(padre.getIzquierdo(), nivelAComparar);
-            arbolToArray(padre.getDerecho(), nivelAComparar);
+    public void ordenarArbolArray(){
+        for (int i = 0; i < nodos.size(); i++) {
+            for (int j = 1; j < nodos.size()-i-1; j++) {
+                if(nodos.get(j).getNivel() > nodos.get(j+1).getNivel()){
+                    Nodo aux = nodos.get(j+1);
+                    nodos.set(j+1, nodos.get(j));
+                    nodos.set(j, aux);
+                }
+            }
         }
     }
 
@@ -91,42 +98,6 @@ public class ArbolBinario {
             arbolToArrayNumeros(padre.getIzquierdo());
             numeros.add(((Number) padre.getDato()).intValue());
             arbolToArrayNumeros(padre.getDerecho());
-        }
-    }
-
-    public void nodosNivelToArray(){
-        int nivelTemp = 0;
-        int indiceDeRepetido = 0;
-
-        ArrayList<Nodo> filaTemp = new ArrayList<Nodo>();
-
-        for (int i = 0; i < nodos.size(); i++) {
-            filaTemp = new ArrayList<Nodo>();
-            nivelTemp = nodos.get(i).getNivel();
-
-            //System.out.println(nodos.get(i).getDato()+" NIVELTEMP = "+nivelTemp);
-
-            if(nodos.get(i).getTipo().equals("raiz")){
-                filaTemp.add(nodos.get(i));
-            }else{
-                for (int j = 1; j < nodos.size(); j++) {
-                    if(nodos.get(j).getNivel() == nivelTemp){
-                        System.out.println(nodos.get(j).getDato()+" NIVEL = "+nodos.get(j).getNivel()+" NIVELTEMP = "+nivelTemp);
-                        filaTemp.add(nodos.get(j));
-                        indiceDeRepetido = j;
-                        System.out.println("I = "+i);
-                        System.out.println("J = "+j);
-                    }
-                }
-                
-                //i = indiceDeRepetido + 1;
-            }
-            
-            /*for (Nodo nodo : filaTemp) {
-                System.out.print(nodo.getDato()+" ");
-            }
-            System.out.println("");*/
-            nodosPorNivel.add(filaTemp);
         }
     }
 
@@ -200,9 +171,9 @@ public class ArbolBinario {
             return;
         }
 
-        Nodo temp = padre.getIzquierdo();
+        Nodo nodoAux1 = padre.getIzquierdo();
         padre.setIzquierdo(padre.getDerecho());
-        padre.setDerecho(temp);
+        padre.setDerecho(nodoAux1);
 
         if(padre.getIzquierdo() != null){
             intercambiarSubarbol(padre.getIzquierdo());
@@ -214,18 +185,17 @@ public class ArbolBinario {
     }
 
     public void imprimir(){
-        //System.out.print("PRUEBA = "+nodosPorNivel.get(1).get(1).getDato());
-        
-        /*for (int i = 0; i < nodosPorNivel.size(); i++) {
-            for (int j = 0; j <  nodosPorNivel.get(i).size(); j++) {
-                System.out.print(nodosPorNivel.get(i).get(j).getDato());
+        int nodoRepetido = 0;
+        for (int i = 0; i < nodos.size(); i++) {
+            System.out.print("NIVEL "+nodos.get(i).getNivel()+"-> ");
+            for (int j = 0; j < nodos.size(); j++) {
+                if(nodos.get(i).getNivel() == nodos.get(j).getNivel()){
+                    System.out.print(nodos.get(j).getDato()+" ");
+                    nodoRepetido = j;
+                }
             }
+            i = nodoRepetido + 1;
             System.out.println();
-        }*/
-
-        for (Nodo nodo : nodos) {
-            System.out.println(nodo.getDato()+"---->"+nodo.getNivel()+"---->"+nodo.getTipo());
-
         }
     }
 
@@ -262,5 +232,9 @@ public class ArbolBinario {
             }
         }
         return internos;
+    }
+
+    public ArrayList<Nodo> getNodos(){
+        return nodos;
     }
 }

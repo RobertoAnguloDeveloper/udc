@@ -27,23 +27,22 @@ public class Ej3 {
         arbolA.agregarNodo(nodo8, nodo5);
         arbolA.asignarNivel(nodo1, 0);
         arbolA.asignarTipo(nodo1);
-        arbolA.arbolToArray(nodo1, 0);
+        arbolA.arbolToArray(nodo1, 1);
+        arbolA.ordenarArbolArray();
 
         // ARBOL ORIGINAL
         System.out.println("ARBOL ORIGINAL");
         System.out.println("***************************");
-        //arbolA.nodosNivelToArray();
         arbolA.imprimir();
         arbolA.intercambiarSubarbol(nodo1);
-        //arbolA.arbolToArray(arbolA.getRaiz());
         
-        //System.out.println("------CAMBIADO------"+arbolA.getRaiz().getIzquierdo().getDato());
-
         // ARBOL INTERCAMBIADO
         System.out.println();
         System.out.println("ARBOL INTERCAMBIADO");
         System.out.println("***************************");
-        
-        //arbolA.imprimir();
+        arbolA.getNodos().clear();
+        arbolA.arbolToArray(nodo1, 1);
+        arbolA.ordenarArbolArray();
+        arbolA.imprimir();
     }
 }
