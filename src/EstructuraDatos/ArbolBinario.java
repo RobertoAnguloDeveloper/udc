@@ -2,6 +2,7 @@ package EstructuraDatos;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class ArbolBinario {
     private Nodo raiz;
@@ -111,9 +112,6 @@ public class ArbolBinario {
             nodosPorNivel.add(filaTemp);
             filaTempCopia = filaTemp;
         }
-
-        System.out.println("FILAS = "+nodosPorNivel.size());
-        System.out.println("COLUMNAS = "+nodosPorNivel.get(2).size());
     }
 
     public void arbolToArray(Nodo padre){
@@ -190,26 +188,12 @@ public class ArbolBinario {
     }
 
     public void imprimir(){
-        /*for (Nodo nodo : nodos) {
-            System.out.println(nodo.getDato()+" NIVEL = "+nodo.getNivel());
-        }*/
-
-        /*for (int i = 0; i < nodos.size(); i++) {
-            System.out.print(nodos.get(i).getDato());
-        }*/
-
-        /*for (int i = 0; i < nodosPorNivel.size(); i++) {
-            for (int j = 0; j < nodosPorNivel.get(0).size(); j++) {
-                System.out.println("ORIGINAL = "+nodosPorNivel.get(i).get(j).getDato());
-                
+        for (int i = 0; i < nodosPorNivel.size(); i++) {
+            for (int j = 0; j <  nodosPorNivel.get(i).size(); j++) {
+                System.out.print(nodosPorNivel.get(i).get(j).getDato());
             }
-        }*/
-
-        System.out.println("MATRIZ[][] = "+nodosPorNivel.get(2).get(2).getDato());
-
-        /*for (Nodo nodo : filaTempCopia) {
-            System.out.println("COPIA = "+nodo.getDato());
-        }*/
+            System.out.println();
+        }
     }
 
     public Nodo getRaiz(){
