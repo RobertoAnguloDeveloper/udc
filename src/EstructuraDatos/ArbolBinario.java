@@ -70,16 +70,19 @@ public class ArbolBinario {
         }
     }
 
-    public void arbolToArray(Nodo padre, int iterador){
+    public void arbolToArray(Nodo padre, int nivelAComparar){
         if(padre != null){
             
-            if(padre.getNivel() == iterador){
+            if(padre.getNivel() == nivelAComparar){
                 nodos.add(padre);
-                iterador++;
+                nivelAComparar++;
+                if(!nodos.isEmpty()){
+                    
+                }
             }
 
-            arbolToArray(padre.getIzquierdo(), iterador);
-            arbolToArray(padre.getDerecho(), iterador);
+            arbolToArray(padre.getIzquierdo(), nivelAComparar);
+            arbolToArray(padre.getDerecho(), nivelAComparar);
         }
     }
 
