@@ -70,11 +70,16 @@ public class ArbolBinario {
         }
     }
 
-    public void arbolToArray(Nodo padre){
+    public void arbolToArray(Nodo padre, int iterador){
         if(padre != null){
-            nodos.add(padre);
-            arbolToArray(padre.getIzquierdo());
-            arbolToArray(padre.getDerecho());
+            
+            if(padre.getNivel() == iterador){
+                nodos.add(padre);
+                iterador++;
+            }
+
+            arbolToArray(padre.getIzquierdo(), iterador);
+            arbolToArray(padre.getDerecho(), iterador);
         }
     }
 
@@ -96,17 +101,28 @@ public class ArbolBinario {
             filaTemp = new ArrayList<Nodo>();
             nivelTemp = nodos.get(i).getNivel();
 
+            //System.out.println(nodos.get(i).getDato()+" NIVELTEMP = "+nivelTemp);
+
             if(nodos.get(i).getTipo().equals("raiz")){
                 filaTemp.add(nodos.get(i));
             }else{
                 for (int j = 1; j < nodos.size(); j++) {
                     if(nodos.get(j).getNivel() == nivelTemp){
+                        System.out.println(nodos.get(j).getDato()+" NIVEL = "+nodos.get(j).getNivel()+" NIVELTEMP = "+nivelTemp);
                         filaTemp.add(nodos.get(j));
                         indiceDeRepetido = j;
+                        System.out.println("I = "+i);
+                        System.out.println("J = "+j);
                     }
                 }
+                
+                //i = indiceDeRepetido + 1;
             }
-            i = indiceDeRepetido + 1;
+            
+            /*for (Nodo nodo : filaTemp) {
+                System.out.print(nodo.getDato()+" ");
+            }
+            System.out.println("");*/
             nodosPorNivel.add(filaTemp);
         }
     }
