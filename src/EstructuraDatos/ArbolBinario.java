@@ -31,16 +31,13 @@ public class ArbolBinario {
         
         if(raiz == null){
             raiz = nodo;
-            nodos.add(nodo);
         }else if(temp.getIzquierdo() != null){
             nodo.setPadre(temp);
             temp.setDerecho(nodo);
-            nodos.add(nodo);
             contadorNiveles++;
             }else {
                 nodo.setPadre(padre);
                 temp.setIzquierdo(nodo);
-                nodos.add(nodo);
             }
             contadorNodos++;
     }
@@ -109,8 +106,8 @@ public class ArbolBinario {
 
     public void arbolToArray(Nodo padre){
         if(padre != null){
-            arbolToArray(padre.getIzquierdo());
             nodos.add(padre);
+            arbolToArray(padre.getIzquierdo());
             arbolToArray(padre.getDerecho());
         }
     }
