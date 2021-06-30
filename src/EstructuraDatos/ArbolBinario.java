@@ -70,6 +70,14 @@ public class ArbolBinario {
         }
     }
 
+    public void arbolToArray(Nodo padre){
+        if(padre != null){
+            nodos.add(padre);
+            arbolToArray(padre.getIzquierdo());
+            arbolToArray(padre.getDerecho());
+        }
+    }
+
     public void arbolToArrayNumeros(Nodo padre){
         if(padre != null){
             arbolToArrayNumeros(padre.getIzquierdo());
@@ -98,17 +106,8 @@ public class ArbolBinario {
                     }
                 }
             }
-
             i = indiceDeRepetido + 1;
             nodosPorNivel.add(filaTemp);
-        }
-    }
-
-    public void arbolToArray(Nodo padre){
-        if(padre != null){
-            nodos.add(padre);
-            arbolToArray(padre.getIzquierdo());
-            arbolToArray(padre.getDerecho());
         }
     }
 
@@ -133,7 +132,6 @@ public class ArbolBinario {
             tomarHojas(padre.getDerecho());
 
             if(padre.getIzquierdo() == null && padre.getDerecho() == null){
-                //padre.setTipo("hoja");
                 hojas.add(padre);
                 contadorHojas++;
             }
@@ -197,11 +195,18 @@ public class ArbolBinario {
     }
 
     public void imprimir(){
-        for (int i = 0; i < nodosPorNivel.size(); i++) {
+        //System.out.print("PRUEBA = "+nodosPorNivel.get(1).get(1).getDato());
+        
+        /*for (int i = 0; i < nodosPorNivel.size(); i++) {
             for (int j = 0; j <  nodosPorNivel.get(i).size(); j++) {
                 System.out.print(nodosPorNivel.get(i).get(j).getDato());
             }
             System.out.println();
+        }*/
+
+        for (Nodo nodo : nodos) {
+            System.out.println(nodo.getDato()+"---->"+nodo.getNivel()+"---->"+nodo.getTipo());
+
         }
     }
 

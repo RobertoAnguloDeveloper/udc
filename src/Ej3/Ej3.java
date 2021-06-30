@@ -27,6 +27,7 @@ public class Ej3 {
         arbolA.agregarNodo(nodo8, nodo5);
         arbolA.asignarNivel(nodo1, 0);
         arbolA.asignarTipo(nodo1);
+        arbolA.arbolToArray(nodo1);
 
         // ARBOL ORIGINAL
         System.out.println("ARBOL ORIGINAL");
