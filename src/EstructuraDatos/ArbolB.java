@@ -6,10 +6,13 @@ public class ArbolB {
 
     public ArbolB(int grado) {
         this.grado = grado;
-        raiz.
+        raiz = new NodoB(grado);
     }
 
-    public void prueba() {
+    public void insertar(int valor) {
+        if(raiz.getClaves()[0] == 0){
+            raiz    
+        }
     }
 
 

@@ -5,6 +5,9 @@ import EstructuraDatos.Nodo;
 
 public class Pruebas {
     public static void main(String[] args) throws Exception {
+        System.out.println(20 << 2); //20 * 2 = 40 luego 40 * 2 = 80
+        System.out.println(20 >> 2); //20 / 2 = 10 luego 10 / 2 = 5
+        
         /*Nodo nodo1 = new Nodo('K');
         Nodo nodo2 = new Nodo('B');
         Nodo nodo3 = new Nodo('W');

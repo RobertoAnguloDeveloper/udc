@@ -2,12 +2,26 @@ package EstructuraDatos;
 
 public class NodoB {
     private int grado;
+    private int nNodos;
+    private int [] valores;
     private int [] claves;
     private int numeroClaves;
     private NodoB [] hijos;
     private int numeroHijos;
+    private boolean hoja;
 
-    public NodoB() {
+    public NodoB(int grado){
+        this.grado = grado;
+        this.nNodos = 0;
+        numeroClaves = 2*grado - 1;
+        numeroHijos = 2*grado;
+        claves = new int[numeroClaves];
+        valores = new int[numeroClaves];
+        hijos = new NodoB[numeroHijos];
+    }
+
+    public boolean estaLLeno(){
+        return nNodos >= (2 * grado -1);
     }
 
     public void setGrado(int grado) {
