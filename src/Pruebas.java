@@ -1,12 +1,29 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 import EstructuraDatos.ArbolBinario;
 import EstructuraDatos.Nodo;
 
 public class Pruebas {
     public static void main(String[] args) throws Exception {
-        System.out.println(20 << 2); //20 * 2 = 40 luego 40 * 2 = 80
-        System.out.println(20 >> 2); //20 / 2 = 10 luego 10 / 2 = 5
+        /*System.out.println(20 << 2); //20 * 2 = 40 luego 40 * 2 = 80
+        System.out.println(20 >> 2); //20 / 2 = 10 luego 10 / 2 = 5*/
+
+        boolean ctrl = false;
+        int relacion = 0;
+        Scanner key = new Scanner(System.in);
+        do {
+            try{
+                relacion = Integer.valueOf(JOptionPane.showInputDialog(null, "INGRESE DATO", "PRUEBA"
+                , JOptionPane.INFORMATION_MESSAGE));
+                ctrl = false;
+            }catch (NumberFormatException err){
+                System.out.println("SOLO NUMERO 0 o 1");
+                ctrl = true;
+            }s
+        }while(ctrl);
         
         /*Nodo nodo1 = new Nodo('K');
         Nodo nodo2 = new Nodo('B');
