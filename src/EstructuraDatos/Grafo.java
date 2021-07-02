@@ -21,14 +21,27 @@ public class Grafo {
 
     public void insertarVertice(Vertice vertice, Vertice adyacente){
         vertice.addAyacente(adyacente);
+        listaAdyacencia.add(vertice.getAdyacentes());
     }
 
-    public void insertarVertice(List<Vertice> adyacentes){
-        listaAdyacencia.add(adyacentes);
-    }
-
-    public List<List<Vertice>> matrizAdyacenciaToListaAdyacencia(int [][] matrizAdyacencia){
-        
+    public List<List<Vertice>> matrizAdyacenciaToListaAdyacencia(int [][] matrizAdyacencia, List<Vertice> vertices){
+        this.matrizAdyacencia = matrizAdyacencia;
+        for (int i = 0; i < matrizAdyacencia.length; i++) {
+            for (int j = 0; j < matrizAdyacencia[0].length; j++) {
+                if(matrizAdyacencia[i][j] == 1) {
+                   vertices.get(i).addAyacente(vertices.get(j));
+                }
+            }
+            listaAdyacencia.add(vertices.get(i).getAdyacentes());
+        }
         return listaAdyacencia;
+    }
+
+    public List<List<Vertice>> getListaAdyacencia() {
+        return listaAdyacencia;
+    }
+
+    public void imprimir(){
+
     }
 }
