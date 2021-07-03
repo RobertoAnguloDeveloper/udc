@@ -36,6 +36,12 @@ public class Ej8 {
         grafo.listaAdyacenciaToMatrizAdyacencia(vertices);
         grafo.imprimirListaDeAdyacencia();
         grafo.imprimirMatrizDeAdyacencia();
+        
+        if(grafo.esHamiltoniano() == 1){
+            System.out.println("ES Hamiltoniano");
+        }else{
+            System.out.println("NO ES Hamiltoniano");
+        }
 
     }
 }

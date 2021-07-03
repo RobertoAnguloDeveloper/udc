@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Vertice {
     private Object valor;
+    private int grado;
     private int indiceEnMatriz;
     private List<Vertice> adyacentes;
     private boolean aislado;
@@ -22,6 +23,14 @@ public class Vertice {
         return valor;
     }
 
+    public void setGrado(int grado){
+        this.grado = grado;
+    }
+
+    public int getGrado(){
+        return grado;
+    }
+
     public void setIndiceEnMatriz(int indiceEnMatriz){
         this.indiceEnMatriz = indiceEnMatriz;
     }
@@ -36,6 +45,7 @@ public class Vertice {
 
     public void addAyacente(Vertice vertice){
         adyacentes.add(vertice);
+        grado++;
     }
 
     public List<Vertice> getAdyacentes(){

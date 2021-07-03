@@ -22,16 +22,20 @@ public class Grafo {
     public void insertarVertice(Vertice vertice, Vertice adyacente){
         vertice.addAyacente(adyacente);
         listaAdyacencia.add(vertice);
+        numeroVertices++;
         numeroAristas++;
     }
 
     public List<Vertice> matrizAdyacenciaToListaAdyacencia(int [][] matrizAdyacencia, List<Vertice> vertices){
+        numeroVertices = 0;
+        numeroVertices = matrizAdyacencia.length;
         this.matrizAdyacencia = matrizAdyacencia;
+
         for (int i = 0; i < matrizAdyacencia.length; i++) {
             for (int j = 0; j < matrizAdyacencia[0].length; j++) {
                 if(matrizAdyacencia[i][j] == 1) {
-                   vertices.get(i).addAyacente(vertices.get(j));
-                   numeroAristas++;
+                    vertices.get(i).addAyacente(vertices.get(j));
+                    numeroAristas++;
                 }
             }
         }
@@ -42,6 +46,8 @@ public class Grafo {
 
     public int[][] listaAdyacenciaToMatrizAdyacencia(List<Vertice> vertices){
         this.listaAdyacencia = vertices;
+        numeroVertices = 0;
+        numeroVertices = listaAdyacencia.size();
         matrizAdyacencia = new int[vertices.size()][vertices.size()];
         
         //INICIALIZANDO MATRIZ EN 0
@@ -57,13 +63,12 @@ public class Grafo {
                 for (int k = 0; k < listaAdyacencia.get(j).getAdyacentes().size(); k++) {
                     if(listaAdyacencia.get(j).getAdyacentes().get(k).getValor().equals(temp.getValor())){
                         matrizAdyacencia[i][j] = 1;
+                        numeroAristas++;
                     }
                 }
             }
         }
             
-            
-
         return matrizAdyacencia;
     }
 
@@ -113,8 +118,14 @@ public class Grafo {
     }
 
     public int esHamiltoniano(){
-        if(esConexo()){
-            
+        int contador = 0;
+        for (int i = 0; i < listaAdyacencia.size(); i++) {
+            if(listaAdyacencia.get(i).getGrado() >= numeroVertices/2){
+                contador++;
+            }
+        }
+
+        if(contador == numeroVertices){
             return 1;
         }else{
             return 0;

@@ -22,7 +22,7 @@ public class Pruebas {
             }catch (NumberFormatException err){
                 System.out.println("SOLO NUMERO 0 o 1");
                 ctrl = true;
-            }s
+            }
         }while(ctrl);
         
         /*Nodo nodo1 = new Nodo('K');
