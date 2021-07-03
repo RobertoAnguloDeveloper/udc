@@ -40,6 +40,22 @@ public class Grafo {
         return listaAdyacencia;
     }
 
+    public int[][] listaAdyacenciaToMatrizAdyacencia(List<Vertice> vertices){
+        this.listaAdyacencia = vertices;
+        matrizAdyacencia = new int[vertices.size()][vertices.size()];
+        
+        //INICIALIZANDO MATRIZ
+        for (int i = 0; i < matrizAdyacencia.length; i++) {
+            for (int j = 0; j < matrizAdyacencia[0].length; j++) {
+                matrizAdyacencia[i][j] = 0;
+            }
+        }
+
+        //POR AQUI
+
+        return matrizAdyacencia;
+    }
+
     public boolean existeArista(Object verticeA, Object verticeB){
         boolean existe = false;
         for (int i = 0; i < listaAdyacencia.size(); i++) {
@@ -85,7 +101,16 @@ public class Grafo {
         }
     }
 
-    public void imprimir(){
+    public int esHamiltoniano(){
+        if(esConexo()){
+            
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+
+    public void imprimirMatrizDeAdyacencia(){
         // IMPRIME MATRIZ DE ADYACENCIA
         System.out.println("\nMATRIZ DE ADYACENCIA");
         System.out.println("********************");
@@ -100,7 +125,9 @@ public class Grafo {
             }
             System.out.println();
         }
+    }
 
+    public void imprimirListaDeAdyacencia() {
         System.out.println("\nLISTA DE ADYACENCIA");
         System.out.println("********************"); 
         for (int i = 0; i < listaAdyacencia.size(); i++){ 
@@ -110,7 +137,9 @@ public class Grafo {
             } 
             System.out.println(); 
         }
-        
+    }
+
+    public void imprimirGrafo() {
         for (int i = 0; i < listaAdyacencia.size(); i++) {
             System.out.println("\nVERTICE");
             System.out.println(listaAdyacencia.get(i).getValor());
@@ -120,6 +149,10 @@ public class Grafo {
             }
             System.out.println();
         }
+    }
+
+    public void setListaAdyacencia(List<Vertice> listaAdyacencia) {
+        this.listaAdyacencia = listaAdyacencia;
     }
 
     public List<Vertice> getListaAdyacencia() {

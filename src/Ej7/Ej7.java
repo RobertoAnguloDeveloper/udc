@@ -59,7 +59,8 @@ public class Ej7 {
         }
 
         grafo.matrizAdyacenciaToListaAdyacencia(matrizAdyacencia, vertices);
-        grafo.imprimir();
+        grafo.imprimirMatrizDeAdyacencia();
+        grafo.imprimirListaDeAdyacencia();
 
         if(grafo.esEuleriano() == 1){
             System.out.println("EL GRAFO ES EULERIANO");

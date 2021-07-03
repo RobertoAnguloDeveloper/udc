@@ -59,6 +59,7 @@ public class Ej6 {
         }
 
         grafo.matrizAdyacenciaToListaAdyacencia(matrizAdyacencia, vertices);
-        grafo.imprimir();
+        grafo.imprimirMatrizDeAdyacencia();
+        grafo.imprimirListaDeAdyacencia();
     }
 }
