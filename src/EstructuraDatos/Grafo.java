@@ -37,11 +37,36 @@ public class Grafo {
         return listaAdyacencia;
     }
 
+    public boolean existeArista(Object verticeA, Object verticeB){
+        boolean existe = false;
+        for (int i = 0; i < listaAdyacencia.size(); i++) {
+            if(listaAdyacencia.get(i).getValor().equals(verticeA)){
+                for (int j = 0; j < listaAdyacencia.get(i).getAdyacentes().size(); j++) {
+                    if(listaAdyacencia.get(i).getAdyacentes().get(j).getValor().equals(verticeB)){
+                        existe = true;
+                        return existe;
+                    }
+                }
+            }else{
+                existe = false;
+            }
+        }
+        return existe;
+    }
+
     public List<Vertice> getListaAdyacencia() {
         return listaAdyacencia;
     }
 
     public void imprimir(){
-
+        for (int i = 0; i < listaAdyacencia.size(); i++) {
+            System.out.println("\nVERTICE");
+            System.out.println(listaAdyacencia.get(i).getValor());
+            System.out.println("ADYACENTES");
+            for (int j = 0; j < listaAdyacencia.get(i).getAdyacentes().size(); j++) {
+                System.out.print(listaAdyacencia.get(i).getAdyacentes().get(j).getValor()+" \t");
+            }
+            System.out.println();
+        }
     }
 }

@@ -75,8 +75,6 @@ public class Ej6 {
             System.out.println();
         }
 
-        // System.out.println("VERTICE["+grafo.getListaAdyacencia().get(0).get(0).getValor()+"]
-        // ADYACENTE ["+"]: ");
         System.out.println("\nLISTA DE ADYACENCIA");
         System.out.println("********************"); 
         for (int i = 0; i < grafo.getListaAdyacencia().size(); i++){ 
@@ -86,6 +84,7 @@ public class Ej6 {
             } 
             System.out.println(); 
         }
-         
+
+        grafo.imprimir();
     }
 }
