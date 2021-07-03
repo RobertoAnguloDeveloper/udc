@@ -22,6 +22,7 @@ public class Grafo {
     public void insertarVertice(Vertice vertice, Vertice adyacente){
         vertice.addAyacente(adyacente);
         listaAdyacencia.add(vertice);
+        numeroAristas++;
     }
 
     public List<Vertice> matrizAdyacenciaToListaAdyacencia(int [][] matrizAdyacencia, List<Vertice> vertices){
@@ -30,9 +31,11 @@ public class Grafo {
             for (int j = 0; j < matrizAdyacencia[0].length; j++) {
                 if(matrizAdyacencia[i][j] == 1) {
                    vertices.get(i).addAyacente(vertices.get(j));
+                   numeroAristas++;
                 }
             }
         }
+
         listaAdyacencia = vertices;
         return listaAdyacencia;
     }
@@ -54,8 +57,32 @@ public class Grafo {
         return existe;
     }
 
-    public List<Vertice> getListaAdyacencia() {
-        return listaAdyacencia;
+    public boolean esConexo(){
+        int [] contador = new int[matrizAdyacencia.length];
+        int sumatoria = 0;
+        for (int i = 0; i < matrizAdyacencia.length; i++) {
+            for (int j = 0; j < matrizAdyacencia.length; j++) {
+                if(i != j){
+                    sumatoria += matrizAdyacencia[i][j];
+                }
+            }
+            contador[i] = sumatoria;
+            sumatoria = 0;
+        }
+
+        for (int i = 0; i < contador.length; i++) {
+            sumatoria += contador[i];
+        }
+
+        return sumatoria >= matrizAdyacencia.length;
+    }
+
+    public int esEuleriano(){
+        if(numeroAristas % 2 == 0 && esConexo()){
+            return 1;
+        }else{
+            return 0;
+        }
     }
 
     public void imprimir(){
@@ -93,5 +120,9 @@ public class Grafo {
             }
             System.out.println();
         }
+    }
+
+    public List<Vertice> getListaAdyacencia() {
+        return listaAdyacencia;
     }
 }
