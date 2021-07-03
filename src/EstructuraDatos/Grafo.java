@@ -59,6 +59,31 @@ public class Grafo {
     }
 
     public void imprimir(){
+        // IMPRIME MATRIZ DE ADYACENCIA
+        System.out.println("\nMATRIZ DE ADYACENCIA");
+        System.out.println("********************");
+        for (int k = 0; k < listaAdyacencia.size(); k++) {
+            System.out.print("  " + listaAdyacencia.get(k).getValor() + "    ");
+        }
+        System.out.println("\n-----------------");
+        for (int i = 0; i < matrizAdyacencia.length; i++) {
+            System.out.print(listaAdyacencia.get(i).getValor() + "|");
+            for (int j = 0; j < matrizAdyacencia[0].length; j++) {
+                System.out.print(matrizAdyacencia[i][j] + "\t");
+            }
+            System.out.println();
+        }
+
+        System.out.println("\nLISTA DE ADYACENCIA");
+        System.out.println("********************"); 
+        for (int i = 0; i < listaAdyacencia.size(); i++){ 
+            System.out.print(listaAdyacencia.get(i).getValor() + "|");
+            for (int j = 0; j < listaAdyacencia.get(i).getAdyacentes().size(); j++) {
+                System.out.print(listaAdyacencia.get(i).getAdyacentes().get(j).getValor() + "\t");
+            } 
+            System.out.println(); 
+        }
+        
         for (int i = 0; i < listaAdyacencia.size(); i++) {
             System.out.println("\nVERTICE");
             System.out.println(listaAdyacencia.get(i).getValor());

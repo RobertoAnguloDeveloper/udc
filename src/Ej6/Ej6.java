@@ -59,32 +59,6 @@ public class Ej6 {
         }
 
         grafo.matrizAdyacenciaToListaAdyacencia(matrizAdyacencia, vertices);
-
-        // IMPRIME MATRIZ DE ADYACENCIA
-        System.out.println("\nMATRIZ DE ADYACENCIA");
-        System.out.println("********************");
-        for (int k = 0; k < vertices.size(); k++) {
-            System.out.print("  " + vertices.get(k).getValor() + "    ");
-        }
-        System.out.println("\n-----------------");
-        for (int i = 0; i < matrizAdyacencia.length; i++) {
-            System.out.print(vertices.get(i).getValor() + "|");
-            for (int j = 0; j < matrizAdyacencia[0].length; j++) {
-                System.out.print(matrizAdyacencia[i][j] + "\t");
-            }
-            System.out.println();
-        }
-
-        System.out.println("\nLISTA DE ADYACENCIA");
-        System.out.println("********************"); 
-        for (int i = 0; i < grafo.getListaAdyacencia().size(); i++){ 
-            System.out.print(grafo.getListaAdyacencia().get(i).getValor() + "|");
-            for (int j = 0; j < grafo.getListaAdyacencia().get(i).getAdyacentes().size(); j++) {
-                System.out.print(grafo.getListaAdyacencia().get(i).getAdyacentes().get(j).getValor() + "\t");
-            } 
-            System.out.println(); 
-        }
-
         grafo.imprimir();
     }
 }
