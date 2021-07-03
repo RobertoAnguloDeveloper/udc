@@ -44,14 +44,25 @@ public class Grafo {
         this.listaAdyacencia = vertices;
         matrizAdyacencia = new int[vertices.size()][vertices.size()];
         
-        //INICIALIZANDO MATRIZ
+        //INICIALIZANDO MATRIZ EN 0
         for (int i = 0; i < matrizAdyacencia.length; i++) {
             for (int j = 0; j < matrizAdyacencia[0].length; j++) {
                 matrizAdyacencia[i][j] = 0;
             }
         }
 
-        //POR AQUI
+        for (int i = 0; i < listaAdyacencia.size(); i++) {
+            Vertice temp = listaAdyacencia.get(i);
+            for (int j = 0; j < listaAdyacencia.size(); j++) {
+                for (int k = 0; k < listaAdyacencia.get(j).getAdyacentes().size(); k++) {
+                    if(listaAdyacencia.get(j).getAdyacentes().get(k).getValor().equals(temp.getValor())){
+                        matrizAdyacencia[i][j] = 1;
+                    }
+                }
+            }
+        }
+            
+            
 
         return matrizAdyacencia;
     }
@@ -111,13 +122,20 @@ public class Grafo {
     }
 
     public void imprimirMatrizDeAdyacencia(){
+        numeroVertices = matrizAdyacencia.length;
         // IMPRIME MATRIZ DE ADYACENCIA
         System.out.println("\nMATRIZ DE ADYACENCIA");
         System.out.println("********************");
         for (int k = 0; k < listaAdyacencia.size(); k++) {
             System.out.print("  " + listaAdyacencia.get(k).getValor() + "    ");
         }
-        System.out.println("\n-----------------");
+        
+        System.out.println();
+        for (int i = 0; i < numeroVertices; i++) {
+            System.out.print("-------");
+        }
+        System.out.println();
+
         for (int i = 0; i < matrizAdyacencia.length; i++) {
             System.out.print(listaAdyacencia.get(i).getValor() + "|");
             for (int j = 0; j < matrizAdyacencia[0].length; j++) {
