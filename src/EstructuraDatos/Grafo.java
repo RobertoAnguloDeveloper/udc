@@ -50,6 +50,11 @@ public class Grafo {
         numeroVertices = 0;
         numeroVertices = listaAdyacencia.size();
         matrizAdyacencia = new int[vertices.size()][vertices.size()];
+        Object[] indicesVectices = new Object[vertices.size()];
+
+        for (int i = 0; i < indicesVectices.length; i++) {
+            indicesVectices[i] = vertices.get(i).getValor();
+        }
         
         //INICIALIZANDO MATRIZ EN 0
         for (int i = 0; i < matrizAdyacencia.length; i++) {
@@ -60,11 +65,17 @@ public class Grafo {
 
         for (int i = 0; i < listaAdyacencia.size(); i++) {
             Vertice temp = listaAdyacencia.get(i);
-            for (int j = 0; j < listaAdyacencia.size(); j++) {
-                for (int k = 0; k < listaAdyacencia.get(j).getAdyacentes().size(); k++) {
-                    if(listaAdyacencia.get(j).getAdyacentes().get(k).getValor().equals(temp.getValor())){
-                        matrizAdyacencia[i][j] = 1;
-                        numeroAristas++;
+            for (int j = 0; j < listaAdyacencia.get(i).getAdyacentes().size(); j++) {
+                if(existeArista(temp.getValor(), listaAdyacencia.get(i).getAdyacentes().get(j).getValor())){
+                    for(int k = 0; k < indicesVectices.length; k++){
+                        if(temp.getValor().equals(indicesVectices[k])){
+                            for(int l = 0; l < indicesVectices.length; l++){
+                                if(listaAdyacencia.get(i).getAdyacentes().get(j).getValor().equals(indicesVectices[l])){
+                                    matrizAdyacencia[k][l] = 1;
+                                    numeroAristas++;
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -28,9 +28,16 @@ public class Ej9 {
         grafo.listaAdyacenciaToMatrizAdyacencia(vertices);
         grafo.imprimirListaDeAdyacencia();
         grafo.imprimirMatrizDeAdyacencia();
+        List<Vertice> recorrido = grafo.recorridoEnProfundidad();
 
-        for (Vertice vertex : grafo.recorridoEnProfundidad()) {
-            System.out.print(vertex.getValor()+" -> ");
+        System.out.println("RECORRIDO EN PROFUNDIDAD");
+        System.out.println("************************");
+        for (int i = 0; i < recorrido.size(); i++) {
+            if(i+1 != recorrido.size()){
+                System.out.print(recorrido.get(i).getValor()+" -> ");
+            }else{
+                System.out.print(recorrido.get(i).getValor());
+            }
         }
     }
 }
