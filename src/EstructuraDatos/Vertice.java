@@ -9,10 +9,12 @@ public class Vertice {
     private int indiceEnMatriz;
     private List<Vertice> adyacentes;
     private boolean aislado;
+    private boolean visitado;
 
     public Vertice(Object valor){
         this.valor = valor;
         adyacentes = new LinkedList<Vertice>();
+        visitado = false;
     }
 
     public void setValor(Object valor){
@@ -58,5 +60,13 @@ public class Vertice {
 
     public boolean getAislado(){
         return aislado;
+    }
+
+    public void setVisitado(boolean visitado){
+        this.visitado = visitado;
+    }
+
+    public boolean getVisitado(){
+        return visitado;
     }
 }

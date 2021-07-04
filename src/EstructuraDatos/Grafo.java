@@ -2,6 +2,7 @@ package EstructuraDatos;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 public class Grafo {
     private int [][] matrizAdyacencia;
@@ -132,6 +133,27 @@ public class Grafo {
         }
     }
 
+    public List<Vertice> recorridoEnProfundidad(){
+        List<Vertice> recorrido = new LinkedList<Vertice>();
+        Stack<Vertice> stack = new Stack<Vertice>();
+
+        if(listaAdyacencia != null){
+            stack.push(listaAdyacencia.get(0));
+            while(stack.size() > 0){
+                Vertice temp = stack.pop();
+                recorrido.add(temp);
+                if(temp.getVisitado() == false){
+                    temp.setVisitado(true);
+                    for (int i = 0; i < temp.getAdyacentes().size(); i++) {
+                        stack.push(temp.getAdyacentes().get(i));
+                    }
+                }
+            }
+        }
+
+        return recorrido;
+    }
+
     public void imprimirMatrizDeAdyacencia(){
         numeroVertices = matrizAdyacencia.length;
         // IMPRIME MATRIZ DE ADYACENCIA
@@ -154,6 +176,7 @@ public class Grafo {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void imprimirListaDeAdyacencia() {
@@ -164,7 +187,7 @@ public class Grafo {
             for (int j = 0; j < listaAdyacencia.get(i).getAdyacentes().size(); j++) {
                 System.out.print(listaAdyacencia.get(i).getAdyacentes().get(j).getValor() + "\t");
             } 
-            System.out.println(); 
+            System.out.println();
         }
     }
 
@@ -178,6 +201,7 @@ public class Grafo {
             }
             System.out.println();
         }
+        System.out.println();
     }
 
     public void setListaAdyacencia(List<Vertice> listaAdyacencia) {

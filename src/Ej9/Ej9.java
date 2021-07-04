@@ -1,4 +1,4 @@
-package Ej8;
+package Ej9;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import EstructuraDatos.Grafo;
 import EstructuraDatos.Vertice;
 
-public class Ej8 {
+public class Ej9 {
     public static void main(String[] args) {
         Grafo grafo = new Grafo();
         Vertice v1 = new Vertice("A");
@@ -16,16 +16,8 @@ public class Ej8 {
 
         v1.addAyacente(v2);
         v1.addAyacente(v3);
-        v1.addAyacente(v4);
-        v2.addAyacente(v1);
         v2.addAyacente(v3);
-        v2.addAyacente(v4);
-        v3.addAyacente(v1);
-        v3.addAyacente(v2);
         v3.addAyacente(v4);
-        v4.addAyacente(v1);
-        v4.addAyacente(v2);
-        v4.addAyacente(v3);
 
         List<Vertice> vertices = new LinkedList<Vertice>();
         vertices.add(v1);
@@ -36,12 +28,9 @@ public class Ej8 {
         grafo.listaAdyacenciaToMatrizAdyacencia(vertices);
         grafo.imprimirListaDeAdyacencia();
         grafo.imprimirMatrizDeAdyacencia();
-        
-        if(grafo.esHamiltoniano() == 1){
-            System.out.println("ES Hamiltoniano");
-        }else{
-            System.out.println("NO ES Hamiltoniano");
-        }
 
+        for (Vertice vertex : grafo.recorridoEnProfundidad()) {
+            System.out.print(vertex.getValor()+" -> ");
+        }
     }
 }
