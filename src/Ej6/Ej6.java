@@ -52,7 +52,6 @@ public class Ej6 {
                     }
                 } while (loop);
 
-                vertices.get(i).setIndiceEnMatriz(i);
                 System.out.println();
                 matrizAdyacencia[i][j] = relacion;
             }
