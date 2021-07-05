@@ -8,6 +8,13 @@ import EstructuraDatos.Nodo;
 
 public class Pruebas {
     public static void main(String[] args) throws Exception {
+        //System.out.println(Math.round(3.5));
+        
+        /*Object objeto = new Object();
+
+        Scanner key = new Scanner(System.in);
+
+        objeto = ((Integer) key.nextInt()).intValue();*/
 
         /*System.out.println(20 << 2); //20 * 2 = 40 luego 40 * 2 = 80
         System.out.println(20 >> 2); //20 / 2 = 10 luego 10 / 2 = 5*/

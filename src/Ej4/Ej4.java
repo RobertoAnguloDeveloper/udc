@@ -1,15 +1,30 @@
 package Ej4;
 
 import EstructuraDatos.ArbolB;
-import EstructuraDatos.Nodo;
 
 public class Ej4 {
     public static void main(String[] args) {
-        Nodo nodo1 = new Nodo(1);
-        ArbolB arbolB = new ArbolB(5);
+        ArbolB arbolB = new ArbolB(3);
 
-        arbolB.insertar(nodo1);
+        arbolB = arbolB.insertar(32);
+        arbolB = arbolB.insertar(2);
+        arbolB = arbolB.insertar(7);
+        arbolB = arbolB.insertar(4);
+        arbolB = arbolB.insertar(5);
+        arbolB = arbolB.insertar(53);
+        arbolB = arbolB.insertar(61);
+        arbolB = arbolB.insertar(90);
+        arbolB = arbolB.insertar(100);
+        arbolB = arbolB.insertar(70);
 
-        System.out.println("PAGINARAIZ[0] = "+arbolB.getPaginaRaiz()[0].getDato());
+        System.out.println("SIN ELIMINAR");
+        System.out.println("************");
+        arbolB.imprimir();
+        arbolB = arbolB.eliminar(53);
+        System.out.println("\n*******************");
+        System.out.println("DESPUES DE ELIMINAR");
+        System.out.println("*******************");
+        arbolB.imprimir();
+
     }
 }
