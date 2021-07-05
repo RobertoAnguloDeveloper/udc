@@ -11,9 +11,7 @@ public class ArbolB {
 
     public void insertar(int valor) {
         if(raiz.getClaves()[0] == 0){
-            raiz    
+            raiz
         }
     }
-
-
 }
