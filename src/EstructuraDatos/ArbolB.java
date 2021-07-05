@@ -12,6 +12,8 @@ public class ArbolB {
     public void insertar(Nodo nodo) {
         if(paginaRaiz[0] == null){
             paginaRaiz[0] = nodo;
+        }else if(paginaRaiz[paginaRaiz.length-1] != null){
+            
         }
     }
 
