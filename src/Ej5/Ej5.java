@@ -1,31 +1,30 @@
 package Ej5;
 
-import EstructuraDatos.ArbolBplus;
-import EstructuraDatos.NodoBplus;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.AbstractMap.SimpleEntry;
-import java.util.Map.Entry;
+import EstructuraDatos.ArbolBp;
 
 public class Ej5 {
     public static void main(String[] args) {
-        //ARBOL 
-        ArbolBplus arbol = new ArbolBplus(5);
-        arbol.insertarActualizar(1, 1);
-        arbol.insertarActualizar(2, 1);
-        arbol.insertarActualizar(3, 3);
-        arbol.insertarActualizar(4, 4);
-        arbol.insertarActualizar(5, 5);
-        
-        List<Entry<Integer,Object>> entradas = arbol.raiz.entradas;
+        ArbolBp arbolB = new ArbolBp(3);
 
-        /*for (Entry<Integer,Object> entrada : entradas){
-            System.out.println("CLAVE "+entrada.getKey()+" VALOR "+entrada.getValue());
-        }*/
+        arbolB = arbolB.insertar(32);
+        arbolB = arbolB.insertar(2);
+        arbolB = arbolB.insertar(7);
+        arbolB = arbolB.insertar(4);
+        arbolB = arbolB.insertar(5);
+        arbolB = arbolB.insertar(5);
+        arbolB = arbolB.insertar(53);
+        arbolB = arbolB.insertar(61);
+        arbolB = arbolB.insertar(90);
+        arbolB = arbolB.insertar(100);
+        arbolB = arbolB.insertar(70);
 
-        arbol.imprimir();
-
+        System.out.println("SIN ELIMINAR");
+        System.out.println("************");
+        arbolB.imprimir();
+        arbolB = arbolB.eliminar(5);
+        System.out.println("\n*******************");
+        System.out.println("DESPUES DE ELIMINAR");
+        System.out.println("*******************");
+        arbolB.imprimir();
     }
 }
