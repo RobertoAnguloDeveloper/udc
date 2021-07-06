@@ -1,10 +1,10 @@
 package Ej5;
 
-import EstructuraDatos.ArbolBp;
+import EstructuraDatos.ArbolBplus;
 
 public class Ej5 {
     public static void main(String[] args) {
-        ArbolBp arbolB = new ArbolBp(3);
+        ArbolBplus arbolB = new ArbolBplus(3);
 
         arbolB = arbolB.insertar(32);
         arbolB = arbolB.insertar(2);

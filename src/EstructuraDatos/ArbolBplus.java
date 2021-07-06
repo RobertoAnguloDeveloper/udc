@@ -3,19 +3,19 @@ package EstructuraDatos;
 import java.util.LinkedList;
 
 
-public class ArbolBp {
+public class ArbolBplus {
 
     int grado;
     LinkedList<Integer> valores;
-    ArbolBp pariente;
-    LinkedList<ArbolBp> hijos;
+    ArbolBplus pariente;
+    LinkedList<ArbolBplus> hijos;
 
-    private ArbolBp() {
+    private ArbolBplus() {
         this.valores = new LinkedList<Integer>();
-        this.hijos = new LinkedList<ArbolBp>();
+        this.hijos = new LinkedList<ArbolBplus>();
     }
 
-    public ArbolBp(int grado) {
+    public ArbolBplus(int grado) {
         this();
         if(grado < 3) {
             throw new RuntimeException("EL GRADO DEL ARBOL DEBE SER SUPERIOR A 2");
@@ -23,25 +23,25 @@ public class ArbolBp {
         this.grado = grado;
     }
 
-    public ArbolBp(ArbolBp pariente) {
+    public ArbolBplus(ArbolBplus pariente) {
         this(pariente.grado);
         this.pariente = pariente;
     }
 
-    public ArbolBp insertar(int e) {
+    public ArbolBplus insertar(int e) {
         if(estaVacio()) {
             valores.add(e);
-            hijos.add(new ArbolBp(this));
-            hijos.add(new ArbolBp(this));
+            hijos.add(new ArbolBplus(this));
+            hijos.add(new ArbolBplus(this));
             return this;
         }
-        ArbolBp temp = getRaiz().buscar(e);
+        ArbolBplus temp = getRaiz().buscar(e);
         
-        insertarNodo(temp.pariente, e, new ArbolBp(temp.grado));
+        insertarNodo(temp.pariente, e, new ArbolBplus(temp.grado));
         return getRaiz();
     }
 
-    private void insertarNodo(ArbolBp nodo, int e, ArbolBp eNodo) {
+    private void insertarNodo(ArbolBplus nodo, int e, ArbolBplus eNodo) {
         int indiceValor = 0;
         while(indiceValor < nodo.valores.size() && nodo.valores.get(indiceValor) < e) {
             indiceValor++;
@@ -52,18 +52,18 @@ public class ArbolBp {
         if(nodo.valores.size() > grado-1) {
             int indiceArriba = grado/2;
             int arriba = nodo.valores.get(indiceArriba);
-            ArbolBp nodoRaiz = new ArbolBp(grado);
+            ArbolBplus nodoRaiz = new ArbolBplus(grado);
             nodoRaiz.valores = new LinkedList(nodo.valores.subList(indiceArriba+1, grado));
             nodoRaiz.hijos = new LinkedList(nodo.hijos.subList(indiceArriba+1, grado+1));
 
-            for(ArbolBp hijosRaiz : nodoRaiz.hijos) {
+            for(ArbolBplus hijosRaiz : nodoRaiz.hijos) {
                 hijosRaiz.pariente = nodoRaiz;
             }
             nodo.valores = new LinkedList(nodo.valores.subList(0, indiceArriba));
             nodo.hijos = new LinkedList(nodo.hijos.subList(0, indiceArriba+1));
             
             if(nodo.pariente == null) {
-                nodo.pariente = new ArbolBp(grado);
+                nodo.pariente = new ArbolBplus(grado);
                 nodo.pariente.valores.add(arriba);
                 nodo.pariente.hijos.add(nodo);
                 nodo.pariente.hijos.add(nodoRaiz);
@@ -75,11 +75,11 @@ public class ArbolBp {
         }
     }
 
-    public ArbolBp eliminar(int e) {
+    public ArbolBplus eliminar(int e) {
         if(estaVacio()) {
             return this;
         }
-        ArbolBp temp = getRaiz().buscar(e);
+        ArbolBplus temp = getRaiz().buscar(e);
         if(temp.estaVacio()) {
             throw new RuntimeException("LA CLAVE NO EXISTE" + e);
         }
@@ -89,7 +89,7 @@ public class ArbolBp {
         }
         
         if(!temp.hijos.get(0).estaVacio()) {
-            ArbolBp raizMinima = temp.hijos.get(indiceValor);
+            ArbolBplus raizMinima = temp.hijos.get(indiceValor);
             while(!raizMinima.hijos.get(0).estaVacio()) {
                 raizMinima = raizMinima.hijos.get(0);
             }
@@ -99,7 +99,7 @@ public class ArbolBp {
         return eliminar(temp, indiceValor, 0);
     }
 
-    private ArbolBp eliminar(ArbolBp nodoEliminar, int indiceValor, int indiceHijo) {
+    private ArbolBplus eliminar(ArbolBplus nodoEliminar, int indiceValor, int indiceHijo) {
         nodoEliminar.valores.remove(indiceValor);
         nodoEliminar.hijos.remove(indiceHijo);
         if(nodoEliminar.hijos.size() >= Math.ceil(grado/2.0)) {
@@ -109,7 +109,7 @@ public class ArbolBp {
             if(nodoEliminar.hijos.size() > 1) {
                 return nodoEliminar;
             }else {
-                ArbolBp nuevaRaiz = nodoEliminar.hijos.get(0);
+                ArbolBplus nuevaRaiz = nodoEliminar.hijos.get(0);
                 nuevaRaiz.pariente = null;
                 return nuevaRaiz;
             }
@@ -121,9 +121,9 @@ public class ArbolBp {
         if(indiceParienteHijo > 0 && nodoEliminar.pariente.hijos.get(indiceParienteHijo-1).valores.size() >= Math.ceil(grado/2.0)) {
             
             int claveAbajo = nodoEliminar.pariente.valores.get(indiceParienteHijo-1);
-            ArbolBp hermanoIzquierdo = nodoEliminar.pariente.hijos.get(indiceParienteHijo-1);
+            ArbolBplus hermanoIzquierdo = nodoEliminar.pariente.hijos.get(indiceParienteHijo-1);
             int claveArriba = hermanoIzquierdo.valores.remove(hermanoIzquierdo.valores.size()-1);
-            ArbolBp mezclarHijo = hermanoIzquierdo.hijos.remove(hermanoIzquierdo.hijos.size()-1);
+            ArbolBplus mezclarHijo = hermanoIzquierdo.hijos.remove(hermanoIzquierdo.hijos.size()-1);
             nodoEliminar.valores.add(0, claveAbajo);
             nodoEliminar.hijos.add(0, mezclarHijo);
             nodoEliminar.pariente.valores.set(indiceParienteHijo-1, claveArriba);
@@ -132,9 +132,9 @@ public class ArbolBp {
                 nodoEliminar.pariente.hijos.get(indiceParienteHijo+1).valores.size() >= Math.ceil(grado/2.0)) {
             
             int claveAbajo = nodoEliminar.pariente.valores.get(indiceParienteHijo);
-            ArbolBp hermanoDerecho = nodoEliminar.pariente.hijos.get(indiceParienteHijo+1);
+            ArbolBplus hermanoDerecho = nodoEliminar.pariente.hijos.get(indiceParienteHijo+1);
             int claveArriba = hermanoDerecho.valores.remove(0);
-            ArbolBp mezclarHijo = hermanoDerecho.hijos.remove(0);
+            ArbolBplus mezclarHijo = hermanoDerecho.hijos.remove(0);
             nodoEliminar.valores.add(claveAbajo);
             nodoEliminar.hijos.add(mezclarHijo);
             nodoEliminar.pariente.valores.set(indiceParienteHijo, claveArriba);
@@ -143,7 +143,7 @@ public class ArbolBp {
             int indiceParienteValor;
             if(indiceParienteHijo > 0) {
                 
-                ArbolBp hermanoIzquierdo = nodoEliminar.pariente.hijos.get(indiceParienteHijo-1);
+                ArbolBplus hermanoIzquierdo = nodoEliminar.pariente.hijos.get(indiceParienteHijo-1);
                 
                 indiceParienteValor = indiceParienteHijo - 1;
                 int claveAbajo = nodoEliminar.pariente.valores.get(indiceParienteValor);
@@ -154,7 +154,7 @@ public class ArbolBp {
                 hermanoIzquierdo.hijos.addAll(nodoEliminar.hijos);
             }else {
                 
-                ArbolBp hermanoDerecho = nodoEliminar.pariente.hijos.get(indiceParienteHijo+1);
+                ArbolBplus hermanoDerecho = nodoEliminar.pariente.hijos.get(indiceParienteHijo+1);
                 
                 indiceParienteValor = indiceParienteHijo;
                 int claveAbajo = nodoEliminar.pariente.valores.get(indiceParienteValor);
@@ -169,7 +169,7 @@ public class ArbolBp {
         }
     }
 
-    public ArbolBp buscar(int nodo) {
+    public ArbolBplus buscar(int nodo) {
         if(estaVacio()) {
             return this;
         }
@@ -184,8 +184,8 @@ public class ArbolBp {
     }
 
 
-    public ArbolBp getRaiz() {
-        ArbolBp temp = this;
+    public ArbolBplus getRaiz() {
+        ArbolBplus temp = this;
         while(!temp.esRaiz()) {
             temp = temp.pariente;
         }
@@ -212,7 +212,7 @@ public class ArbolBp {
         imprimirNodo(this, 0);
     }
 
-    private void imprimirNodo(ArbolBp nodo, int profundidad) {
+    private void imprimirNodo(ArbolBplus nodo, int profundidad) {
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 1; i < profundidad; i++) {
             stringBuilder.append("|    ");
@@ -222,7 +222,7 @@ public class ArbolBp {
         }
         stringBuilder.append(nodo.valores);
         System.out.println(stringBuilder.toString());
-        for(ArbolBp hijo : nodo.hijos) {
+        for(ArbolBplus hijo : nodo.hijos) {
             imprimirNodo(hijo, profundidad+1);
         }
     }
