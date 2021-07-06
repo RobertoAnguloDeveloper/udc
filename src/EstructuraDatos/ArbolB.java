@@ -37,7 +37,7 @@ public class ArbolB {
         }
         ArbolB temp = getRaiz().buscar(e);
         if(!temp.estaVacio()) {
-            throw new RuntimeException("cannot insertar duplicate key to B-Tree, key: " + e);
+            throw new RuntimeException("EN UN ARBOL B NO SE ACEPTAN DUPLICADOS: " + e);
         }
         insertarNodo(temp.pariente, e, new ArbolB(temp.grado));
         return getRaiz();
@@ -83,7 +83,7 @@ public class ArbolB {
         }
         ArbolB temp = getRaiz().buscar(e);
         if(temp.estaVacio()) {
-            throw new RuntimeException("the key to be deleted is not exist, key: " + e);
+            throw new RuntimeException("LA CLAVE NO EXISTE" + e);
         }
         int indiceValor = 0;
         while(indiceValor < temp.valores.size() && temp.valores.get(indiceValor) < e) {
