@@ -6,73 +6,54 @@ import java.util.List;
 import java.util.Map.Entry;
 
 public class NodoBplus {
-    /** It is a leaf or not **/
-    protected boolean isLeaf;
+    public boolean esHoja;
+    public boolean esRaiz;
+    public NodoBplus pariente;
+    public List<NodoBplus> hijos;
+    public List<Entry<Integer,Object>> entradas;
+    public NodoBplus anterior;
+    public NodoBplus siguiente;
 
-    /** It is root or not **/
-    protected boolean isRoot;
-
-    /** parent node **/
-    protected NodoBplus parent;
-
-    /** chlid node **/
-    protected List<NodoBplus> child;
-
-    /** key list **/
-    protected List<Entry<Integer,Object>> entries;
-
-    /** leaf's previous node **/
-    protected NodoBplus previous;
-
-    /** leaf's next node **/
-    protected NodoBplus next;
-
-    public NodoBplus(boolean isLeaf){
-        this.isLeaf = isLeaf;
-        entries = new ArrayList<Entry<Integer, Object>>();
-        if(!isLeaf){
-            child = new ArrayList<NodoBplus>();
+    public NodoBplus(boolean esHoja){
+        this.esHoja = esHoja;
+        entradas = new ArrayList<Entry<Integer, Object>>();
+        if(!esHoja){
+            hijos = new ArrayList<NodoBplus>();
         }
     }
 
-    public NodoBplus(boolean isLeaf,boolean isRoot){
-        this(isLeaf);
-        this.isRoot = isRoot;
+    public NodoBplus(boolean esHoja,boolean esRaiz){
+        this(esHoja);
+        this.esRaiz = esRaiz;
     }
 
-    public void setEntries(List<Entry<Integer,Object>> entries){
-        this.entries = entries;
+    public void setEntradas(List<Entry<Integer,Object>> entradas){
+        this.entradas = entradas;
     }
-    public List<Entry<Integer,Object>> getEntries(){
-        return entries;
+    public List<Entry<Integer,Object>> getEntradas(){
+        return entradas;
     }
 
-    public Object search(Integer key){
-        if(isLeaf){
-            //It is leaf
-            for(Entry<Integer,Object> entry : entries){
-                if(entry.getKey().compareTo(key) == 0){
-                    //find the key
-//                    System.out.println("success");
-                    return entry.getValue();
+    public Object buscar(Integer clave){
+        if(esHoja){
+            for(Entry<Integer,Object> entrada : entradas){
+                if(entrada.getKey().compareTo(clave) == 0){
+                    return entrada.getValue();
                 }
             }
             return null;
         }
         else{
-            //It isn't leaf
-            if(key.compareTo(entries.get(0).getKey()) <= 0 ){
-                //key less than minimum,keep find across the minimum
-                return child.get(0).search(key);
+            if(clave.compareTo(entradas.get(0).getKey()) <= 0 ){
+                return hijos.get(0).buscar(clave);
             }
-            else if(key.compareTo(entries.get(entries.size()-1).getKey()) >= 0){
-                //key greater than maximum,keep find across the maximum
-                return  child.get(child.size()-1).search(key);
+            else if(clave.compareTo(entradas.get(entradas.size()-1).getKey()) >= 0){
+                return  hijos.get(hijos.size()-1).buscar(clave);
             }
             else{
-                for(int i = 0; i < entries.size(); i++){
-                    if(key.compareTo(entries.get(i).getKey()) >= 0 && key.compareTo(entries.get(i+1).getKey()) < 0){
-                        return child.get(i).search(key);
+                for(int i = 0; i < entradas.size(); i++){
+                    if(clave.compareTo(entradas.get(i).getKey()) >= 0 && clave.compareTo(entradas.get(i+1).getKey()) < 0){
+                        return hijos.get(i).buscar(clave);
                     }
                 }
             }
@@ -80,110 +61,89 @@ public class NodoBplus {
         return null;
     }
 
-    public boolean insertOrUpdate(Integer key,Object obj, ArbolBplus Tree){
-        Entry<Integer,Object> insertObj = new SimpleEntry<Integer, Object>(key, obj);
-        //It is leaf
-        if(isLeaf){
-            //Not need split
-            if(entries.size() == 0){// node list is empty
-                entries.add(insertObj);
+    public boolean insertarActualizar(Integer clave,Object valor, ArbolBplus arbol){
+        Entry<Integer,Object> objetoInsertar = new SimpleEntry<Integer, Object>(clave, valor);
+        if(esHoja){
+            if(entradas.size() == 0){
+                entradas.add(objetoInsertar);
                    return true;
             }
-            if(entries.size() < Tree.getOrder()){// not full
-                insertKey(insertObj);
-                if(this.parent != null){ // update parent
-                    parent.updateNode(Tree);
+            if(entradas.size() < arbol.getOrden()){
+                insertarClave(objetoInsertar);
+                if(this.pariente != null){
+                    pariente.actualizarNodo(arbol);
                 }
             }
             else{
-                insertKey(insertObj);
-                if(entries.size() == Tree.getOrder()){
-                    //key existing
+                insertarClave(objetoInsertar);
+                if(entradas.size() == arbol.getOrden()){
                     return true;
                 }
-                //split to two node
-                NodoBplus left = new NodoBplus(true);
-                NodoBplus right = new NodoBplus(true);
-                if(previous != null){
-                    previous.next = left;
-                    left.previous = previous;
+                NodoBplus izquierdo = new NodoBplus(true);
+                NodoBplus derecho = new NodoBplus(true);
+                if(anterior != null){
+                    anterior.siguiente = izquierdo;
+                    izquierdo.anterior = anterior;
                 }
-                if(next != null){
-                    next.previous = right;
-                    right.next = next;
+                if(siguiente != null){
+                    siguiente.anterior = derecho;
+                    derecho.siguiente = siguiente;
                 }
-                if(previous == null){
-                    left.previous = null;
-                    Tree.head = left;
+                if(anterior == null){
+                    izquierdo.anterior = null;
+                    arbol.cabeza = izquierdo;
                 }
-                left.next = right;
-                right.previous = left;
-                previous = null;
-                next = null;
+                izquierdo.siguiente = derecho;
+                derecho.anterior = izquierdo;
+                anterior = null;
+                siguiente = null;
 
-                //insert to node and need to split
-                int leftSize = (Tree.getOrder() + 1) / 2 + (Tree.getOrder() + 1) % 2;
-                int rightSize = (Tree.getOrder()+ 1) / 2;
-                for(int i = 0; i < leftSize; i++){
-                    left.entries.add(entries.get(i));
+                int izquierdoSize = (arbol.getOrden() + 1) / 2 + (arbol.getOrden() + 1) % 2;
+                int derechoSize = (arbol.getOrden()+ 1) / 2;
+                for(int i = 0; i < izquierdoSize; i++){
+                    izquierdo.entradas.add(entradas.get(i));
                 }
-                for(int i = 0; i < rightSize; i++){
-                    right.entries.add(entries.get(leftSize + i));
+                for(int i = 0; i < derechoSize; i++){
+                    derecho.entradas.add(entradas.get(izquierdoSize + i));
                 }
 
-                //It is not root node, update parent node
-                if(parent != null){
-                    int index = parent.child.indexOf(this);
-                    parent.child.remove(this);
-                    left.parent = parent;
-                    right.parent = parent;
-                    parent.child.add(index,left);
-                    parent.child.add(index+1,right);
-                    setEntries(null);
-                    child = null;
-                    parent.updateInsert(Tree);
-                    parent = null;
+                if(pariente != null){
+                    int indice = pariente.hijos.indexOf(this);
+                    pariente.hijos.remove(this);
+                    izquierdo.pariente = pariente;
+                    derecho.pariente = pariente;
+                    pariente.hijos.add(indice,izquierdo);
+                    pariente.hijos.add(indice+1,derecho);
+                    setEntradas(null);
+                    hijos = null;
+                    pariente.actualizarInsertar(arbol);
+                    pariente = null;
                 }
-                else{ // It is root node
-                    isRoot = false;
-                    NodoBplus root = new NodoBplus(false,true);
-                    Tree.root = root;
-                    left.parent = root;
-                    right.parent = root;
-                    root.child.add(left);
-                    root.child.add(right);
-                    setEntries(null);
-                    child = null;
+                else{
+                    esRaiz = false;
+                    NodoBplus raiz = new NodoBplus(false,true);
+                    arbol.raiz = raiz;
+                    izquierdo.pariente = raiz;
+                    derecho.pariente = raiz;
+                    raiz.hijos.add(izquierdo);
+                    raiz.hijos.add(derecho);
+                    setEntradas(null);
+                    hijos = null;
 
-                    root.updateInsert(Tree);
+                    raiz.actualizarInsertar(arbol);
                 }
             }
-//            for(Entry<Integer,Object> entry : entries){
-//                if(entry.getKey().compareTo(key) == 0){
-//                }
-//            }
-//            if(key.compareTo(entries.get(0).getKey()) <0 ){
-//                //key less than minimum
-//
-//            }
-//            else if(key.compareTo(entries.get(entries.size()-1).getKey()) >= 0){
-//                //key greater than maximum,keep find across the maximum
-//            }
-//            for(Entry<Integer,Object> entry : entries){
-//            }
         }
-        else{//It is not leaf node
-            //key less than minimum,keep find across the minimum
-            if (key.compareTo(entries.get(0).getKey()) <= 0) {
-                child.get(0).insertOrUpdate(key, obj, Tree);
+        else{
+            if (clave.compareTo(entradas.get(0).getKey()) <= 0) {
+                hijos.get(0).insertarActualizar(clave, valor, arbol);
             }
-            //key larger than maximum,keep find across the maximum
-            else if (key.compareTo(entries.get(entries.size()-1).getKey()) >= 0) {
-                child.get(child.size()-1).insertOrUpdate(key, obj, Tree);
+            else if (clave.compareTo(entradas.get(entradas.size()-1).getKey()) >= 0) {
+                hijos.get(hijos.size()-1).insertarActualizar(clave, valor, arbol);
             }else {
-                for (int i = 0; i < entries.size(); i++) {
-                    if (entries.get(i).getKey().compareTo(key) <= 0 && entries.get(i+1).getKey().compareTo(key) > 0) {
-                        child.get(i).insertOrUpdate(key, obj, Tree);
+                for (int i = 0; i < entradas.size(); i++) {
+                    if (entradas.get(i).getKey().compareTo(clave) <= 0 && entradas.get(i+1).getKey().compareTo(clave) > 0) {
+                        hijos.get(i).insertarActualizar(clave, valor, arbol);
                         break;
                     }
                 }
@@ -193,129 +153,105 @@ public class NodoBplus {
         return false;
     }
 
-    public void InsertOrUpdate(NodoBplus Tree,Entry<Integer,Object> newEntry){
-        if(isLeaf){
-            //It is leaf node,insert or update directly
-            if(newEntry.getKey().compareTo(entries.get(0).getKey()) <=0){
-                //less than minimum
-//                entries.add();
-            }
-        }
-        else{
-
-        }
-    }
-
-    public void remove(Integer key, ArbolBplus Tree){
-        if(isLeaf){//It is leaf
-            // not contain
-            int judge = 0;
-            for(Entry<Integer, Object> entry : entries){
-                if(entry.getKey().compareTo(key)== 0){
-                    judge = 1;
+    public void eliminar(Integer clave, ArbolBplus arbol){
+        if(esHoja){
+            int condicion = 0;
+            for(Entry<Integer, Object> entrada : entradas){
+                if(entrada.getKey().compareTo(clave)== 0){
+                    condicion = 1;
                     break;
                 }
             }
-            if(judge == 0){
+            if(condicion == 0){
                 return;
             }
 
-            //leaf && root
-            if(isLeaf && isRoot){
-                remove(key);
+            if(esHoja && esRaiz){
+                eliminar(clave);
             }
             else{
-                if(entries.size() > Tree.getOrder()/2 && entries.size() > 2){// key list num> M/2
-                     remove(key);
+                if(entradas.size() > arbol.getOrden()/2 && entradas.size() > 2){
+                     eliminar(clave);
                 }
                 else{
-                    //previous node key list num > M/2
-                    if(previous != null && previous.entries.size() > Tree.getOrder()/2
-                            && previous.entries.size() > 2
-                            && previous.parent == parent){
-                        Entry<Integer, Object> entry = previous.getEntries().get(previous.getEntries().size()-1);
-                        previous.getEntries().remove(previous.getEntries().size()-1);
-                        entries.add(0, entry);
-                        remove(key);
+                    if(anterior != null && anterior.entradas.size() > arbol.getOrden()/2
+                            && anterior.entradas.size() > 2
+                            && anterior.pariente == pariente){
+                        Entry<Integer, Object> entrada = anterior.getEntradas().get(anterior.getEntradas().size()-1);
+                        anterior.getEntradas().remove(anterior.getEntradas().size()-1);
+                        entradas.add(0, entrada);
+                        eliminar(clave);
                     }
-                    //next node key list num > M/2
-                    else if(next != null && next.entries.size() > Tree.getOrder()/2
-                            && next.entries.size() > 2
-                            && next.parent == parent){
-                        Entry<Integer, Object> entry = next.getEntries().get(0);
-                        next.getEntries().remove(0);
-                        entries.add(entry);
-                        remove(key);
+                    else if(siguiente != null && siguiente.entradas.size() > arbol.getOrden()/2
+                            && siguiente.entradas.size() > 2
+                            && siguiente.pariente == pariente){
+                        Entry<Integer, Object> entrada = siguiente.getEntradas().get(0);
+                        siguiente.getEntradas().remove(0);
+                        entradas.add(entrada);
+                        eliminar(clave);
                     }
                     else{
-                        //merge previous node
-                        if (previous != null
-                                && (previous.getEntries().size() <= Tree.getOrder() / 2 || previous.getEntries().size() <= 2)
-                                && previous.parent == parent) {
-                            for (int i = previous.getEntries().size()-1; i >= 0; i--){
-                                entries.add(0,previous.getEntries().get(i));
-//                                previous.remove(previous.getEntries().size()-1-i);
+                        if (anterior != null
+                                && (anterior.getEntradas().size() <= arbol.getOrden() / 2 || anterior.getEntradas().size() <= 2)
+                                && anterior.pariente == pariente) {
+                            for (int i = anterior.getEntradas().size()-1; i >= 0; i--){
+                                entradas.add(0,anterior.getEntradas().get(i));
                             }
-                            remove(key);
-                            previous.setEntries(null);
-                            previous.parent = null;
-                            parent.child.remove(previous);
+                            eliminar(clave);
+                            anterior.setEntradas(null);
+                            anterior.pariente = null;
+                            pariente.hijos.remove(anterior);
 
-                            //update list
-                            if(previous.previous != null){
-                                previous.previous.next = this;
-                                NodoBplus temp = previous;
-                                this.previous = previous.previous;
-                                temp.previous = null;
-                                temp.next = null;
+                            if(anterior.anterior != null){
+                                anterior.anterior.siguiente = this;
+                                NodoBplus temp = anterior;
+                                this.anterior = anterior.anterior;
+                                temp.anterior = null;
+                                temp.siguiente = null;
                             }
                             else{
-                                Tree.head = this;
-                                previous.next = null;
-                                previous = null;
+                                arbol.cabeza = this;
+                                anterior.siguiente = null;
+                                anterior = null;
                             }
                         }
-                        //merge next node
-                        else if(next != null
-                                && (next.getEntries().size() <= Tree.getOrder() / 2 || next.getEntries().size() <= 2)
-                                && next.parent == parent){
-                            for (int i = 0; i < next.getEntries().size(); i++){
-                                entries.add(next.getEntries().get(i));
-//                                next.remove(next.getEntries().size()-1-i);
+                        else if(siguiente != null
+                                && (siguiente.getEntradas().size() <= arbol.getOrden() / 2 || siguiente.getEntradas().size() <= 2)
+                                && siguiente.pariente == pariente){
+                            for (int i = 0; i < siguiente.getEntradas().size(); i++){
+                                entradas.add(siguiente.getEntradas().get(i));
                             }
-                            remove(key);
-                            next.setEntries(null);
-                            next.parent = null;
-                            parent.child.remove(next);
+                            eliminar(clave);
+                            siguiente.setEntradas(null);
+                            siguiente.pariente = null;
+                            pariente.hijos.remove(siguiente);
 
-                            //update list
-                            if(next.next != null){
-                                next.next.previous = this;
-                                NodoBplus temp = next;
-                                this.next = next.next;
-                                temp.previous = null;
-                                temp.next = null;
+                            if(siguiente.siguiente != null){
+                                siguiente.siguiente.anterior = this;
+                                NodoBplus temp = siguiente;
+                                this.siguiente = siguiente.siguiente;
+                                temp.anterior = null;
+                                temp.siguiente = null;
                             }
                             else{
-                                next.previous = null;
-                                next = null;
+                                siguiente.anterior = null;
+                                siguiente = null;
                             }
                         }
                     }
                 }
-                parent.updateRemove(Tree);
+                pariente.actualizarEliminado(arbol);
             }
         }
         else{
-            //It is not leaf node
-            if (key.compareTo(entries.get(0).getKey()) <= 0) {
-                child.get(0).remove(key, Tree);
-            }else if (key.compareTo(entries.get(entries.size()-1).getKey()) >= 0) {
-                child.get(child.size()-1).remove(key, Tree);
+            if (clave.compareTo(entradas.get(0).getKey()) <= 0) {
+                hijos.get(0).eliminar(clave, arbol);
+            }else if (clave.compareTo(entradas.get(entradas.size()-1).getKey()) >= 0) {
+                hijos.get(hijos.size()-1).eliminar(clave, arbol);
             }else {
-                for (int i = 0; i < entries.size(); i++) {
-                    if (entries.get(i).getKey().compareTo(key) <= 0 && entries.get(i+1).getKey().compareTo(key) > 0) {
-                        child.get(i).remove(key, Tree);
+                for (int i = 0; i < entradas.size(); i++) {
+                    if (entradas.get(i).getKey().compareTo(clave) <= 0 && entradas.get(i+1).getKey().compareTo(clave) > 0) {
+                        hijos.get(i).eliminar(clave, arbol);
                         break;
                     }
                 }
@@ -323,209 +259,191 @@ public class NodoBplus {
         }
     }
 
-    public void updateRemove(ArbolBplus Tree){
-        updateNode(Tree);
-        if(child.size() < Tree.getOrder()/2 || child.size() < 2){
-            if(isRoot){
-                if(child.size() >= 2){
+    public void actualizarEliminado(ArbolBplus arbol){
+        actualizarNodo(arbol);
+        if(hijos.size() < arbol.getOrden()/2 || hijos.size() < 2){
+            if(esRaiz){
+                if(hijos.size() >= 2){
                     return;
                 }
                 else{
-                    //merge then child
-                    NodoBplus root = child.get(0);
-                    Tree.root = root;
-                    root.isRoot = true;
-                    root.parent = null;
-                    setEntries(null);
-                    child = null;
+                    NodoBplus raiz = hijos.get(0);
+                    arbol.raiz = raiz;
+                    raiz.esRaiz = true;
+                    raiz.pariente = null;
+                    setEntradas(null);
+                    hijos = null;
                 }
             }
             else{
-                int currIdx = parent.child.indexOf(this);
-                int prevIdx = currIdx - 1;
-                int nextIdx = currIdx + 1;
-                NodoBplus prevNode = null,nextNode = null;
-                if(prevIdx >= 0){
-                    prevNode = parent.child.get(prevIdx);
+                int indiceAcutual = pariente.hijos.indexOf(this);
+                int indiceAnterior = indiceAcutual - 1;
+                int indiceSiguiente = indiceAcutual + 1;
+                NodoBplus nodoAnterior = null, nodoSiguiente = null;
+                if(indiceAnterior >= 0){
+                    nodoAnterior = pariente.hijos.get(indiceAnterior);
                 }
-                if(nextIdx < parent.child.size()){
-                    nextNode = parent.child.get(nextIdx);
+                if(indiceSiguiente < pariente.hijos.size()){
+                    nodoSiguiente = pariente.hijos.get(indiceSiguiente);
                 }
 
-                //previous node's key more than M/2
-                if(prevNode != null && prevNode.child.size() > Tree.getOrder()/2 && prevNode.child.size() > 2){
-                    //add to the end
-                    int idx = prevNode.child.size()-1;
-                    NodoBplus temp = prevNode.child.get(idx);
-                    prevNode.child.remove(idx);
-                    temp.parent = this;
-                    this.child.add(0,temp);
-                    prevNode.updateNode(Tree);
-                    this.updateNode(Tree);
-                    parent.updateRemove(Tree);
+                if(nodoAnterior != null && nodoAnterior.hijos.size() > arbol.getOrden()/2 && nodoAnterior.hijos.size() > 2){
+                    int indice = nodoAnterior.hijos.size()-1;
+                    NodoBplus temp = nodoAnterior.hijos.get(indice);
+                    nodoAnterior.hijos.remove(indice);
+                    temp.pariente = this;
+                    this.hijos.add(0,temp);
+                    nodoAnterior.actualizarNodo(arbol);
+                    this.actualizarNodo(arbol);
+                    pariente.actualizarEliminado(arbol);
                 }
-                //next node's key more than M/2
-                else if(nextNode != null && nextNode.child.size() > Tree.getOrder()/2 && nextNode.child.size() > 2){
-                    //add to the end
-                    NodoBplus temp = nextNode.child.get(0);
-                    nextNode.child.remove(0);
-                    temp.parent = this;
-                    this.child.add(temp);
-                    nextNode.updateNode(Tree);
-                    this.updateNode(Tree);
-                    parent.updateRemove(Tree);
+                else if(nodoSiguiente != null && nodoSiguiente.hijos.size() > arbol.getOrden()/2 && nodoSiguiente.hijos.size() > 2){
+                    NodoBplus temp = nodoSiguiente.hijos.get(0);
+                    nodoSiguiente.hijos.remove(0);
+                    temp.pariente = this;
+                    this.hijos.add(temp);
+                    nodoSiguiente.actualizarNodo(arbol);
+                    this.actualizarNodo(arbol);
+                    pariente.actualizarEliminado(arbol);
                 }
-                //merge node
                 else{
-                    //merge previous node
-                    if(prevNode != null && (prevNode.child.size() <= Tree.getOrder()/2 || prevNode.child.size() <= 2)){
-                        for(int i = prevNode.child.size()-1; i >= 0; i--){
-                            NodoBplus node = prevNode.child.get(i);
-                            this.child.add(0, node);
-                            node.parent = this;
+                    if(nodoAnterior != null && (nodoAnterior.hijos.size() <= arbol.getOrden()/2 || nodoAnterior.hijos.size() <= 2)){
+                        for(int i = nodoAnterior.hijos.size()-1; i >= 0; i--){
+                            NodoBplus node = nodoAnterior.hijos.get(i);
+                            this.hijos.add(0, node);
+                            node.pariente = this;
                         }
-                        prevNode.parent = null;
-                        prevNode.child = null;
-                        prevNode.setEntries(null);
-                        parent.child.remove(prevNode);
-                        this.updateNode(Tree);
-                        parent.updateRemove(Tree);
+                        nodoAnterior.pariente = null;
+                        nodoAnterior.hijos = null;
+                        nodoAnterior.setEntradas(null);
+                        pariente.hijos.remove(nodoAnterior);
+                        this.actualizarNodo(arbol);
+                        pariente.actualizarEliminado(arbol);
                     }
-                    //merge next node
-                    else if(nextNode != null && (nextNode.child.size() <= Tree.getOrder()/2 || nextNode.child.size() <= 2)){
-                        for(int i =0; i < nextNode.child.size(); i++){
-                            NodoBplus node = nextNode.child.get(i);
-                            this.child.add(node);
-                            node.parent = this;
+                    else if(nodoSiguiente != null && (nodoSiguiente.hijos.size() <= arbol.getOrden()/2 || nodoSiguiente.hijos.size() <= 2)){
+                        for(int i =0; i < nodoSiguiente.hijos.size(); i++){
+                            NodoBplus node = nodoSiguiente.hijos.get(i);
+                            this.hijos.add(node);
+                            node.pariente = this;
                         }
-                        nextNode.parent = null;
-                        nextNode.child = null;
-                        nextNode.setEntries(null);
-                        parent.child.remove(nextNode);
-                        this.updateNode(Tree);
-                        parent.updateRemove(Tree);
+                        nodoSiguiente.pariente = null;
+                        nodoSiguiente.hijos = null;
+                        nodoSiguiente.setEntradas(null);
+                        pariente.hijos.remove(nodoSiguiente);
+                        this.actualizarNodo(arbol);
+                        pariente.actualizarEliminado(arbol);
                     }
                 }
             }
         }
     }
 
-    public void remove(Integer key){
-        int index = -1;
-        for(int i = 0; i < entries.size(); i++){
-            if(entries.get(i).getKey().compareTo(key) == 0){
-                index = i;
+    public void eliminar(Integer clave){
+        int indice = -1;
+        for(int i = 0; i < entradas.size(); i++){
+            if(entradas.get(i).getKey().compareTo(clave) == 0){
+                indice = i;
                 break;
             }
         }
-        if(index != -1){
-            entries.remove(index);
+        if(indice != -1){
+            entradas.remove(indice);
         }
     }
 
-    public void updateInsert(ArbolBplus Tree){
+    public void actualizarInsertar(ArbolBplus arbol){
 
-        updateNode(Tree);
+        actualizarNodo(arbol);
 
-        //child.size > M, split the node
-        if (child.size() > Tree.getOrder()) {
-            //split the node
-            NodoBplus left = new NodoBplus(false);
-            NodoBplus right = new NodoBplus(false);
-            //the size of left node and right node
-            int leftSize = (Tree.getOrder() + 1) / 2 + (Tree.getOrder() + 1) % 2;
-            int rightSize = (Tree.getOrder() + 1) / 2;
-            //copy the node key and update it
-            for (int i = 0; i < leftSize; i++){
-                left.child.add(child.get(i));
-                left.getEntries().add(new SimpleEntry(child.get(i).getEntries().get(0).getKey(), null));
-                child.get(i).parent = left;
+        if (hijos.size() > arbol.getOrden()) {
+            NodoBplus izquierdo = new NodoBplus(false);
+            NodoBplus derecho = new NodoBplus(false);
+            int izquierdoSize = (arbol.getOrden() + 1) / 2 + (arbol.getOrden() + 1) % 2;
+            int derechoSize = (arbol.getOrden() + 1) / 2;
+            
+            for (int i = 0; i < izquierdoSize; i++){
+                izquierdo.hijos.add(hijos.get(i));
+                izquierdo.getEntradas().add(new SimpleEntry(hijos.get(i).getEntradas().get(0).getKey(), null));
+                hijos.get(i).pariente = izquierdo;
             }
-            for (int i = 0; i < rightSize; i++){
-                right.child.add(child.get(leftSize + i));
-                right.getEntries().add(new SimpleEntry(child.get(leftSize + i).getEntries().get(0).getKey(), null));
-                child.get(leftSize + i).parent = right;
+            for (int i = 0; i < derechoSize; i++){
+                derecho.hijos.add(hijos.get(izquierdoSize + i));
+                derecho.getEntradas().add(new SimpleEntry(hijos.get(izquierdoSize + i).getEntradas().get(0).getKey(), null));
+                hijos.get(izquierdoSize + i).pariente = derecho;
             }
 
-            //It is not root node
-            if (parent != null) {
-                //Adjust the relationship between parent and child
-                int index = parent.child.indexOf(this);
-                parent.child.remove(this);
-                left.parent = parent;
-                right.parent = parent;
-                parent.child.add(index,left);
-                parent.child.add(index + 1, right);
-                setEntries(null);
-                child = null;
+            if (pariente != null) {
+                int indice = pariente.hijos.indexOf(this);
+                pariente.hijos.remove(this);
+                izquierdo.pariente = pariente;
+                derecho.pariente = pariente;
+                pariente.hijos.add(indice,izquierdo);
+                pariente.hijos.add(indice + 1, derecho);
+                setEntradas(null);
+                hijos = null;
 
-                //update the parent node
-                parent.updateInsert(Tree);
-                parent = null;
-                //It is root node
+                pariente.actualizarInsertar(arbol);
+                pariente = null;
             }else {
-                isRoot = false;
-                NodoBplus parent = new NodoBplus(false, true);
-                Tree.root = parent;
-                left.parent = parent;
-                right.parent = parent;
-                parent.child.add(left);
-                parent.child.add(right);
-                setEntries(null);
-                child = null;
+                esRaiz = false;
+                NodoBplus pariente = new NodoBplus(false, true);
+                arbol.raiz = pariente;
+                izquierdo.pariente = pariente;
+                derecho.pariente = pariente;
+                pariente.hijos.add(izquierdo);
+                pariente.hijos.add(derecho);
+                setEntradas(null);
+                hijos = null;
 
-                //update root node
-                parent.updateInsert(Tree);
+                pariente.actualizarInsertar(arbol);
             }
         }
     }
 
-    public void updateNode(ArbolBplus Tree){
-        //child size equal to entries size
-        if(entries.size() == child.size()){
-            for(int i = 0;i < entries.size();i++){
-                Integer key = child.get(i).entries.get(0).getKey();
-                if(entries.get(i).getKey().compareTo(key) != 0){
-                    entries.remove(i);
-                    entries.add(i,new SimpleEntry(key, null));
-                    if(!isRoot){
-                        parent.updateNode(Tree);
+    public void actualizarNodo(ArbolBplus arbol){
+        if(entradas.size() == hijos.size()){
+            for(int i = 0;i < entradas.size();i++){
+                Integer clave = hijos.get(i).entradas.get(0).getKey();
+                if(entradas.get(i).getKey().compareTo(clave) != 0){
+                    entradas.remove(i);
+                    entradas.add(i,new SimpleEntry(clave, null));
+                    if(!esRaiz){
+                        pariente.actualizarNodo(arbol);
                     }
                 }
             }
         }
-        //child split and this don't need to split
-        else if(isRoot && child.size() >= 2 ||
-                child.size() >= Tree.getOrder()/2 && child.size() <= Tree.getOrder() && child.size() >= 2){
-            entries.clear();
-            for(int i=0; i < child.size(); i++){
-                Integer key = child.get(i).getEntries().get(0).getKey();
-                entries.add(new SimpleEntry(key, null));
-                if(!isRoot){
-                    parent.updateNode(Tree);
+        else if(esRaiz && hijos.size() >= 2 ||
+                hijos.size() >= arbol.getOrden()/2 && hijos.size() <= arbol.getOrden() && hijos.size() >= 2){
+            entradas.clear();
+            for(int i=0; i < hijos.size(); i++){
+                Integer clave = hijos.get(i).getEntradas().get(0).getKey();
+                entradas.add(new SimpleEntry(clave, null));
+                if(!esRaiz){
+                    pariente.actualizarNodo(arbol);
                 }
             }
         }
     }
 
-    public boolean insertKey(Entry<Integer,Object> insertObj){
-        if(entries.get(0).getKey().compareTo(insertObj.getKey()) > 0){
-            entries.add(0,insertObj);
+    public boolean insertarClave(Entry<Integer,Object> objetoInsertar){
+        if(entradas.get(0).getKey().compareTo(objetoInsertar.getKey()) > 0){
+            entradas.add(0,objetoInsertar);
             return true;
         }
-        else if(entries.get(entries.size()-1).getKey().compareTo(insertObj.getKey()) < 0){
-            entries.add(entries.size(),insertObj);
+        else if(entradas.get(entradas.size()-1).getKey().compareTo(objetoInsertar.getKey()) < 0){
+            entradas.add(entradas.size(),objetoInsertar);
             return true;
         }
         else{
             int i = 0;
-            for(Entry<Integer,Object> entry : entries){
-                if(entry.getKey().compareTo(insertObj.getKey()) == 0){
-                    entries.get(i).setValue(insertObj.getValue());
+            for(Entry<Integer,Object> entrada : entradas){
+                if(entrada.getKey().compareTo(objetoInsertar.getKey()) == 0){
+                    entradas.get(i).setValue(objetoInsertar.getValue());
                     return true;
                 }
-                else if(entry.getKey().compareTo(insertObj.getKey()) > 0){
-                    entries.add(i,insertObj);
+                else if(entrada.getKey().compareTo(objetoInsertar.getKey()) > 0){
+                    entradas.add(i,objetoInsertar);
                     return true;
                 }
                 i++;
@@ -534,14 +452,14 @@ public class NodoBplus {
         return false;
     }
 
-    public void find(ArbolBplus Tree){
-        NodoBplus node = Tree.head;
-        System.out.print("key list : ");
+    public void encontrar(ArbolBplus arbol){
+        NodoBplus node = arbol.cabeza;
+        System.out.print("clave list : ");
         while (node != null){
-            for(Entry<Integer, Object> entry : node.entries){
-                System.out.print(entry.getValue() + " ");
+            for(Entry<Integer, Object> entrada : node.entradas){
+                System.out.print(entrada.getValue() + " ");
             }
-            node = node.next;
+            node = node.siguiente;
         }
         System.out.println();
     }

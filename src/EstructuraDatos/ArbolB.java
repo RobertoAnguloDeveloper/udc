@@ -224,8 +224,8 @@ public class ArbolB {
         }
         stringBuilder.append(nodo.valores);
         System.out.println(stringBuilder.toString());
-        for(ArbolB child : nodo.hijos) {
-            imprimirNodo(child, profundidad+1);
+        for(ArbolB hijo : nodo.hijos) {
+            imprimirNodo(hijo, profundidad+1);
         }
     }
 }

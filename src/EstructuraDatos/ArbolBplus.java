@@ -1,47 +1,62 @@
 package EstructuraDatos;
 
 public class ArbolBplus {
-    /**root node**/
-    protected NodoBplus root;
-
-    /**head node**/
-    protected NodoBplus head;
-
-    /**M value**/
-    protected int order;
+    
+    public NodoBplus raiz;
+    public NodoBplus cabeza;
+    public int orden;
 
 
-    public int getOrder(){
-        return this.order;
+    public int getOrden(){
+        return this.orden;
     }
 
-    public void setOrder(Integer order){
-        this.order = order;
+    public void setOrden(Integer orden){
+        this.orden = orden;
     }
 
-    public ArbolBplus(int order){
-        if(order < 3){
-            System.out.println("order must be greater than 2");
+    public ArbolBplus(int orden){
+        if(orden < 3){
+            System.out.println("ORDEN DEBE SER MAYOR 2");
             System.exit(0);
         }
-        this.order = order;
-        root = new NodoBplus(true, true);
-        head = root;
+        this.orden = orden;
+        raiz = new NodoBplus(true, true);
+        cabeza = raiz;
     }
 
-    public void insertOrUpdate(Integer key, Object obj){
-        root.insertOrUpdate(key, obj, this);
-    } // Remove the specified keyword
-
-    public void remove(Integer key){
-        root.remove(key, this);
-    } // Add the specified entry
-
-    public Object search(Integer key) { // Find the specified entry
-        return root.search(key);
+    public void insertarActualizar(Integer clave, Object valor){
+        raiz.insertarActualizar(clave, valor, this);
     }
 
-    public void find(ArbolBplus Tree) {
-        root.find(Tree);
-    }// Iterate over node list
+    public void eliminar(Integer clave){
+        raiz.eliminar(clave, this);
+    }
+
+    public Object busqueda(Integer clave) {
+        return raiz.buscar(clave);
+    }
+
+    public void encontrar(ArbolBplus arbol) {
+        raiz.encontrar(arbol);
+    }
+
+    public void imprimir(){
+        imprimir(raiz, orden, 0);
+    }
+
+    private void imprimir(NodoBplus nodo, int orden, int indice){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 1; i < orden; i++) {
+            stringBuilder.append("|    ");
+        }
+        if(orden > 0) {
+            stringBuilder.append("|----");
+        }
+        stringBuilder.append(nodo.entradas);
+        System.out.println(stringBuilder.toString());
+        if(nodo.hijos != null) {
+            imprimir(nodo.hijos.get(indice+1), orden-1, 0);
+        }
+    }
 }
