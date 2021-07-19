@@ -1,0 +1,36 @@
+Ejercicio Práctico:
+Para luego poder hacer operaciones de agregar , buscar , ordenar , desordenar , eliminar , insertar ,
+colocar al inicio , recorrerlos de inicio a fin y viceversa.
+
+Su ponga que tiene que almacenar temporalmente la siguiente colección de objetos:
+Carros , estudiantes , números enteros , piezas de un diccionario (palabra=significado), los nombres de
+los países del mundo.
+
+Escriba un programa Java que permita demostrar que usted sabe cómo utilizar las estructuras de datos
+investigadas anteriormente para poder lograr el objetivo propuestos anteriormente. Nota, pueden ser
+programas independientes y no todo en un único proyecto.
+
+COLECCIONES DE OBJETOS
+- Carros (PILA)
+- estudiantes (COLA)
+- números enteros (ARBOL)
+- piezas de un diccionario (palabra=significado) (MAP)
+- los nombres de los países del mundo (LISTA)
+
+ESTRUCTURAS A IMPLEMENTAR
+- PILA
+- COLA
+- LISTA
+- MAP
+- ARBOL
+
+METODOS
+- AGREGAR
+- BUSCAR
+- ORDENAR
+- DESORDENAR
+- ELIMINAR
+- INSERTAR
+- INSERTAR CABEZA
+- RECORRIDO INICIO FIN
+- RECORRIDO FIN INICIO
