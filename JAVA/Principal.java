@@ -123,6 +123,5 @@ public class Principal {
                     break;
             }
         } while (op != 10);
-            
     }
 }

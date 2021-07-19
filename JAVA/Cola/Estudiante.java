@@ -1,4 +1,4 @@
-package JAVA.Colas;
+package JAVA.Cola;
 
 public class Estudiante {
     private String nombres;
