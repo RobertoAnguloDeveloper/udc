@@ -20,35 +20,30 @@ public class Cola {
     }
 
     public Estudiante buscar(int id) {
-        for (int i = 0; i < size; i++) {
-            if(cola.poll().getNumeroIdentificacion() == id){
-                return cola.element();
+        colaToArray();
+        for (int i = 0; i < arrayCola.length; i++) {
+            if (arrayCola[i].getNumeroIdentificacion() == id) {
+                return arrayCola[i];
             }
         }
         return null;
     }
 
     public void ordenar() {
-        Estudiante aux;
-        for (int i = 0; i < this.size - 1; i++) {
-            for (int j = 0; j < this.size - 1; j++) {
-                if (this.cola.poll().getNumeroIdentificacion() > this.cola.poll().getNumeroIdentificacion()) {
-                    aux = this.cola.poll();
-                    this.cola.add(aux);
-                }
-            }
+        if(cola != null) {
+            colaToArray();
+            //Ordena de menor a mayor la cola por numeroIdentificacion
+            Arrays.sort(arrayCola, (Estudiante e1, Estudiante e2) -> e1.getNumeroIdentificacion() - e2.getNumeroIdentificacion());
+            arrayToCola();
         }
     }
 
     public void desordenar() {
-        Estudiante aux;
-        for (int i = 0; i < this.size - 1; i++) {
-            for (int j = 0; j < this.size - 1; j++) {
-                if (this.cola.poll().getNumeroIdentificacion() < this.cola.poll().getNumeroIdentificacion()) {
-                    aux = this.cola.poll();
-                    this.cola.add(aux);
-                }
-            }
+        if(cola != null) {
+            colaToArray();
+            //Ordena de mayor a menor la cola por numeroIdentificacion
+            Arrays.sort(arrayCola, (Estudiante e1, Estudiante e2) -> e2.getNumeroIdentificacion() - e1.getNumeroIdentificacion());
+            arrayToCola();
         }
     }
 
@@ -66,18 +61,22 @@ public class Cola {
     public Estudiante[] colaToArray() {
         arrayCola = new Estudiante[size];
         for (int i = 0; i < size; i++) {
-            arrayCola[i] = this.cola.poll();
+            arrayCola[i] = cola.poll();
         }
+        arrayToCola();
         return arrayCola;
     }
 
-    public void arrayToCola(Estudiante[] array) {
-        if(array != null){
+    public void arrayToCola() {
+        if(arrayCola != null){
+            cola.clear();
+        }else if(cola != null){
+            colaToArray();
             cola.clear();
         }
         
-        for (int i = 0; i < array.length; i++) {
-            this.cola.add(array[i]);
+        for (int i = 0; i < arrayCola.length; i++) {
+            this.cola.add(arrayCola[i]);
         }
     }
 
@@ -112,12 +111,12 @@ public class Cola {
             }
         }
         aux[pos] = e;
-        arrayToCola(aux);
+        arrayToCola();
     }
 
     public void imprimir(){
-        for(int i = 0; i < size; i++){
-            System.out.println(cola.poll());
+        for (Estudiante estudiante : cola) {
+            System.out.println(estudiante.toString());
         }
     }
 }

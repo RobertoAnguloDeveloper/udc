@@ -145,11 +145,12 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", tipoIdentificacion="
-                + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion + ", email=" + email
-                + ", telefono=" + telefono + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento
-                + ", fechaIngreso=" + fechaIngreso + ", fechaEgreso=" + fechaEgreso + ", activo=" + activo
-                + ", semestre=" + semestre + ", carrera=" + carrera + '}';
+        String estado = this.activo ? "Activo" : "Inactivo";
+        return "\nNombres: " + nombres + "\nApellidos: " + apellidos + "\nTipo de Identificacion: "
+                + tipoIdentificacion + "\nNúmero de "+tipoIdentificacion +": "+ numeroIdentificacion + "\nEmail: " + email
+                + "\nTelefono: " + telefono + "\nDireccion: " + direccion + "\nFecha de nacimiento: " + fechaNacimiento
+                + "\nFecha de ingreso: " + fechaIngreso + "\nFecha de egreso: " + fechaEgreso + "\nEstado: " + estado
+                + "\nSemestre: " + semestre + "\nCarrera: " + carrera;
     }
 
     public String getFechaIngresoFormateada() {

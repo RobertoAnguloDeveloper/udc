@@ -41,13 +41,13 @@ public class PrincipalCola {
                     System.out.print("Ingrese los apellidos del Estudiante: ");
                     String apellidos = key.nextLine();
 
-                    /*System.out.print("Ingrese el tipo de identificacion del Estudiante: ");
-                    String tipoIdentificacion = key.next();*/
+                    System.out.print("Ingrese el tipo de identificacion del Estudiante: ");
+                    String tipoIdentificacion = key.next();
 
                     System.out.print("Ingrese el numero de identificacion del Estudiante: ");
                     int numeroIdentificacion = key.nextInt();
 
-                    /*System.out.print("Ingrese el correo electrónico del Estudiante: ");
+                    System.out.print("Ingrese el correo electrónico del Estudiante: ");
                     String correoElectronico = key.next();
 
                     System.out.print("Ingrese el teléfono del Estudiante: ");
@@ -91,9 +91,9 @@ public class PrincipalCola {
 
                     Estudiante nuevo = new Estudiante(nombres, apellidos, tipoIdentificacion, numeroIdentificacion,
                             correoElectronico, telefono, direccion, fechaNacimiento, fechaIngreso, fechaEgreso, activo,
-                            semestre, carrera);*/
-                    Estudiante nuevo = new Estudiante(nombres, apellidos, numeroIdentificacion);
-                    cola.agregar(nuevo);
+                            semestre, carrera);
+                    Estudiante nuevoIn = new Estudiante(nombres, apellidos, numeroIdentificacion);
+                    cola.agregar(nuevoIn);
                     System.out.println("**********AGREGAR**********");
                     break;
 
@@ -117,22 +117,22 @@ public class PrincipalCola {
                 case 3:
                     System.out.println("**********ORDENAR**********");
                     cola.ordenar();
-                    System.out.println("PILA ORDENADA POR PLACA");
+                    System.out.println("COLA ORDENADA POR NUMERO DE IDENTIFICACION");
                     System.out.println("**********ORDENAR**********");
                     break;
 
-                /*case 4:
+                case 4:
                     System.out.println("**********DESORDENAR**********");
                     cola.desordenar();
-                    System.out.println("PILA DESORDENADA POR PLACA");
+                    System.out.println("COLA DESORDENADA POR NUMERO DE IDENTIFICACION");
                     System.out.println("**********DESORDENAR**********");
                     break;
 
                 case 5:
                     System.out.println("**********ELIMINAR**********");
-                    System.out.print("Ingrese la numeroIdentificacion = del Estudiante: ");
-                    String eliminar = key.next();
-                    cola.eliminar(eliminar.toUpperCase());
+                    System.out.print("Ingrese la numero de identificacion del Estudiante a eliminar: ");
+                    int eliminar = key.nextInt();
+                    cola.eliminar(eliminar);
                     System.out.println("**********ELIMINAR**********");
                     break;
 
