@@ -1,11 +1,9 @@
-package JAVA;
+package JAVA.Pila;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import JAVA.Pila.Carro;
-import JAVA.Pila.Pila;
 
-public class Principal {
+public class PrincipalPila {
     public static void main(String[] args) {
         Pila pila = new Pila();
         Scanner key = new Scanner(System.in);

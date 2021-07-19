@@ -15,7 +15,9 @@ public class Estudiante {
     private int semestre;
     private String carrera;
 
-    public Estudiante(String nombres, String apellidos, String tipoIdentificacion, int numeroIdentificacion, String email, String telefono, String direccion, String fechaNacimiento, String fechaIngreso, String fechaEgreso, boolean activo, int semestre, String carrera) {
+    public Estudiante(String nombres, String apellidos, String tipoIdentificacion, int numeroIdentificacion,
+            String email, String telefono, String direccion, String fechaNacimiento, String fechaIngreso,
+            String fechaEgreso, boolean activo, int semestre, String carrera) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoIdentificacion = tipoIdentificacion;
@@ -29,6 +31,12 @@ public class Estudiante {
         this.activo = activo;
         this.semestre = semestre;
         this.carrera = carrera;
+    }
+
+    public Estudiante(String nombres, String apellidos, int numeroIdentificacion){
+        this.numeroIdentificacion = numeroIdentificacion;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
     }
 
     public String getNombres() {
@@ -137,11 +145,11 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", tipoIdentificacion=" 
-        + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion + ", email=" + email 
-        + ", telefono=" + telefono + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento 
-        + ", fechaIngreso=" + fechaIngreso + ", fechaEgreso=" + fechaEgreso + ", activo=" + activo 
-        + ", semestre=" + semestre + ", carrera=" + carrera + '}';
+        return "Estudiante{" + "nombres=" + nombres + ", apellidos=" + apellidos + ", tipoIdentificacion="
+                + tipoIdentificacion + ", numeroIdentificacion=" + numeroIdentificacion + ", email=" + email
+                + ", telefono=" + telefono + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento
+                + ", fechaIngreso=" + fechaIngreso + ", fechaEgreso=" + fechaEgreso + ", activo=" + activo
+                + ", semestre=" + semestre + ", carrera=" + carrera + '}';
     }
 
     public String getFechaIngresoFormateada() {

@@ -1,19 +1,10 @@
 package JAVA.Cola;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Cola {
-    //Construye los siguientes métodos implementando una Queu tipo Estudiante:
-    //agregar
-    //buscar
-    //ordenar
-    //desordenar
-    //eliminar
-    //insertar
-    //recorrerInicioFin
-    //recorrerFinInicio
-    //imprimir
     private Queue<Estudiante> cola;
     private Estudiante[] arrayCola;
     private int size;
@@ -28,15 +19,13 @@ public class Cola {
         this.size++;
     }
 
-    public boolean buscar(int id) {
-        if (id >= 0 && id < this.size) {
-            for (int i = 0; i < size; i++) {
-                if(cola.poll().getNumeroIdentificacion() == id){
-                    return true;
-                }
+    public Estudiante buscar(int id) {
+        for (int i = 0; i < size; i++) {
+            if(cola.poll().getNumeroIdentificacion() == id){
+                return cola.element();
             }
         }
-        return false;
+        return null;
     }
 
     public void ordenar() {
@@ -94,12 +83,41 @@ public class Cola {
 
 
     public void insertar(int pos, Estudiante e) {
-        if (pos >= 0 && pos < this.size) {
-            for (int i = 0; i < size; i++) {
-                
+        colaToArray();
+        Estudiante [] aux = new Estudiante[size + 1];
+        Estudiante [] auxIzq = Arrays.copyOfRange(arrayCola, 0, pos-1);
+        Estudiante [] auxDer = Arrays.copyOfRange(arrayCola, pos+1, arrayCola.length-1);
+
+        if(pos == 0){
+            aux[pos] = e;
+            for (int i = pos+1, j = 0; i < aux.length; i++, j++) {
+                aux[i] = auxDer[j];
             }
         }
+
+        if(pos == arrayCola.length-1){
+            aux[pos] = e;
+            for (int i = 0, j = 0; i < aux.length-1; i--, j++) {
+                aux[i] = auxIzq[j];
+            }
+        }
+
+        if(pos != 0 || pos != size-1){
+            for (int i = 0; i < auxIzq.length; i++) {
+                aux[i] = auxIzq[i];
+            }
+
+            for (int i = 0, j = pos+1; i < auxDer.length; i++, j++) {
+                aux[j] = auxDer[i];
+            }
+        }
+        aux[pos] = e;
+        arrayToCola(aux);
     }
 
-
+    public void imprimir(){
+        for(int i = 0; i < size; i++){
+            System.out.println(cola.poll());
+        }
+    }
 }
