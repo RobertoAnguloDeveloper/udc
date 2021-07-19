@@ -1,4 +1,4 @@
-package JAVA.Pilas;
+package JAVA.Pila;
 
 public class Carro {
     private String marca;
@@ -46,6 +46,8 @@ public class Carro {
     }
 
     public String toString() {
-        return "Marca: " + marca + " Modelo: " + modelo + " Color: " + color + " Placa: " + placa;
+        return "*****************"+"\nMarca: " + marca + "\nModelo: " 
+        + modelo + "\nColor: " + color + "\nPlaca: " 
+        + placa+"\n*****************";
     }
 }
