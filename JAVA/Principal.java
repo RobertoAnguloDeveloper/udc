@@ -27,7 +27,5 @@ public class Principal {
         while(!carros.isEmpty()) {
             System.out.println("Carro "+(++i)+" = "+carros.pop().toString());
         }
-
-        carros.contains(o)
     }
 }
