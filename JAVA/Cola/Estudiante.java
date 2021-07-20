@@ -11,13 +11,13 @@ public class Estudiante {
     private String fechaNacimiento;
     private String fechaIngreso;
     private String fechaEgreso;
-    private boolean activo;
+    private String estado;
     private int semestre;
     private String carrera;
 
     public Estudiante(String nombres, String apellidos, String tipoIdentificacion, int numeroIdentificacion,
             String email, String telefono, String direccion, String fechaNacimiento, String fechaIngreso,
-            String fechaEgreso, boolean activo, int semestre, String carrera) {
+            String fechaEgreso, String estado, int semestre, String carrera) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoIdentificacion = tipoIdentificacion;
@@ -28,7 +28,7 @@ public class Estudiante {
         this.fechaNacimiento = fechaNacimiento;
         this.fechaIngreso = fechaIngreso;
         this.fechaEgreso = fechaEgreso;
-        this.activo = activo;
+        this.estado = estado;
         this.semestre = semestre;
         this.carrera = carrera;
     }
@@ -119,12 +119,12 @@ public class Estudiante {
         this.fechaEgreso = fechaEgreso;
     }
 
-    public boolean isActivo() {
-        return activo;
+    public String isActivo() {
+        return estado;
     }
 
-    public void setActivo(boolean activo) {
-        this.activo = activo;
+    public void setActivo(String estado) {
+        this.estado = estado;
     }
 
     public int getSemestre() {
@@ -145,8 +145,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        String estado = this.activo ? "Activo" : "Inactivo";
-        return "\nNombres: " + nombres + "\nApellidos: " + apellidos + "\nTipo de Identificacion: "
+        return "Nombres: " + nombres + "\nApellidos: " + apellidos + "\nTipo de Identificacion: "
                 + tipoIdentificacion + "\nNúmero de "+tipoIdentificacion +": "+ numeroIdentificacion + "\nEmail: " + email
                 + "\nTelefono: " + telefono + "\nDireccion: " + direccion + "\nFecha de nacimiento: " + fechaNacimiento
                 + "\nFecha de ingreso: " + fechaIngreso + "\nFecha de egreso: " + fechaEgreso + "\nEstado: " + estado

@@ -27,13 +27,16 @@ public class PrincipalCola {
                 System.out.print(">");
                 op = key.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("Opcion invalida");
+                System.out.println("****************************");
+                System.out.println("\tOpcion invalida");
+                System.out.println("****************************");
                 key = new Scanner(System.in);
             }
 
             key = new Scanner(System.in);
             switch (op) {
                 case 1:
+                    key = new Scanner(System.in);
                     System.out.println("**********AGREGAR**********");
                     System.out.print("Ingrese los nombres del Estudiante: ");
                     String nombres = key.nextLine();
@@ -53,9 +56,9 @@ public class PrincipalCola {
                     System.out.print("Ingrese el teléfono del Estudiante: ");
                     String telefono = key.next();
 
-                    System.out.print("Ingrese la dirección del Estudiante: ");
-                    String direccion = key.next();
                     key = new Scanner(System.in);
+                    System.out.print("Ingrese la dirección del Estudiante: ");
+                    String direccion = key.nextLine();
 
                     System.out.print("Ingrese la fecha de nacimiento del Estudiante: ");
                     String fechaNacimiento = key.next();
@@ -66,35 +69,26 @@ public class PrincipalCola {
                     System.out.print("Ingrese la fecha de egreso del Estudiante: ");
                     String fechaEgreso = key.next();
 
-                    char opcion;
-                    boolean activo = false;
-                    do {
-                        System.out.print("El Estudiante está opcion? S/N: ");
-                        opcion = key.next().charAt(0);
-                        opcion = Character.toUpperCase(opcion);
+                    key = new Scanner(System.in);
+                    System.out.print("Ingrese el estado del Estudiante: ");
+                    String estado = key.nextLine();
 
-                        if (opcion == 'S') {
-                            activo = true;
-                        } else if (opcion == 'N') {
-                            activo = false;
-                        } else if (opcion != 'S' && opcion != 'N') {
-                            System.out.println("Opcion invalida");
-                            key = new Scanner(System.in);
-                        }
-                    } while (opcion != 'S' && opcion != 'N');
-
-                    System.out.println("Ingrese el semestre que cursa el Estudiante: ");
+                    System.out.print("Ingrese el semestre que cursa el Estudiante: ");
                     int semestre = key.nextInt();
 
-                    System.out.println("Ingrese la carrera que cursa el Estudiante: ");
-                    String carrera = key.next();
+                    key = new Scanner(System.in);
+                    System.out.print("Ingrese la carrera que cursa el Estudiante: ");
+                    String carrera = key.nextLine();
 
                     Estudiante nuevo = new Estudiante(nombres, apellidos, tipoIdentificacion, numeroIdentificacion,
-                            correoElectronico, telefono, direccion, fechaNacimiento, fechaIngreso, fechaEgreso, activo,
+                            correoElectronico, telefono, direccion, fechaNacimiento, fechaIngreso, fechaEgreso, estado,
                             semestre, carrera);
-                    Estudiante nuevoIn = new Estudiante(nombres, apellidos, numeroIdentificacion);
-                    cola.agregar(nuevoIn);
-                    System.out.println("**********AGREGAR**********");
+                    cola.agregar(nuevo);
+                    key = new Scanner(System.in);
+                    System.out.println("\nESTUDIANTE AGREGADO EXITOSAMENTE");
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
+                    System.out.println("**********AGREGAR**********\n");
                     break;
 
                 case 2:
@@ -111,6 +105,8 @@ public class PrincipalCola {
                         System.out.println("El estudiante no se encuentra en la cola");
                     }
 
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********BUSCAR**********");
                     break;
 
@@ -118,6 +114,8 @@ public class PrincipalCola {
                     System.out.println("**********ORDENAR**********");
                     cola.ordenar();
                     System.out.println("COLA ORDENADA POR NUMERO DE IDENTIFICACION");
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********ORDENAR**********");
                     break;
 
@@ -125,6 +123,8 @@ public class PrincipalCola {
                     System.out.println("**********DESORDENAR**********");
                     cola.desordenar();
                     System.out.println("COLA DESORDENADA POR NUMERO DE IDENTIFICACION");
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********DESORDENAR**********");
                     break;
 
@@ -133,27 +133,77 @@ public class PrincipalCola {
                     System.out.print("Ingrese la numero de identificacion del Estudiante a eliminar: ");
                     int eliminar = key.nextInt();
                     cola.eliminar(eliminar);
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********ELIMINAR**********");
                     break;
 
                 case 6:
+                    key = new Scanner(System.in);
                     System.out.println("**********INSERTAR**********");
-                    System.out.print("Ingrese el nombres del Estudiante: ");
-                    String nombreIn = key.next();
-                    System.out.print("Ingrese el apellidos del Estudiante: ");
-                    String modeloIn = key.next();
-                    System.out.print("Ingrese el tipoIdentificacion del Estudiante: ");
-                    String colorIn = key.next();
-                    System.out.print("Ingrese la numeroIdentificacion = del Estudiante: ");
-                    String placaIn = key.next();
-                    Estudiante nuevoIn = new Estudiante(nombreIn, modeloIn, colorIn, placaIn.toUpperCase());
-                    System.out.print("Ingrese la posición donde desea insertar el Estudiante: ");
-                    int pos = key.nextInt();
+                    System.out.print("Ingrese los nombres del Estudiante: ");
+                    String nombresIn = key.nextLine();
+
+                    System.out.print("Ingrese los apellidos del Estudiante: ");
+                    String apellidosIn = key.nextLine();
+
+                    System.out.print("Ingrese el tipo de identificacion del Estudiante: ");
+                    String tipoIdentificacionIn = key.next();
+
+                    System.out.print("Ingrese el numero de identificacion del Estudiante: ");
+                    int numeroIdentificacionIn = key.nextInt();
+
+                    System.out.print("Ingrese el correo electrónico del Estudiante: ");
+                    String correoElectronicoIn = key.next();
+
+                    System.out.print("Ingrese el teléfono del Estudiante: ");
+                    String telefonoIn = key.next();
+
+                    key = new Scanner(System.in);
+                    System.out.print("Ingrese la dirección del Estudiante: ");
+                    String direccionIn = key.nextLine();
+
+                    System.out.print("Ingrese la fecha de nacimiento del Estudiante: ");
+                    String fechaNacimientoIn = key.next();
+
+                    System.out.print("Ingrese la fecha de ingreso del Estudiante: ");
+                    String fechaIngresoIn = key.next();
+
+                    System.out.print("Ingrese la fecha de egreso del Estudiante: ");
+                    String fechaEgresoIn = key.next();
+
+                    key = new Scanner(System.in);
+                    System.out.print("Ingrese el estado del Estudiante: ");
+                    String estadoIn = key.nextLine();
+
+                    System.out.print("Ingrese el semestre que cursa el Estudiante: ");
+                    int semestreIn = key.nextInt();
+
+                    key = new Scanner(System.in);
+                    System.out.print("Ingrese la carrera que cursa el Estudiante: ");
+                    String carreraIn = key.nextLine();
+
+                    Estudiante nuevoIn = new Estudiante(nombresIn, apellidosIn, tipoIdentificacionIn, numeroIdentificacionIn,
+                            correoElectronicoIn, telefonoIn, direccionIn, fechaNacimientoIn, fechaIngresoIn, fechaEgresoIn, estadoIn,
+                            semestreIn, carreraIn);
+
+                    int pos = 0;
+                    do{
+                        key = new Scanner(System.in);
+                        System.out.print("Ingrese la posición donde desea insertar el Estudiante: ");
+                        pos = key.nextInt();
+                    }while(pos < 0 || pos > cola.getSize());
+                    
                     cola.insertar(pos, nuevoIn);
+                    
+                    key = new Scanner(System.in);
+                    System.out.println("ESTUDIANTE INSERTADO EN LA POSICION ["+pos+"]");
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********INSERTAR**********");
                     break;
 
-                case 7:
+                /*case 7:
                     System.out.println("**********RECORRER DE INICIO A FIN**********");
                     cola.recorrerInicioFin();
                     System.out.println("**********RECORRER DE INICIO A FIN**********");
@@ -169,7 +219,10 @@ public class PrincipalCola {
                 case 9:
                     System.out.println("**********IMPRIMIR**********");
                     cola.imprimir();
-                    System.out.println("**********IMPRIMIR**********");
+                    key = new Scanner(System.in);
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
+                    System.out.println("**********IMPRIMIR**********\n");
                     break;
                 default:
                     break;

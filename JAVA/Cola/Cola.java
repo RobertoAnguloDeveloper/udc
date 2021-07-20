@@ -32,7 +32,6 @@ public class Cola {
     public void ordenar() {
         if(cola != null) {
             colaToArray();
-            //Ordena de menor a mayor la cola por numeroIdentificacion
             Arrays.sort(arrayCola, (Estudiante e1, Estudiante e2) -> e1.getNumeroIdentificacion() - e2.getNumeroIdentificacion());
             arrayToCola();
         }
@@ -41,19 +40,16 @@ public class Cola {
     public void desordenar() {
         if(cola != null) {
             colaToArray();
-            //Ordena de mayor a menor la cola por numeroIdentificacion
             Arrays.sort(arrayCola, (Estudiante e1, Estudiante e2) -> e2.getNumeroIdentificacion() - e1.getNumeroIdentificacion());
             arrayToCola();
         }
     }
 
     public void eliminar(int id) {
-        if (id >= 0 && id < this.size) {
-            for (int i = 0; i < size; i++) {
-                if(cola.poll().getNumeroIdentificacion() == id){
-                    this.cola.remove();
-                    this.size--;
-                }
+        for (int i = 0; i < size; i++) {
+            if(cola.poll().getNumeroIdentificacion() == id){
+                this.cola.remove();
+                this.size--;
             }
         }
     }
@@ -82,41 +78,53 @@ public class Cola {
 
 
     public void insertar(int pos, Estudiante e) {
-        colaToArray();
-        Estudiante [] aux = new Estudiante[size + 1];
-        Estudiante [] auxIzq = Arrays.copyOfRange(arrayCola, 0, pos-1);
-        Estudiante [] auxDer = Arrays.copyOfRange(arrayCola, pos+1, arrayCola.length-1);
+        if(cola != null){
+            colaToArray();
+            Estudiante [] aux = new Estudiante[arrayCola.length+1];
 
-        if(pos == 0){
-            aux[pos] = e;
-            for (int i = pos+1, j = 0; i < aux.length; i++, j++) {
-                aux[i] = auxDer[j];
+            if(pos == 0){
+                for (int i = 1, j = 0; j < arrayCola.length; i++, j++) {
+                    aux[i] = arrayCola[j];
+                }
+                aux[pos] = e;
             }
+
+            if(pos == arrayCola.length-1){
+                for (int i = 0; i < arrayCola.length; i++) {
+                    aux[i] = arrayCola[i];
+                }
+                aux[pos+1] = aux[pos];
+                aux[pos] = e;
+            }
+
+            if(pos != 0 || pos != size-1){
+                Estudiante [] auxIzq = Arrays.copyOfRange(arrayCola, 0, pos);
+                Estudiante [] auxDer = Arrays.copyOfRange(arrayCola, pos, arrayCola.length);
+                for (int i = 0; i < auxIzq.length; i++) {
+                    aux[i] = auxIzq[i];
+                }
+                aux[pos] = e;
+                for (int i = pos+1, j = 0; i < aux.length; i++, j++) {
+                    aux[i] = auxDer[j];
+                }
+            }
+            arrayCola = aux;
+            size++;
+            arrayToCola();
+        }else{
+            cola.add(e);
+            size++;
         }
-
-        if(pos == arrayCola.length-1){
-            aux[pos] = e;
-            for (int i = 0, j = 0; i < aux.length-1; i--, j++) {
-                aux[i] = auxIzq[j];
-            }
-        }
-
-        if(pos != 0 || pos != size-1){
-            for (int i = 0; i < auxIzq.length; i++) {
-                aux[i] = auxIzq[i];
-            }
-
-            for (int i = 0, j = pos+1; i < auxDer.length; i++, j++) {
-                aux[j] = auxDer[i];
-            }
-        }
-        aux[pos] = e;
-        arrayToCola();
     }
 
     public void imprimir(){
         for (Estudiante estudiante : cola) {
             System.out.println(estudiante.toString());
+            System.out.println("********************************");
         }
+    }
+
+    public int getSize() {
+        return size;
     }
 }
