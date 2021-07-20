@@ -1,12 +1,14 @@
+from Carro import Carro
+
 class Pila:
-    def __init__(self):
-        self.pila = []
-        self.size = 0
-        self.arrayPila = []
+    pila = [Carro]
+    size = 0
 
     def agregar(self, carro):
         self.pila.append(carro)
         self.size += 1
-        self.arrayPila.append(carro)
     
-    
+    def imprimir(self):
+        for i in range(1, self.size+1) :
+            print(i, self.pila[i].toString())
+        
