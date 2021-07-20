@@ -45,13 +45,15 @@ public class Cola {
         }
     }
 
-    public void eliminar(int id) {
-        for (int i = 0; i < size; i++) {
-            if(cola.poll().getNumeroIdentificacion() == id){
-                this.cola.remove();
-                this.size--;
+    public boolean eliminar(int id) {
+        for (Estudiante estudiante : cola) {
+            if(estudiante.getNumeroIdentificacion() == id) {
+                cola.remove(estudiante);
+                size--;
+                return true;
             }
         }
+        return false;
     }
 
     public Estudiante[] colaToArray() {
@@ -75,7 +77,6 @@ public class Cola {
             this.cola.add(arrayCola[i]);
         }
     }
-
 
     public void insertar(int pos, Estudiante e) {
         if(cola != null){
@@ -114,6 +115,29 @@ public class Cola {
         }else{
             cola.add(e);
             size++;
+        }
+    }
+
+    public void recorrerInicioFin(){
+        if(cola != null){
+            for (Estudiante estudiante : cola) {
+                System.out.println(estudiante.toString());
+                System.out.println("********************************");
+            }
+        }else{
+            System.out.println("La cola esta vacia");
+        }
+    }
+
+    public void recorrerFinInicio(){
+        if(cola != null){
+            colaToArray();
+            for (int i = size-1; i >= 0; i--) {
+                System.out.println(arrayCola[i].toString());
+                System.out.println("********************************");
+            }
+        }else{
+            System.out.println("La cola esta vacia");
         }
     }
 

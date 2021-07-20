@@ -86,7 +86,7 @@ public class PrincipalCola {
                     cola.agregar(nuevo);
                     key = new Scanner(System.in);
                     System.out.println("\nESTUDIANTE AGREGADO EXITOSAMENTE");
-                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    System.out.println("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
                     key.nextLine();
                     System.out.println("**********AGREGAR**********\n");
                     break;
@@ -105,7 +105,7 @@ public class PrincipalCola {
                         System.out.println("El estudiante no se encuentra en la cola");
                     }
 
-                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    System.out.println("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
                     key.nextLine();
                     System.out.println("**********BUSCAR**********");
                     break;
@@ -114,7 +114,7 @@ public class PrincipalCola {
                     System.out.println("**********ORDENAR**********");
                     cola.ordenar();
                     System.out.println("COLA ORDENADA POR NUMERO DE IDENTIFICACION");
-                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    System.out.println("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
                     key.nextLine();
                     System.out.println("**********ORDENAR**********");
                     break;
@@ -132,8 +132,14 @@ public class PrincipalCola {
                     System.out.println("**********ELIMINAR**********");
                     System.out.print("Ingrese la numero de identificacion del Estudiante a eliminar: ");
                     int eliminar = key.nextInt();
-                    cola.eliminar(eliminar);
-                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    
+                    if(cola.eliminar(eliminar)){
+                        System.out.println("El estudiante con el numero de identificacion "+eliminar+" ha sido eliminado");
+                    }else {
+                        System.out.println("El estudiante con el numero de identificacion "+eliminar+" no se encuentra en la cola");
+                    }
+                    
+                    System.out.println("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
                     key.nextLine();
                     System.out.println("**********ELIMINAR**********");
                     break;
@@ -192,6 +198,10 @@ public class PrincipalCola {
                         key = new Scanner(System.in);
                         System.out.print("Ingrese la posición donde desea insertar el Estudiante: ");
                         pos = key.nextInt();
+                        
+                        if(pos > cola.getSize()){
+                            System.out.println("La posición ingresada es mayor a la cantidad de estudiantes en la cola");
+                        }
                     }while(pos < 0 || pos > cola.getSize());
                     
                     cola.insertar(pos, nuevoIn);
@@ -203,24 +213,31 @@ public class PrincipalCola {
                     System.out.println("**********INSERTAR**********");
                     break;
 
-                /*case 7:
+                case 7:
                     System.out.println("**********RECORRER DE INICIO A FIN**********");
                     cola.recorrerInicioFin();
+                    
+                    key = new Scanner(System.in);
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********RECORRER DE INICIO A FIN**********");
                     break;
 
                 case 8:
                     System.out.println("**********RECORRER DE FIN A INICIO**********");
                     cola.recorrerFinInicio();
+
+                    key = new Scanner(System.in);
+                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    key.nextLine();
                     System.out.println("**********RECORRER DE FIN A INICIO**********");
                     break;
-                    */
 
                 case 9:
                     System.out.println("**********IMPRIMIR**********");
                     cola.imprimir();
                     key = new Scanner(System.in);
-                    System.out.print("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
+                    System.out.println("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...");
                     key.nextLine();
                     System.out.println("**********IMPRIMIR**********\n");
                     break;

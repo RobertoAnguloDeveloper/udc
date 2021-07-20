@@ -31,11 +31,11 @@ public class Prueba {
             nuevo[i] = nuevoRight[j];
         }
 
-        for (Integer integer : nuevo) {
+        /*for (Integer integer : nuevo) {
             System.out.println(integer);
-        }
-        //System.out.println(nuevo[5]);
+        }*/
 
+        cola.size();
         
     }
 }
