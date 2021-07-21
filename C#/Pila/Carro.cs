@@ -1,10 +1,4 @@
-//Build the class Carro with the following properties:
-//- string marca;
-//- string modelo;
-//- string color;
-//- string placa;
-
-class Carro {
+public class Carro {
     string marca;
     string modelo;
     string color;
@@ -49,7 +43,7 @@ class Carro {
         this.placa = placa;
     }
 
-    public override string ToString() {
+    public string mostrar() {
         return "*****************"+"\nMarca: " + marca + "\nModelo: " 
         + modelo + "\nColor: " + color + "\nPlaca: " 
         + placa+"\n*****************";

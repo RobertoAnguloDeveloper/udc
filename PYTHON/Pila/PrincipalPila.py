@@ -41,6 +41,17 @@ while ctrl:
         input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
         print("**********AGREGAR**********")
 
+    elif opc == 2:
+        print("**********BUSCAR**********")
+        marca = input("Ingrese la placa del carro a buscar: ")
+        busqueda = pila.buscar(marca)
+
+        if busqueda == None:
+            print("CARRO NO ENCONTRADO, NO SE HA ENCONTRADO UN CARRO CON ESA PLACA")
+        
+        else:
+            print("El Carro de placa "+busqueda.getPlaca()+" "+busqueda.getMarca()+" "+busqueda.getModelo()+" "+busqueda.getColor())
+
     elif opc == 9:
         print("**********IMPRIMIR**********")
         pila.imprimir()
