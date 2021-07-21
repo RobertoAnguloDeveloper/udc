@@ -26,9 +26,10 @@ namespace Pila
 
         public int buscarPorPlaca(string placa)
         {
+            pilaToList();
             for (int i = 0; i < size; i++)
             {
-                if (pila.Pop().getPlaca().Equals(placa.ToUpper()))
+                if (listaPila[i].getPlaca().Equals(placa.ToUpper()))
                 {
                     return i;
                 }
