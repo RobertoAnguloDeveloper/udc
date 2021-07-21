@@ -134,6 +134,7 @@ namespace Pila
         public void insertar(int pos, Carro objeto)
         {
             pilaToList();
+            size = pila.Count;
             if (pos >= 0 && pos <= size)
             {
                 listaPila.Insert(pos, objeto);
@@ -153,17 +154,19 @@ namespace Pila
 
         public void recorrerInicioFin()
         {
-            pilaToList();
-            for (int i = 0; i < listaPila.Count; i++)
-            {
-                Console.WriteLine(listaPila[i].getPlaca());
+            if(listaPila.Count > 0){
+            
+                for (int i = 0; i < listaPila.Count; i++)
+                {
+                    Console.WriteLine(listaPila[i].getPlaca());
+                }
+            }else{
+                Console.WriteLine("La colección esta vacia");
             }
-            listToPila();
         }
 
         public void recorrerFinInicio()
         {
-            pilaToList();
             for (int i = listaPila.Count - 1; i >= 0; i--)
             {
                 Console.WriteLine(listaPila[i].getPlaca());
