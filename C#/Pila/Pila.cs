@@ -7,7 +7,6 @@ namespace Pila
     {
         private Stack<Carro> pila;
         private int size;
-        private Carro[] arrayPila;
         private List<Carro> listaPila;
 
         public Pila()
@@ -42,10 +41,12 @@ namespace Pila
 
         public void pilaToList()
         {
+            size = pila.Count;
             listaPila.Clear();
-            for (int i = 0; i < pila.Count; i++)
+            while (size != 0)
             {
                 listaPila.Add(pila.Pop());
+                size--;
             }
 
             for (int i = 0; i < listaPila.Count; i++)
@@ -63,64 +64,44 @@ namespace Pila
             }
         }
 
-        public void pilaToArray()
-        {
-            arrayPila = new Carro[size];
-            for (int i = 0; i < size; i++)
-            {
-                arrayPila[i] = pila.Pop();
-            }
-        }
-
-        public void arrayToPila()
-        {
-            pila.Clear();
-            size = 0;
-            for (int i = 0; i < arrayPila.Length; i++)
-            {
-                pila.Push(arrayPila[i]);
-                size++;
-            }
-        }
-
         public void ordenar()
         {
-            pilaToArray();
-            Carro[] aux = new Carro[size];
+            pilaToList();
+            List<Carro> aux = new List<Carro>();
             int i = 0;
             int j = 0;
             while (i < size)
             {
                 for (j = 0; j < size; j++)
                 {
-                    if (arrayPila[i].getPlaca().CompareTo(arrayPila[j].getPlaca()) < 0)
+                    if (listaPila[i].getPlaca().CompareTo(listaPila[j].getPlaca()) < 0)
                     {
-                        aux[i] = arrayPila[i];
-                        arrayPila[i] = arrayPila[j];
-                        arrayPila[j] = aux[i];
+                        aux[i] = listaPila[i];
+                        listaPila[i] = listaPila[j];
+                        listaPila[j] = aux[i];
                     }
                 }
                 i++;
             }
             Console.WriteLine("COLECCION DE CARROS ORDENADA");
-            arrayToPila();
+            listToPila();
         }
 
         public void desordenar()
         {
-            pilaToArray();
-            Carro[] arrayPilaInv = new Carro[size];
+            pilaToList();
+            List<Carro> listaPilaInv = new List<Carro>();
             for (int i = 0; i < size; i++)
             {
-                arrayPilaInv[i] = arrayPila[size - 1 - i];
+                listaPilaInv[i] = listaPila[size - 1 - i];
             }
 
             for (int i = 0; i < size; i++)
             {
-                arrayPila[i] = arrayPilaInv[i];
+                listaPila[i] = listaPilaInv[i];
             }
             Console.WriteLine("COLECCION DE CARROS DESORDENADA");
-            arrayToPila();
+            listToPila();
         }
 
         public void eliminar(string placa)
@@ -153,7 +134,7 @@ namespace Pila
         public void insertar(int pos, Carro objeto)
         {
             pilaToList();
-            if (pos >= 0 && pos < size)
+            if (pos >= 0 && pos <= size)
             {
                 listaPila.Insert(pos, objeto);
                 if (pos == 0)
@@ -173,16 +154,17 @@ namespace Pila
         public void recorrerInicioFin()
         {
             pilaToList();
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < listaPila.Count; i++)
             {
                 Console.WriteLine(listaPila[i].getPlaca());
             }
+            listToPila();
         }
 
         public void recorrerFinInicio()
         {
             pilaToList();
-            for (int i = size - 1; i >= 0; i--)
+            for (int i = listaPila.Count - 1; i >= 0; i--)
             {
                 Console.WriteLine(listaPila[i].getPlaca());
             }
@@ -190,7 +172,6 @@ namespace Pila
 
         public void imprimir()
         {
-            pilaToList();
             for (int i = 0; i < listaPila.Count; i++)
             {
                 Console.WriteLine(listaPila[i].mostrar());
