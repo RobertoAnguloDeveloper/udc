@@ -19,7 +19,6 @@ while ctrl:
     print("10. Salir")
     print("******MENU CARRO*******")
     
-    
     try:
         opc = int(input("Ingrese una opcion: "))
     except ValueError:
@@ -43,14 +42,78 @@ while ctrl:
 
     elif opc == 2:
         print("**********BUSCAR**********")
-        marca = input("Ingrese la placa del carro a buscar: ")
-        busqueda = pila.buscar(marca)
+        placa = input("Ingrese la placa del carro a buscar: ")
+        busqueda = pila.buscar(placa)
 
         if busqueda == None:
-            print("CARRO NO ENCONTRADO, NO SE HA ENCONTRADO UN CARRO CON ESA PLACA")
+            print("NO HA INGRESADO NINGUNA PLACA")
         
         else:
             print("El Carro de placa "+busqueda.getPlaca()+" "+busqueda.getMarca()+" "+busqueda.getModelo()+" "+busqueda.getColor())
+            input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+            print("**********BUSCAR**********")
+        
+    elif opc == 3:
+        print("**********ORDENAR**********")
+        pila.ordenar()
+        print("PILA ORDENADA POR PLACA DE MENOR A MAYOR")
+        input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+        print("**********ORDENAR**********")
+
+    elif opc == 4:
+        print("**********DESORDENAR**********")
+        pila.desordenar()
+        print("PILA DESORDENADA")
+        input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+        print("**********DESORDENAR**********")
+
+    elif opc == 5:
+        print("**********ELIMINAR**********")
+        placa = input("Ingrese la placa del carro a eliminar: ")
+        if(placa == None):
+            print("NO HA INGRESADO NINGUNA PLACA")
+        else:
+            eliminado = pila.eliminar(placa)
+            if eliminado == -1:
+                print("NO EXISTE EL CARRO CON ESA PLACA")
+            else:
+                print("EL CARRO DE PLACA "+placa+" HA SIDO ELIMINADO")
+                input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+                print("**********ELIMINAR**********")
+
+    elif opc == 6:
+        print("**********INSERTAR**********")
+        marca = input("Ingrese la marca del carro: ")
+        modelo = input("Ingrese el modelo del carro: ")
+        color = input("Ingrese el color del carro: ")
+        placa = input("Ingrese la placa del carro: ")
+        pos = int(input("Ingrese la posición donde desea insertar el carro: "))
+
+        nuevo = Carro(marca, modelo, color, placa.upper())
+        
+        if(pos >= 0 and pos <= pila.size):
+            pila.insertar(pos, nuevo)
+            print("CARRO INSERTADO EN LA POSICION ",pos)
+            input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+            print("**********INSERTAR**********")
+        else:
+            print("******ERROR*******")
+            print("Posición invalida")
+            print("******ERROR*******")
+            input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+            print("**********INSERTAR**********")
+    
+    elif opc == 7:
+        print("**********RECORRER DE INICIO A FIN**********")
+        pila.recorrerInicioFin()
+        input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+        print("**********RECORRER DE INICIO A FIN**********")
+
+    elif opc == 8:
+        print("**********RECORRER DE FIN A INICIO**********")
+        pila.recorrerFinInicio()
+        input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+        print("**********RECORRER DE FIN A INICIO**********")
 
     elif opc == 9:
         print("**********IMPRIMIR**********")
