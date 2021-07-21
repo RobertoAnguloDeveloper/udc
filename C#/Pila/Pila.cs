@@ -20,6 +20,7 @@ namespace Pila
         public void agregar(Carro objeto)
         {
             pila.Push(objeto);
+            listaPila.Add(objeto);
             Console.WriteLine("Carro de " + objeto.getPlaca() + " ha sido AGREGADO");
             size++;
         }
@@ -41,14 +42,21 @@ namespace Pila
 
         public void pilaToList()
         {
+            listaPila.Clear();
             for (int i = 0; i < pila.Count; i++)
             {
                 listaPila.Add(pila.Pop());
+            }
+
+            for (int i = 0; i < listaPila.Count; i++)
+            {
+                pila.Push(listaPila[i]);
             }
         }
 
         public void listToPila()
         {
+            pila.Clear();
             for (int i = 0; i < listaPila.Count; i++)
             {
                 pila.Push(listaPila[i]);

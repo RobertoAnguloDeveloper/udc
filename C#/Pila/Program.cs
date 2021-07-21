@@ -32,6 +32,7 @@ namespace Pila
                 catch (FormatException)
                 {
                     Console.WriteLine("Opcion invalida");
+                    op = 0;
                 }
 
                 switch (op)
