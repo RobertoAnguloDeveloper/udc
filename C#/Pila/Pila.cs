@@ -27,19 +27,21 @@ namespace Pila
         public int buscarPorPlaca(string placa)
         {
             pilaToList();
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < listaPila.Count; i++)
             {
                 if (listaPila[i].getPlaca().Equals(placa.ToUpper()))
                 {
+                    listToPila();
                     return i;
                 }
             }
+            listToPila();
             return -1;
         }
 
         public void pilaToList()
         {
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < pila.Count; i++)
             {
                 listaPila.Add(pila.Pop());
             }
@@ -117,7 +119,7 @@ namespace Pila
         {
             pilaToList();
             int ctrl = 0;
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < listaPila.Count; i++)
             {
                 if (listaPila[i].getPlaca().Equals(placa))
                 {
@@ -181,9 +183,9 @@ namespace Pila
         public void imprimir()
         {
             pilaToList();
-            for (int i = 0; i < size; i++)
+            for (int i = 0; i < listaPila.Count; i++)
             {
-                Console.WriteLine(listaPila[i].getPlaca());
+                Console.WriteLine(listaPila[i].mostrar());
             }
         }
 
