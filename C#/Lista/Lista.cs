@@ -3,18 +3,6 @@ using System.Collections.Generic;
 
 namespace Lista
 {
-    //Build the class Lista that uses a LinkedList<string> and have the following methods:
-    //
-    //  public void agregar(string pais)
-    //  public string buscar(string pais)
-    //  public void ordenar()
-    //  public void desordenar()
-    //  public void eliminar(string pais)
-    //  public void insertar(int pos, string pais)
-    //  public void recorridoInicioFin()
-    //  public void recorridoFinInicio()
-    //  public void imprimir()
-
     public class Lista
     {
         private List<string> lista;
@@ -78,7 +66,5 @@ namespace Lista
                 Console.WriteLine(item);
             }
         }
-        
-        
     }
 }
