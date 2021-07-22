@@ -52,13 +52,16 @@ while ctrl:
     elif opc == 2:
         print("**********BUSCAR**********")
         numeroIdentificacion = int(input("Ingrese el numero de identificacion del Estudiante a buscar: "))
-        busqueda = cola.buscar(numeroIdentificacion)
 
         if numeroIdentificacion == None:
             print("NO HA INGRESADO NINGUNA CEDULA")
         
         else:
-            print("El Estudiante de numero de identificación "+str(numeroIdentificacion)+" "+busqueda.getNombres()+" "+busqueda.getApellidos()+" está en la cola")
+            busqueda = cola.buscar(numeroIdentificacion)
+            if busqueda == None:
+                print("NO HAY ESTUDIANTES CON ESTA CEDULA")
+            else:
+                print("El Estudiante de numero de identificación "+str(numeroIdentificacion)+" "+busqueda.getNombres()+" "+busqueda.getApellidos()+" está en la cola")
             input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
             print("**********BUSCAR**********")
         
@@ -78,17 +81,20 @@ while ctrl:
 
     elif opc == 5:
         print("**********ELIMINAR**********")
-        numeroIdentificacion = input("Ingrese el numero de identificacion del Estudiante a eliminar: ")
-        if(numeroIdentificacion == None):
-            print("NO HA INGRESADO NINGUN NUMERO DE IDENTIFICACION")
+        numeroIdentificacion = int(input("Ingrese el numero de identificacion del Estudiante a eliminar: "))
+        #Opcion eliminar por numero identificacion del Estudiante
+        if numeroIdentificacion == None:
+            print("NO HA INGRESADO NINGUNA CEDULA")
+        
         else:
-            eliminado = cola.eliminar(numeroIdentificacion)
-            if eliminado == -1:
-                print("NO EXISTE NINGUN ESTUDIANTE CON ESE NUMERO DE IDENTIFICACION")
+            busqueda = cola.buscar(numeroIdentificacion)
+            if busqueda == None:
+                print("NO HAY ESTUDIANTES CON ESTA CEDULA")
             else:
-                print("EL ESTUDIANTE DE IDENTIFICACION NUMERO "+str(numeroIdentificacion)+" HA SIDO ELIMINADO")
-                input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
-                print("**********ELIMINAR**********")
+                cola.eliminar(numeroIdentificacion)
+                print("EL ESTUDIANTE DE NUMERO DE IDENTIFICACION "+str(numeroIdentificacion)+" "+busqueda.getNombres()+" "+busqueda.getApellidos()+" HA SIDO ELIMINADO")
+        input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
+        print("**********ELIMINAR**********")
 
     elif opc == 6:
         print("**********INSERTAR**********")
@@ -109,15 +115,13 @@ while ctrl:
 
         nuevo = Estudiante(nombres, apellidos, tipoIdentificacion, numeroIdentificacion, email, telefono, direccion, fechaNacimiento, fechaIngreso, fechaEgreso, estado, semestre, carrera)
         
-        if(pos >= 0 and pos <= cola.size):
+        if(pos > 0 and pos <= cola.size):
             cola.insertar(pos, nuevo)
             print("ESTUDIANTE INSERTADO EN LA POSICION ",pos)
-            input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
-            print("**********INSERTAR**********")
+        elif(pos == 0):
+            print("LA COLECCION COMIENZA EN 1")
         else:
-            print("******ERROR*******")
             print("Posición invalida")
-            print("******ERROR*******")
             input("PRESIONE UNA TECLA PARA ENTER/INTRO PARA IR AL MENU...")
             print("**********INSERTAR**********")
     
