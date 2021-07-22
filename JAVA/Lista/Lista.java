@@ -27,7 +27,6 @@ public class Lista{
             return null;
         }
 
-        //Build a method that sort the String list
         public void ordenar(){
             Collections.sort(lista);
         }

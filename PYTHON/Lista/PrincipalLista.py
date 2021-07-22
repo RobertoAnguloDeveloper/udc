@@ -1,0 +1,31 @@
+#Implement all the methods from the Lista class
+from Lista import Lista
+
+lista = Lista()
+
+lista.agregar("Argentina")
+lista.agregar("Bolivia")
+lista.agregar("Ecuador")
+lista.agregar("Paraguay")
+lista.agregar("Chile")
+lista.agregar("México")
+lista.agregar("Espana")
+
+print("Lista original: ")
+lista.imprimir()
+print("Lista ordenada: ")
+lista.ordenar()
+lista.imprimir()
+print("Lista desordenada: ")
+lista.desordenar()
+lista.imprimir()
+print("Pais eliminado 'Chile'")
+lista.eliminar("Chile")
+lista.imprimir()
+print("Pais insertado 'Perú' en la posicion 2")
+lista.insertar(2,"Perú")
+lista.imprimir()
+print("Lista recorrido inicio a fin: ")
+lista.recorridoInicioFin()
+print("Lista recorrido fin a inicio: ")
+lista.recorridoFinInicio()
