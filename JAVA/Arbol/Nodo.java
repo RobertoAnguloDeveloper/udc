@@ -1,4 +1,4 @@
-package JAVA.Arboles;
+package JAVA.Arbol;
 
 import java.util.Optional;
 
@@ -108,9 +108,8 @@ public class Nodo {
         }
     }
 
-    //Build a method that inserts an Integer value into the tree with a given position.
     public void insertar(Integer posicion, Integer valor ) {
-                if (posicion < 0) {
+        if (posicion < 0) {
             agregar(valor);
         } else if (posicion > 0) {
             if (izquierdo != null) {

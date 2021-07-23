@@ -1,4 +1,4 @@
-package JAVA.Arboles;
+package JAVA.Arbol;
 
 import java.util.Optional;
 
@@ -27,41 +27,35 @@ public class PrincipalArbol {
             System.out.println("El valor 16 no esta en el arbol");
         }
         
-        //Implement ordenar()
         arbol.ordenar();
         System.out.println("-------------------");
         System.out.println("Arbol ordenado");
         System.out.println("-------------------");
         arbol.inOrden();
 
-        //Implement eliminar()
         arbol.eliminar(16);
         System.out.println("---------------");
         System.out.println("Arbol sin 16");
         System.out.println("---------------");
         arbol.inOrden();
 
-        //arbol.desordenar();
         arbol.desordenar();
         System.out.println("-------------------");
         System.out.println("Arbol desordenado");
         System.out.println("-------------------");
         arbol.inOrden();
 
-        //Implement insertar()
         arbol.insertar(2, 36);
         System.out.println("-------------------------------");
         System.out.println("Insertado 36 en la posición 2");
         System.out.println("-------------------------------");
         arbol.inOrden();
 
-        //Implement inOrden()
         System.out.println("-------------------------------");
         System.out.println("Recorrido de inicio a fin");
         System.out.println("-------------------------------");
         arbol.inOrden();
 
-        //Implement inOrden()
         arbol.ordenar();
         System.out.println("-------------------------------");
         System.out.println("Recorrido de fin a inicio");

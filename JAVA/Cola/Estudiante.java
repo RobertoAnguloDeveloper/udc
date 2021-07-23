@@ -33,12 +33,6 @@ public class Estudiante {
         this.carrera = carrera;
     }
 
-    public Estudiante(String nombres, String apellidos, int numeroIdentificacion){
-        this.numeroIdentificacion = numeroIdentificacion;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-    }
-
     public String getNombres() {
         return nombres;
     }

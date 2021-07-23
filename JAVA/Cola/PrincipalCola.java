@@ -93,7 +93,7 @@ public class PrincipalCola {
 
                 case 2:
                     System.out.println("**********BUSCAR**********");
-                    System.out.print("Ingrese la numero de Identificacion del Estudiante: ");
+                    System.out.print("Ingrese el numero de Identificacion del Estudiante: ");
                     int busqueda = key.nextInt();
 
                     Estudiante respuesta = cola.buscar(busqueda);
@@ -130,7 +130,7 @@ public class PrincipalCola {
 
                 case 5:
                     System.out.println("**********ELIMINAR**********");
-                    System.out.print("Ingrese la numero de identificacion del Estudiante a eliminar: ");
+                    System.out.print("Ingrese el numero de identificacion del Estudiante a eliminar: ");
                     int eliminar = key.nextInt();
                     
                     if(cola.eliminar(eliminar)){
