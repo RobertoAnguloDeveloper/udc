@@ -4,9 +4,6 @@ public class PrincipalMapa {
     public static void main(String[] args) {
         Mapa mapa = new Mapa();
 
-        System.out.println("******************************************************");
-        System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
-        System.out.println("******************************************************");
         mapa.agregar("Java", "Lenguaje de programación especializado en Programación Orientada a Objetos");
         mapa.agregar("JavaScript", "Lenguaje de programación orientado a objetos y orientado a páginas Web");
         mapa.agregar("PHP", "Lenguaje de programación orientado a objetos y de comunicación con el servidor");
@@ -16,9 +13,6 @@ public class PrincipalMapa {
         mapa.agregar("Python", "Lenguaje de programación orientado a objetos");
         mapa.agregar("Ruby", "Lenguaje de programación orientado a objetos");
         mapa.imprimir();
-        System.out.println("******************************************************");
-        System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
-        System.out.println("******************************************************");
 
         System.out.println("************************************************");
         System.out.println("*Buscar una palabra en el mapa*");
@@ -38,8 +32,12 @@ public class PrincipalMapa {
         System.out.println("************************************************");
         mapa.ordenar();
         mapa.imprimir();
-        
 
+        System.out.println("************************************************");
+        System.out.println("*DESORDENANDO EL MAPA*");
+        System.out.println("************************************************");
+        mapa.desordenar();
+        mapa.imprimir();
         
         System.out.println("************************************************");
         System.out.println("*ELIMINAR UNA PALABRA DEL MAPA*");
@@ -47,10 +45,29 @@ public class PrincipalMapa {
         System.out.println("************************************************");
         String eliminar = new String("PHP");
         mapa.eliminar(eliminar);
-        System.out.println("******************************************************");
-        System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
-        System.out.println("******************************************************");
         mapa.imprimir();
         
+        System.out.println("************************************************");
+        System.out.println("*INSERTANDO PALABRAS Y SIGNIFICADO EN EL MAPA*");
+        System.out.println("----Palabra a insertar = 'GO'----");
+        System.out.println("----Significado de la palabra = 'Lenguaje auspiciado por Google'----");
+        System.out.println("************************************************");
+        String insertar = new String("GO");
+        String significado = new String("Lenguaje auspiciado por Google");
+        mapa.insertar(insertar, significado);
+        mapa.imprimir();
+
+        System.out.println("************************************************");
+        System.out.println("*RECORRIDO DE INICIO A FIN*");
+        System.out.println("************************************************");
+        mapa.recorridoInicioFin();
+        System.out.println("************************************************");
+
+        System.out.println("************************************************");
+        System.out.println("*RECORRIDO DE FIN A INICIO*");
+        System.out.println("************************************************");
+        mapa.recorridoFinInicio();
+        System.out.println("************************************************");
+
     }
 }

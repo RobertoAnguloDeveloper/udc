@@ -3,12 +3,17 @@ package JAVA.Mapa;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
+import java.util.stream.Stream;
 
 public class Mapa {
     Map<String, String> mapa;
+    TreeMap<String, String> mapaOrdenado, mapaDesordenado;
 
     public Mapa() {
         mapa = new HashMap<String, String>();
+        mapaOrdenado = new TreeMap<String, String>();
+        mapaDesordenado = new TreeMap<String, String>();
     }
 
     public void agregar(String palabra, String significado) {
@@ -24,27 +29,21 @@ public class Mapa {
 
         Arrays.sort(palabras, (s1, s2) -> s1.compareTo(s2));
         
-        Map<String, String> aux = mapa;
-
         for (int i = 0; i < palabras.length; i++) {
-            String significado = mapa.get(palabras[i]);
-            mapa.replace(palabras[i], significado);
-            //System.out.println(palabras[i]+" "+mapa.get(palabras[i]));
+            mapaOrdenado.put(palabras[i], mapa.get(palabras[i]));
         }
-        
-        System.out.println(mapa);
+        mapa = mapaOrdenado;
     }
 
     public void desordenar() {
         String[] palabras = mapa.keySet().toArray(new String[mapa.keySet().size()]);
-        Arrays.sort(palabras, (s1, s2) -> s2.compareTo(s1));
-        Map<String, String> aux = new HashMap<String, String>();
-        aux = mapa;
 
-        for (int i = 0; i < palabras.length; i++) {
-            mapa.replace(palabras[i], aux.get(palabras[i]));
-        }
+        Arrays.sort(palabras, (s1, s2) -> s2.compareTo(s1));
         
+        for (int i = 0; i < palabras.length; i++) {
+            mapaDesordenado.put(palabras[i], mapa.get(palabras[i]));
+        }
+        mapa = mapaDesordenado;        
     }
 
     public void eliminar(String palabra) {
@@ -70,6 +69,9 @@ public class Mapa {
     }
 
     public void imprimir() {
+        System.out.println("******************************************************");
+        System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
+        System.out.println("******************************************************");
         for (Map.Entry<String, String> entrada : mapa.entrySet()) {
             System.out.println(entrada.getKey() + ": " + entrada.getValue());
         }
