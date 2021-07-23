@@ -4,11 +4,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.stream.Stream;
 
 public class Mapa {
-    Map<String, String> mapa;
-    TreeMap<String, String> mapaOrdenado, mapaDesordenado;
+    private Map<String, String> mapa;
+    private TreeMap<String, String> mapaOrdenado, mapaDesordenado;
 
     public Mapa() {
         mapa = new HashMap<String, String>();
