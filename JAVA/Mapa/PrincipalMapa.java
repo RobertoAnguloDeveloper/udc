@@ -1,8 +1,11 @@
 package JAVA.Mapa;
 
+import java.util.Scanner;
+
 public class PrincipalMapa {
     public static void main(String[] args) {
         Mapa mapa = new Mapa();
+        Scanner key = new Scanner(System.in);
 
         mapa.agregar("Java", "Lenguaje de programación especializado en Programación Orientada a Objetos");
         mapa.agregar("JavaScript", "Lenguaje de programación orientado a objetos y orientado a páginas Web");
@@ -14,6 +17,8 @@ public class PrincipalMapa {
         mapa.agregar("Ruby", "Lenguaje de programación orientado a objetos");
         mapa.imprimir();
 
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
         System.out.println("************************************************");
         System.out.println("*Buscar una palabra en el mapa*");
         System.out.println("----Palabra a buscar = 'Java'----");
@@ -26,18 +31,24 @@ public class PrincipalMapa {
         }else{
             System.out.println("La palabra " + buscar + " no se encuentra en el mapa");
         }
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
 
         System.out.println("************************************************");
         System.out.println("*ORDENANDO EL MAPA EN ORDEN ALFABETICO*");
         System.out.println("************************************************");
         mapa.ordenar();
         mapa.imprimir();
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
 
         System.out.println("************************************************");
         System.out.println("*DESORDENANDO EL MAPA*");
         System.out.println("************************************************");
         mapa.desordenar();
         mapa.imprimir();
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
         
         System.out.println("************************************************");
         System.out.println("*ELIMINAR UNA PALABRA DEL MAPA*");
@@ -46,28 +57,36 @@ public class PrincipalMapa {
         String eliminar = new String("PHP");
         mapa.eliminar(eliminar);
         mapa.imprimir();
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
         
         System.out.println("************************************************");
         System.out.println("*INSERTANDO PALABRAS Y SIGNIFICADO EN EL MAPA*");
-        System.out.println("----Palabra a insertar = 'GO'----");
+        System.out.println("----Palabra a palabra = 'GO'----");
         System.out.println("----Significado de la palabra = 'Lenguaje auspiciado por Google'----");
         System.out.println("************************************************");
-        String insertar = new String("GO");
+        String palabra = new String("GO");
         String significado = new String("Lenguaje auspiciado por Google");
-        mapa.insertar(insertar, significado);
+        mapa.insertar(palabra, significado);
         mapa.imprimir();
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
 
         System.out.println("************************************************");
         System.out.println("*RECORRIDO DE INICIO A FIN*");
         System.out.println("************************************************");
         mapa.recorridoInicioFin();
         System.out.println("************************************************");
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
 
         System.out.println("************************************************");
         System.out.println("*RECORRIDO DE FIN A INICIO*");
         System.out.println("************************************************");
         mapa.recorridoFinInicio();
         System.out.println("************************************************");
-
+        System.out.println("\nPRESIONE ENTER/INTRO PARA CONTINUAR\n");
+        key.nextLine();
+        key.close();
     }
 }

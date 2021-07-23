@@ -68,11 +68,16 @@ public class Mapa {
     }
 
     public void imprimir() {
+        System.out.println();
         System.out.println("******************************************************");
         System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
         System.out.println("******************************************************");
         for (Map.Entry<String, String> entrada : mapa.entrySet()) {
             System.out.println(entrada.getKey() + ": " + entrada.getValue());
         }
+        System.out.println("******************************************************");
+        System.out.println("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******");
+        System.out.println("******************************************************");
+        System.out.println();
     }
 }
