@@ -1,6 +1,5 @@
 package JAVA.Arboles;
 
-import java.util.ArrayList;
 import java.util.Optional;
 
 public class PrincipalArbol {
@@ -18,6 +17,9 @@ public class PrincipalArbol {
         arbol.agregar(7);
         arbol.agregar(6);
 
+        System.out.println("-------------------");
+        System.out.println("BUSCANDO EL VALOR 16: ");
+        System.out.println("-------------------");
         Optional<Nodo> resultado = arbol.buscar(16);
         if (resultado.isPresent()) {
             System.out.println("El valor 16 esta en el arbol");
@@ -27,28 +29,43 @@ public class PrincipalArbol {
         
         //Implement ordenar()
         arbol.ordenar();
-        System.out.println("Arbol ordenado");
         System.out.println("-------------------");
-        arbol.inOrden();
-
-        //arbol.desordenar();
-        System.out.println("Arbol desordenado");
+        System.out.println("Arbol ordenado");
         System.out.println("-------------------");
         arbol.inOrden();
 
         //Implement eliminar()
         arbol.eliminar(16);
+        System.out.println("---------------");
         System.out.println("Arbol sin 16");
+        System.out.println("---------------");
+        arbol.inOrden();
+
+        //arbol.desordenar();
+        arbol.desordenar();
+        System.out.println("-------------------");
+        System.out.println("Arbol desordenado");
         System.out.println("-------------------");
         arbol.inOrden();
 
         //Implement insertar()
-        arbol.insertar(16);
-        System.out.println("Arbol con 16");
-        System.out.println("-------------------");
+        arbol.insertar(2, 36);
+        System.out.println("-------------------------------");
+        System.out.println("Insertado 36 en la posición 2");
+        System.out.println("-------------------------------");
         arbol.inOrden();
 
-        
+        //Implement inOrden()
+        System.out.println("-------------------------------");
+        System.out.println("Recorrido de inicio a fin");
+        System.out.println("-------------------------------");
+        arbol.inOrden();
 
+        //Implement inOrden()
+        arbol.ordenar();
+        System.out.println("-------------------------------");
+        System.out.println("Recorrido de fin a inicio");
+        System.out.println("-------------------------------");
+        arbol.inOrden();
     }
 }

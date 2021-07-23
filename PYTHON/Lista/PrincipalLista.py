@@ -1,4 +1,3 @@
-#Implement all the methods from the Lista class
 from Lista import Lista
 
 lista = Lista()
@@ -14,6 +13,7 @@ lista.agregar("Espana")
 print("********************")
 print("Buscando 'Brazil':")
 print("********************")
+
 if lista.buscar("Brazil"):
     print("El pais esta en la lista")
 else:
@@ -22,6 +22,7 @@ else:
 print("********************")
 print("Buscando 'Brasil':")
 print("********************")
+
 if lista.buscar("Brasil"):
     print("El pais esta en la lista")
 else:

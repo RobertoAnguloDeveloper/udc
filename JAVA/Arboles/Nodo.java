@@ -49,6 +49,9 @@ public class Nodo {
     }
 
     public void ordenar() {
+        if (this.valor == null) {
+            this.valor = 0;
+        }
         if (izquierdo != null) {
             izquierdo.ordenar();
         }
@@ -65,19 +68,22 @@ public class Nodo {
         }
     }
 
-    public void ordenarReverso() {
+    public void desordenar() {
+        if (this.valor == null) {
+            this.valor = 0;
+        }
         if (izquierdo != null) {
-            izquierdo.ordenarReverso();
+            izquierdo.desordenar();
         }
         if (derecho != null) {
-            derecho.ordenarReverso();
+            derecho.desordenar();
         }
         if (izquierdo != null && derecho != null) {
             if (izquierdo.valor < derecho.valor) {
                 Integer aux = izquierdo.valor;
                 izquierdo.valor = derecho.valor;
                 derecho.valor = aux;
-                ordenarReverso();
+                desordenar();
             }
         }
     }
@@ -103,21 +109,31 @@ public class Nodo {
     }
 
     //Build a method that inserts an Integer value into the tree with a given position.
-    public void insertar(Integer valor, Integer posicion) {
-        if (posicion == 1) {
+    public void insertar(Integer posicion, Integer valor ) {
+                if (posicion < 0) {
             agregar(valor);
-        } else if (posicion == 2) {
+        } else if (posicion > 0) {
             if (izquierdo != null) {
-                izquierdo.insertar(valor, posicion);
+                izquierdo.insertar(posicion - 1, valor);
             } else {
                 izquierdo = new Nodo(valor);
             }
-        } else if (posicion == 3) {
-            if (derecho != null) {
-                derecho.insertar(valor, posicion);
+        } else {
+            if (valor < this.valor) {
+                if (izquierdo != null) {
+                    izquierdo.insertar(posicion, valor);
+               } else {
+                    izquierdo = new Nodo(valor);
+                }
             } else {
-                derecho = new Nodo(valor);
-                
+                if (derecho != null) {
+                    derecho.insertar(posicion, valor);
+               } else {
+                    derecho = new Nodo(valor);
+                }
+            }
+        }
+    }
     
     public void inOrden(){
         if(izquierdo!=null){

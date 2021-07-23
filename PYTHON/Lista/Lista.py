@@ -1,14 +1,3 @@
-#Build a class Lista with the methods:
-#agregar(self,pais)
-#buscar(self,pais)
-#ordenar(self)
-#desordenar(self)
-#eliminar(self,pais)
-#insertar(self,posicion,pais)
-#recorridoInicioFin(self)
-#recorridoFinInicio(self)
-#imprimir(self)
-
 class Lista:
     def __init__(self):
         self.paises = []
@@ -17,7 +6,10 @@ class Lista:
         self.paises.append(pais)
 
     def buscar(self,pais):
-        return self.paises.index(pais)
+        for i in self.paises:
+            if pais:
+                return True
+        return False
 
     def ordenar(self):
         self.paises.sort()
