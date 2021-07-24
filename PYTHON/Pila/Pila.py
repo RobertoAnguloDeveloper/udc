@@ -57,3 +57,5 @@ class Pila:
     def imprimir(self):
         for i in range(1, self.size+1) :
             print(i, self.pila[i].toString())
+
+            

@@ -51,7 +51,7 @@ public class PrincipalPila {
                     System.out.println("**********BUSCAR**********");
                     System.out.print("Ingrese la placa del carro: ");
                     String busqueda = key.next();
-                    int indice = pila.buscarPorPlaca(busqueda);
+                    int indice = pila.buscar(busqueda);
                     if (indice != -1){
                         System.out.println("El carro se encuentra en la posición ["+indice+"]");
                         pila.imprimir(indice);

@@ -1,17 +1,22 @@
+import collections
+
 class Mapa :
     mapa = {}
+    mapaOrdenado = {}
+    size = 0
 
     def agregar(self, palabra, significado):
         self.mapa[palabra] = significado
+        self.size = len(self.mapa)
     
     def buscar(self, palabra):
         return self.mapa[palabra]
     
     def ordenar(self):
-        return sorted(self.mapa)
+        self.mapa = collections.OrderedDict(sorted(self.mapa.items()))
     
     def desordenar(self):
-        return sorted(self.mapa, reverse=True)
+        self.mapa = collections.OrderedDict(sorted(self.mapa.items(), reverse=True))
 
     def eliminar(self, palabra):
         del self.mapa[palabra]
@@ -23,16 +28,14 @@ class Mapa :
         for key in self.mapa:
             print(key+': '+self.mapa[key])
     
-
     def recorridoFinInicio(self):
-        mapaInvertido = self.mapa
-        sorted(mapaInvertido, reverse=True)
+        mapaInvertido = collections.OrderedDict(sorted(self.mapa.items()))
         for key in mapaInvertido:
             print(key+': '+mapaInvertido[key])
 
     def imprimir(self):
-        print("******************************************************")
+        print("****************************************************************************************************************")
         print("*******DICCIONARIO DE LENGUAJES DE PROGRAMACIÓN*******")
-        print("******************************************************")
+        print("****************************************************************************************************************")
         for key in self.mapa:
             print(key+': '+self.mapa[key])

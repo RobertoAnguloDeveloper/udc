@@ -12,13 +12,13 @@ public class Pila {
         size = 0;
     }
 
-    public void agregar(Carro objeto) {
-        pila.push(objeto);
-        System.out.println("Carro de "+objeto.getPlaca()+" ha sido AGREGADO");
+    public void agregar(Carro carro) {
+        pila.push(carro);
+        System.out.println("Carro de "+carro.getPlaca()+" ha sido AGREGADO");
         size++;
     }
 
-    public int buscarPorPlaca(String placa){
+    public int buscar(String placa){
         for(int i = 0; i < size; i++){
             if(pila.get(i).getPlaca().equals(placa.toUpperCase())){
                 return i;
@@ -95,13 +95,13 @@ public class Pila {
         }
     }
 
-    public void insertar(int pos, Carro objeto){
+    public void insertar(int pos, Carro carro){
         if(pos >= 0 && pos < size){
-            pila.add(pos, objeto);
+            pila.add(pos, carro);
             if(pos == 0){
-                System.out.println("Carro de "+objeto.getPlaca()+" ha sido INSERTADO en la CABEZA de la colección");    
+                System.out.println("Carro de "+carro.getPlaca()+" ha sido INSERTADO en la CABEZA de la colección");    
             }
-            System.out.println("Carro de "+objeto.getPlaca()+" ha sido INSERTADO en la POSICION ["+pos+"] de la colección");
+            System.out.println("Carro de "+carro.getPlaca()+" ha sido INSERTADO en la POSICION ["+pos+"] de la colección");
             size++;
         }else{
             System.out.println("Posicion no valida");
