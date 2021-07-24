@@ -32,7 +32,6 @@ class Cola :
                     self.cola[i] = self.cola[j]
                     self.cola[j] = aux
     
-    #Metodo eleminar por numero de identificacion
     def eliminar(self, numeroIdentificacion) :
         for i in range(1, self.size+1) :
             if self.cola[i].getNumeroIdentificacion() == numeroIdentificacion :

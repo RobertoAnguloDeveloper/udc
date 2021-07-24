@@ -5,7 +5,6 @@ namespace Mapa
 {
     public class Mapa
     {
-        //Instance a Map property
         private Dictionary<string, string> mapa;
 
         public Mapa()
@@ -67,7 +66,6 @@ namespace Mapa
 
         public void recorridoFinInicio()
         {
-            //Prints the Dictionary in reverse order
             Dictionary<string, string> aux = new Dictionary<string, string>(mapa);
             aux = mapa;
             var valores = new List<string>(aux.Keys);

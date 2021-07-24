@@ -82,7 +82,7 @@ while ctrl:
     elif opc == 5:
         print("**********ELIMINAR**********")
         numeroIdentificacion = int(input("Ingrese el numero de identificacion del Estudiante a eliminar: "))
-        #Opcion eliminar por numero identificacion del Estudiante
+        
         if numeroIdentificacion == None:
             print("NO HA INGRESADO NINGUNA CEDULA")
         
